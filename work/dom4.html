@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <ul>
+        <li id="btn1">页卡1</li>
+        <li id="btn1">页卡2</li>
+        <li id="btn1">页卡3</li>
+    </ul>
+    <div id="box1">内容1</div>
+    <div id="box2">内容2</div>
+    <div id="box2">内容2</div>
+    <div id="box3">内容3</div>
+    <a href="">链接</a>
+</div>
+<script src="js/prev.js"></script>
+<script>
+    var box2=document.getElementById("box2");
+    console.log(prev(box2));
+    console.log(next(box2));
+    console.log(prevAll(box2));
+    console.log(nextAll(box2));
+    console.log(siblingAll(box2));
+    console.log(curIndex(box2));
+</script>
+</body>
+</html>

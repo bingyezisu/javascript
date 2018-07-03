@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width:200px;
+            height:200px;
+            border:1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<div id="box2" class="box">2</div>
+<script>
+    //=>创建
+/*    var oDiv=document.createElement("div");
+    oDiv.id="div1";
+    oDiv.innerHTML="1";
+    oDiv.className="box";
+
+    //=>添加到页面中
+    document.body.insertBefore(oDiv,box2);*/
+    var link=document.createElement("a");
+    link.href="http://www.andy.com/stu/?name=andy&age=30&sex=0#teacher";
+    console.dir(link);
+    //->hash:存储了哈希值 "#teacher"
+    //->hostname: 域名 "http//www.andy.com"
+    //->pathname: 路径 "/stu/"
+    //->protocol: 协议 "http:"
+    //->search: 问号传递参数值"?name=andy&age=30&sex=0"
+    link.search
+</script>
+</html>
