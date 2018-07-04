@@ -1795,6 +1795,8 @@ sum(10,20,30,"candy");
 
 ### JS中的返回值  `return`
 
+>返回值是函数提供的一个出口：我们如果想在外面使用函数私有的一些信息，那么就需要通过return，把这些信息返回出来供外面使用
+
 ```javascript
 function sum(){
     var total=null;
@@ -1802,7 +1804,7 @@ function sum(){
         var cur=Number(arguments[i]);
         !isNaN(cur)?total+=cur:null;
     }
-    return total;//=>RWTURN后面跟着的都是值（返回的都是值）：此处不是把total变量返回，而是把total存储的值返回而已
+    return total;//=>RETURN后面跟着的都是值（返回的都是值）：此处不是把total变量返回，而是把total存储的值返回而已
 }
 console.log(sum(10, 20, 30));
 //=>sum:代表的函数本身
@@ -1830,5 +1832,32 @@ function sum(){
 }
 var total=sum(10,20,30);//=>外面是全局下的TOTAL和函数中的TOTAL没有必然的联系
 console.log(total.toFixed(2));
+```
+
+### JS中的匿名函数
+
+> 没有名字的函数
+>
+> - 函数表达式
+> - 自执行函数
+
+```javascript
+oBox.onclick=function(){
+    //=>把一个没有名字的函数（有名字也无所谓）作为值赋值给一个变量或者一个元素的某个事件等：函数表达式
+}
+
+```
+
+```javascript
+;(function(n){
+    //=>创建函数和执行函数放在一起了,创建完成立马执行：自执行函数
+    //n形参 n=10
+    //前面加";"是为了压缩时候出现错误
+})(10)
+//=>以下都是自执行函数，符号只是控制语法规范
+~function(n){}(10);
+-function(n){}(10);
++function(n){}(10);
+!function(n){}(10);
 ```
 
