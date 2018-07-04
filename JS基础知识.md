@@ -150,7 +150,7 @@ var _xxx;//=>一般这样的情况代表变量是一个全局或者公用的变�
 
 4、JS中很多的词都是有特殊含义的，我们管这些词叫做`关键字`；现在没有特殊含义，以后可能会作为关键词的，我们叫做`保留字`；而关键字和保留字都不可以随便用来命名
 
-![微信截图_20180625101548](C:\Users\wangxuechun\Desktop\js学习\js基础img\微信截图_20180625101548.png)
+![微信截图_20180625101548](C:\Users\wangxuechun\Desktop\js\js基础img\微信截图_20180625101548.png)
 
 ------------
 
@@ -436,7 +436,7 @@ console.log(n.name);
 >
 > 3、把空间的地址赋值给了变量
 
-![微信截图_20180625111628](C:\Users\wangxuechun\Desktop\js学习\js基础img\微信截图_20180625111628.png)
+![微信截图_20180625111628](C:\Users\wangxuechun\Desktop\js\js基础img\微信截图_20180625111628.png)
 
 ----------------
 
@@ -463,7 +463,7 @@ fn;//=>输出函数本身
 fn();//2 =>把函数执行（把函数体中实现功能的代码执行）
 ```
 
-![微信截图_20180625115444](C:\Users\wangxuechun\Desktop\js学习\js基础img\微信截图_20180625115444.png)
+![微信截图_20180625115444](C:\Users\wangxuechun\Desktop\js\js基础img\微信截图_20180625115444.png)
 
 ```javascript
 //=>形参：形式参数（变量），函数的入口
@@ -1003,7 +1003,7 @@ var str="welcome to my home,my name is candy!"
 >
 > **str.lastIndexof** ：获取当前字符在字符串中最后一次出现位置的索引
 
-![微信截图_20180626160822](C:\Users\wangxuechun\Desktop\js学习\js基础img\微信截图_20180626160822.png)
+![微信截图_20180626160822](C:\Users\wangxuechun\Desktop\js\js基础img\微信截图_20180626160822.png)
 
 > 如果当前字符在字符串中没有出现过，结果是-1；我们根据这个规律可以验证一下当前字符串中是否包含某个字符
 
@@ -1020,7 +1020,7 @@ if(str.indexOf("?")>=0){
 
 > **str.split**：按照某一个字符把字符串拆分成数组中的某一项，和数组中的join方法是对应的
 
-![微信截图_20180626162146](C:\Users\wangxuechun\Desktop\js学习\js基础img\微信截图_20180626162146.png)
+![微信截图_20180626162146](C:\Users\wangxuechun\Desktop\js\js基础img\微信截图_20180626162146.png)
 
 `replace`
 
@@ -1030,7 +1030,7 @@ if(str.indexOf("?")>=0){
 >
 > 有些需求即使执行很多次replace也实现不了，此时需要使用正则处理，真实项目中replace一般都是和正则搭配使用的
 
-![微信截图_20180626162739](C:\Users\wangxuechun\Desktop\js学习\js基础img\微信截图_20180626162739.png)
+![微信截图_20180626162739](C:\Users\wangxuechun\Desktop\js\js基础img\微信截图_20180626162739.png)
 
 `trim && trimLeft && trimRight`
 
@@ -1442,7 +1442,7 @@ nodeValue：null
 
 > 节点是用来描述页面中每一部分之间关系的，只要可以获取页面中的一个节点，那么就可以通过相关的属性和方法获取页面中的所有节点
 
-![微信截图_20180628152905](C:\Users\wangxuechun\Desktop\js学习\js基础img\微信截图_20180628152905.png)
+![微信截图_20180628152905](C:\Users\wangxuechun\Desktop\js\js基础img\微信截图_20180628152905.png)
 
 `childNodes`
 
@@ -1657,6 +1657,10 @@ function [函数名]（[形参]）{}
 > 函数作为js中引用数据类型的一种，也是按照引用地址来操作的
 
 ```javascript
+var obj={
+    name:"candy",
+    age:"28"
+}
 function sum(){
     var total=1+1;
     total*=20;
@@ -1676,5 +1680,155 @@ sum();
 > 目的:把之前存储的实现具体功能的JS代码执行
 
 - 函数执行，浏览器首先会为其开辟一个新的`私有作用域`（只能执行函数中之前编写的JS代码）
-- 11111
+- 形参赋值（先跳过）
+- 私有作用域中的变量提升（先跳过）
+- 把之前创建时候存储的那些js代码字符串拿到私有作用域中，然后把他们变为JS表达式从上到下执行
+- 私有作用域是否销毁的问题（先跳过）
+
+`闭包`
+
+> 函数执行会形成一个私有的作用域，让里面的私有变量和外界互不影响（相互不干扰，外面的无法直接获取里面的变量值），此时我们可以理解为私有作用域把私有变量保护起来的，我们把这种保护机制称之为 **`闭包`**
+
+`栈内存`
+
+> 作用域（全局作用域/私有作用域）：提供一个供JS代码执行的环境
+
+`堆内存`
+
+> 所有的引用数据类型，它们需要存储的内容都在堆内存中（相当于一个仓库，目的是存储信息）
+>
+> - 对象会把键值对存储进来
+> - 函数会把代码当做字符串存储进来
+
+### 函数中的形参和实参
+
+> 形参：相当于生产洗衣机的时候提供的入口，需要用户执行函数的时候吧需要的值传递进来，实参是个变量，用来存储和接收这些值
+>
+> 实参：用户执行的时候传递给形参的具体值
+
+```javascript
+function sum(num1,num2){//=>num1/num2就是形参变量（类似于val了一下）
+    //如果有一个值没有传递的话，我们为了保证结果不是NaN，我们为其设置一个默认的值:0
+    //typeof num1==="undefined"?num1=0:null;
+    //typeof num1==="undefined"?num1=0:null;
+    //=>容错处理
+    num1=num1||0;
+    num2=num2||0;
+    var total=num1+num2;
+    total*=10;
+    total=total.toFixed(2);
+    console.log(total);
+}
+sum(10,20);//->10/20是实参 num1=10 num2=20
+sum(10);//->num1=10 num2=undefined 定义了形参但是执行的时候没有传递实参，默认实参的值是undefined
+```
+
+### arguments实参集合
+
+> 当我们不知道用户具体要传递几个值的时候（传递几个值都行），此时我们无法设置形参的个数；遇到此类需求，需要使用函数内置的实参集合：arguments
+>
+> 1、arguments只有函数才有
+>
+> 2、不管执行函数的时候是否传递实参，arguments天生就存在，没有传递实参ARG是个空的集合，传递了ARG中包含了所有传递的实参值
+>
+> 3、不管是否设置了形参，ARG中始终存储了所有的实参信息
+
+![微信截图_20180704122503](C:\Users\wangxuechun\Desktop\js\js基础img\微信截图_20180704122503.png)
+
+> arguments是一个类数组集合
+>
+> 1、以数字作为索引（属性名），从零开始
+>
+> arguments[0]第一个实参信息
+>
+> arguments[2]第三个实参信息
+>
+> arguments[n]第n+1个实参信息
+>
+> 2、有一个length的属性，存储的是当前几个的长度（当前传递实参的个数）
+>
+> arguments.length
+>
+> arguments["length"]
+>
+> arguments.callee：存储的是当前函数本身
+>
+> arguments.callee.caller :存储的是当前函数在哪执行的（宿主函数），在全局作用域下执行的，结果是null
+
+```javascript
+function sum(){
+    console.log(arguments.callee.caller);//=>fn
+}
+function fn(){
+    sum(10,20,"candy",{name:"candy"})
+}
+fn();
+```
+
+```javascript
+"use strict";//=>在JS代码执行之前加入这句话：开启JS的严格模式
+function sum(){
+    console.log(arguments.callee.caller);//=>Uncaught TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them
+}
+function fn(){
+    sum(10,20,"candy",{name:"candy"})
+}
+fn();
+//=>arguments.callee或者argument.callee.caller一般真正项目中很少使用，因为在严格的JS模式下不允许我们使用这两个属性
+```
+
+```javascript
+//=>任意数求和
+function sum(){
+    var total=null;
+    for(var i=0;i<arguments.length;i++){
+        var cur=Number(arguments[i]);
+        !isNaN(cur)?total+=cur:null;
+    }
+    console.log(total);
+}
+sum(10,20,30);
+sum();
+sum(10,20,"30");
+sum(10,20,30,"candy");
+```
+
+### JS中的返回值  `return`
+
+```javascript
+function sum(){
+    var total=null;
+    for(var i=0;i<arguments.length;i++){
+        var cur=Number(arguments[i]);
+        !isNaN(cur)?total+=cur:null;
+    }
+    return total;//=>RWTURN后面跟着的都是值（返回的都是值）：此处不是把total变量返回，而是把total存储的值返回而已
+}
+console.log(sum(10, 20, 30));
+//=>sum:代表的函数本身
+//=>sum():让函数先执行，代表的是当前函数返回的结果（RETURN后面是啥，相当于函数返回的是啥）
+```
+
+```javascript
+function sum(){
+    var total=0;
+    return；
+    console.log(total);//=>在函数体中遇到RETURN后，RETURN后面的代码不在执行了
+}
+console.log(sum());//=>如果函数中没有写RETUEN或者RETURN后面啥也没有，默认返回的结果就是undefined
+```
+
+```javascript
+//任意数求和完整版
+function sum(){
+    var total=null;
+    for(var i=0;i<arguments.length;i++){
+        var cur=Number(arguments[i]);
+        !(isNaN(cur))?total+=cur:null;
+    }
+    return total;
+}
+var total=sum(10,20,30);//=>外面是全局下的TOTAL和函数中的TOTAL没有必然的联系
+console.log(total.toFixed(2));
+```
 
