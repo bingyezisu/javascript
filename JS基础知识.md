@@ -1980,7 +1980,7 @@ var ary=[12,23,34];
 * slice：数组的查询
 *   参数：slice(n,m) 从索引n开始找到索引为m处（不包含m）
 *   返回值：把找到的部分以一个新数组返回
-*   原来的数字不变
+*   原来的数组不变
 *
 *   ->slice(n) 从索引n开始找到末尾
 *   ->slice(0)/slice() 数组克隆，克隆一份和原来数组一模一样的新数组,但两个数组不相等
@@ -2108,3 +2108,273 @@ every
 ...
 ```
 
+### 数组去重
+
+> 方案一：(双循环方式，性能不好)
+>
+> 遍历数组中的每一项，拿每一项和它后面的项依次比较，如果相同了，则把相同的这一项在原来数组中删除即可
+
+```javascript
+var ary=[1,2,2,3,2,1,2,3,2,2,3,4,2,2,3];
+//ary.length-1:最后一项的后面没有内容了，我们不需要再比较
+for (var i = 0; i < ary.length-1; i++) {
+    var cur = ary[i];//=>当前遍历的这一项（索引i）
+    //把拿出的这一项和后面的每一项进行比较
+    //->i+1:把当前项和它后面项比较，当前项索引是i,后一项索引是i+1
+    for (var j = i+1; j < ary.length; j++) {
+       //ary[j]:作比较的那一项
+        if(cur===ary[j]){
+            //本次作比较的这一项和当前项相同，我们需要在原有数组中把当前作比较的这一项删除掉（作比较的这一项的索引是j）
+            ary.splice(j,1);
+            //=>数组塌陷问题：我们使用splice删除数组中的某一项后，删除这一项后面的每一项索引都要向前进一位（原有索引上减1），此时如果我们j++，循环操作的值累加了，我们通过最新j获取的元素不是紧挨删除的这一项的元素，而是跳过一项获取的元素
+            j--;//先让j--，然后在j++，相当于没加没减，此时还是原有索引，在获取的时候就是删除这一项后面紧挨着的这一项
+        }
+    }
+}
+console.log(ary);
+```
+
+```javascript
+var ary=[1,2,2,3,2,1,2,3,2,2,3,4,2,2,3];
+for (var i = 0; i < ary.length-1; i++) {
+    var cur = ary[i];
+    for (var j = i+1; j < ary.length;) {
+        cur===ary[j]?ary.splice(j,1):j++;
+    }
+}
+console.log(ary);
+```
+
+**数组塌陷问题**：我们使用splice删除数组中的某一项后，删除这一项后面的每一项索引都要向前进一位（原有索引上减1），此时如果我们j++，循环操作的值累加了，我们通过最新j获取的元素不是紧挨删除的这一项的元素，而是跳过一项获取的元素。
+
+>方案二：
+>
+>利用indexOf来验证当前数组中是否包含某一项，包含把当前项删除掉（不兼容IE6~8）
+
+```javascript
+var ary=[1,2,2,3,2,1,2,3,2,2,3,4,2,2,3];
+for (var i = 0; i < ary.length; i++) {
+    var cur = ary[i];
+    var curNextAry=ary.slice(i+1);//=>把当前项后面的那些值以一个新数组返回，我们需要比较的就是后面的这些想对应的新数组
+    if(curNextAry.indexOf(cur)>-1){
+        //=>后面项组成的数组中包含当前这一项（当前这一项是重复的），我们把当前这一项删除即可
+        ary.splice(i,1);
+        i--;
+    }
+}
+console.log(ary);
+```
+
+> 方案三：
+>
+> 遍历数组中的每一项，把每一项作为新对象的属性名和属性值存储起来，例如：当前项1，对象中存储的{1:1}
+>
+> 在每一次向对象中存储之前，首先看一下原有对象中是否包含了这个属性（`typeof obj[xxx]==="undefined"说明当前对象中没有xxx这个属性`），如果已经存在这个属性说明数组中的当前项是重复的（1-在原有数组中删除这一项 2-不再向对象中存储这个结果），如果不存在把当前项作为对象的属性名和属性值存储进去即可
+
+```javascript
+var ary=[1,2,2,3,2,1,2,3,2,2,3,4,2,2,3];
+var obj={};
+for (var i = 0; i < ary.length; i++) {
+    var cur = ary[i];
+    if(typeof obj[cur]!=="undefined"){
+        //=>对象中已经存在该属性：证明当前项是数组中的重复项
+        //ary.splice(i,1);//=>使用splice会导致后面的索引向前进一位，如果后面有很多项，消耗的性能很大
+        //=>思路：我们把最后一项拿过来替换当前要删除的这一项，然后再把最后一项删除
+        ary[i]=ary[ary.length-1];
+        ary.length--;
+        i--;
+        continue;
+    }
+    obj[cur]=cur;
+}
+console.log(ary)
+```
+
+```javascript
+var ary=[1,2,2,3,2,1,2,3,2,2,3,4,2,2,3];
+Array.prototype.myUnique=function myUnique(){
+    var obj={};
+    for(var i=0;i<this.length;i++){
+       var item=this[i];
+       if(typeof obj[item]!=="undefined"){
+           this[i]=this[this.length-1];
+           this.length--;
+           i--;
+           continue;
+       }
+       obj[item]=item;
+    }
+    obj=null;
+    return this;
+}
+console.log(ary.myUnique().sort(function(a,b){return b-a}));
+```
+
+> 扩展思路：
+>
+> 首先给数组进行排序，然后相邻两项比较，相同的话，把后一项在数组中去掉：`相邻比较法`
+
+```javascript
+var ary=[1,2,2,3,2,1,2,3,2,2,3,4,2,2,3,3];
+//先排序
+ary.sort(function(a,b){return a-b});
+//相邻比较
+for(var i=0;i<ary.length-1;i++){
+    var cur=ary[i];
+    if(cur===ary[i+1]){
+        ary.splice(i,1);
+        i--;
+        continue;
+    }
+    cur=ary[i+1];
+}
+console.log(ary);
+```
+
+##算法
+
+###冒泡排序
+
+```javascript
+/*
+* bubble :冒泡排序
+*   @parameter：
+*       ary：[array] 需要实现排序的数组
+*   @return
+*       [array] 排序后的数组（升序）
+* by team on 2017/10/19
+* */
+function bubble(ary) {
+    //=>外层循环控制的是比较的轮数
+    for(var i=0;i<ary.length-1;i++){
+        //里层循环控制每一轮比较的次数
+        for (var j = 0; j < ary.length-1-i; j++) {
+           //ary[j]当前本次拿出来的这一项
+           //ary[j+1]:当前项的后一项
+            if(ary[j]>ary[j+1]){
+                //当前这一项比后一项还要大，我们让两者交换位置
+                var temp=ary[j];
+                ary[j]=ary[j+1];
+                ary[j+1]=temp;
+            }
+        }
+    }
+    return ary;
+}
+var ary = [12, 13, 23, 14, 16, 11];
+console.log(bubble(ary));
+```
+
+###递归
+
+```javascript
+//=>递归？
+//函数自己调用自己
+function fn(num){
+    console.log(num);
+    if(num===0){
+        return;
+    }
+    fn(num-1);
+}
+fn(10);
+
+```
+
+```javascript
+//=>面试题：1~100之间，把所有能被3并且能被5整除的获取到，累加求和
+//=>方案一：
+var total=null;
+for(var i=0;i<=100;i++){
+    if(i%3===0 && i%5===0){
+        total+=i;
+    }
+}
+console.log(total);//=>315
+```
+
+```javascript
+//=>方案二
+function fn(num){
+    if(num>100){
+        return 0;
+    }
+    if(num%15===0){
+        return num+fn(num+1);
+    }
+    return fn(num+1);
+}
+console.log(fn(1));
+/*
+* 1 fn(2)
+* 14 fn(15)
+* 15 15+fn(16)
+* 29 15+fn(30)
+*       30 30+fn(31)
+*       31 30+fn(32)
+*       44 30+fn(45)
+*             45 45+fn(46)
+*             59 45+fn(60)
+*                  60  60+fn(61)
+*                  74  60+fn(75)
+*                        75 75+fn(78)
+*                        89 75+fn(90)
+*                              90 90+fn(91)
+*                              100 90+fn(100)
+*  15+30+35+60+75+90+0=315
+*
+* */
+
+```
+
+```javascript	
+//=>需求：1~10以内的所有偶数的乘积
+function fn(num){
+    if(num<1){
+        return 1;
+    }
+    if(num%2===0){
+        return num*fn(num-1);
+    }
+    return fn(num-1);
+}
+console.log(fn(10));//=>3840
+```
+
+### 快速排序
+
+js\js基础img\微信截图_20180705173309.png)
+
+```javascript
+var ary = [12, 13, 23, 14, 16, 11];
+//=>快速排序
+//->先找中间这一项14
+//->把剩余项中的每一个值和中间项进行比较，比他小的放在左边（新数组），比他大的放在右边（新数组）
+//...
+function quick(ary){
+    //=>如果传递进来的数组只有一项或者是空的,我们则不再继续取中间相拆分
+    if(ary.length<=1){
+        return ary;
+    }
+    //获取中间项的索引:把中间项的值获取到，在原有数组中删除中间项
+    var centerIndex=Math.floor(ary.length/2),
+        centerValue=ary.splice(centerIndex,1)[0];//=>splice返回的是个数组，数组中包含了删除的那个内容
+    //->用剩余数组中的每一个项和中间项进行比较，比中间项大的放在右边，比他小的放在左边（左右两边都是新数组）
+    var aryLeft=[],
+        aryRight=[];
+    for(var i=0;i<ary.length;i++){
+        var cur=ary[i];
+        cur<centerValue?aryLeft.push(cur):aryRight.push(cur);
+    }
+    return quick(aryLeft).concat(centerValue,quick(aryRight));
+}
+console.log(quick(ary));;
+```
+
+### 插入排序
+
+> 数组中的每一项理解为扑克牌
+>
+> 在桌面上新抓一张牌A，我们用A和我们手里已经抓的牌进行比较（个人习惯从右向左比），如果A比手里当前要比较的这张牌小，则继续向左比较...一直遇到比手里当前要比较的这张牌大，我们把A放在当前手里这张牌的后面
+>
+> 如果新抓的牌A比手里所有牌都要小，我们把它放在最前面即可
