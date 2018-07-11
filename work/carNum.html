@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box">
+    <p id="licensePlate"></p>
+    <input type="button" value="摇号" id="shakeBtn">
+</div>
+<script>
+    window.onload=function(){
+        //=>获取摇号按钮和显示区域div
+        var oDiv=document.getElementById("licensePlate"),
+            oBtn=document.getElementById("shakeBtn"),
+            i=0;
+        function shake(){
+            var starStr=["京A","京C","京E","京F","京G","京B","京O"],
+                endStr="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+                result=null;
+            var starStrLength=starStr.length-1,
+                endStrLength=endStr.length-1;
+            result=starStr[Math.round(Math.random()*starStrLength)]+" ";
+            for(var i=0;i<5;i++){
+                result+=endStr.charAt(Math.round(Math.random()*endStrLength));
+            }
+            oDiv.innerHTML=result;
+        }
+        oBtn.onclick=function(){
+           if(i>=3){
+               alert("对不起，你的次数已用光");
+               return ;
+           }
+            shake();
+           i++;
+        }
+    }
+</script>
+</body>
+</html>

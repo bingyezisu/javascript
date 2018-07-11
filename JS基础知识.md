@@ -1,4 +1,4 @@
-# JS基础知识（一）
+# JS基础
 
 ## 前端开发常用的浏览器
 
@@ -140,7 +140,7 @@ get/query/select:查询获取
 ***/
 ```
 
-3、命名的时候可以使用$、_ 、数字 、字母，但是数组不能作为名字的第一位
+3、命名的时候可以使用$、_ 、数字 、字母，但是数字不能作为名字的第一位
 
 ```javascript
 var student_info;
@@ -911,7 +911,15 @@ Math.ceil(Math.random()*10))
 Math.round(Math.random()*12+3)
 ```
 **获取[n,m]之间的随机整数**
-`Math.round(Math.random()*(m-n)+n)`
+包含m，n：`Math.round(Math.random()*(m-n)+n)`
+
+包含n，不包含m：`parseInt(Math.random()*(m-n)+n)`
+
+不包含n，包含m：`Math.floor(Math.random()*(m-n)+n)+1`
+
+不包含n和n：`Math.round(Math.random()*(m-n)+n+1)` 或者是
+
+``Math.ceil(Math.random()*(m-n)+n+1)`
 
 `max/min`
 
@@ -2409,4 +2417,6 @@ function insert(ary){
 }
 console.log(insert(ary));
 ```
+
+# 
 
