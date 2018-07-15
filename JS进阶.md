@@ -209,10 +209,267 @@ fn()();//首先执行fn，返回一个小函数对应的内存地址，然后紧
 **如何区分this？**
 
 > - 函数执行，首先看函数名前面是否有“.”，有的话 “.”前面是谁this就是谁，没有的话就是window
->
 > - 自执行函数中的this永远是window
->
 > - 给元素的某一个事件绑定方法，当事件触发的时候，执行对应的方法，方法中的this是当前的元素
+
+### 单例模式
+
+1、对象数据类型的作用：把描述同一个实物（同一个对象）的属性和方法放在一个内存空间下，起到了分组的作用，这样不同事物之前的属性名即使相同也不会发生冲突->我们把这种分组编写代码的模式叫做 **`单例模式`**
+
+```javascript
+//在单例模式中我们把person1或者person2也叫做“命名空间”
+var person1={
+    name:"candy",
+    age:28
+}
+var person2={
+    name:"andy",
+    age:30
+}
+```
+
+2、单例模式是一种项目开发中经常使用的模式，因为项目中我们可以使用单例模式来进行我们的“模块化开发”
+
+**`模块化开发 `**：对于一个相对来说比较大的项目，需要多个人协作开发的，我们一般情况下会根据当前项目的需求划分成几个功能版块，每个人负责一部分，同时开发，最后把每个人的代码合并
+
+```javascript
+//公共模块
+var utils={
+    select:function(){
+        
+    }
+}
+//页卡模块中的change->实现选项卡切换
+var tabRender={
+    change:function(){
+        utils.select();//在自己的命名空间下调用其他的命名空间的方法
+    }
+}
+//搜索模块change->搜索内容变化处理
+var serchRender={
+    change:function(){
+        
+    },
+    clickEven:function(){
+        this.change();//在自己的命名空间下调用其他的命名空间的方法
+    }
+    
+}
+```
+
+### 工厂模式
+
+1、单例模式虽然解决了分组的作用，但是不能 实现批量生产，属于手工作业模式，为了应对这种情况就催生了“工厂模式”；
+
+> **`工厂模式`**：把实现同一件事情的相同代码放到一个函数中，以后如果想再实现这个功能，不需要重新的编写这些代码了，只需要执行当前的函数即可；我们把这种形式又称为 `函数的封装`
 >
->   
+> 作用：`低耦合高内聚`->减少页面中的冗余代码，提高代码的重复利用率
+
+```javascript
+function createJsPerson(name,age){
+    var obj={};
+    obj.name=name;
+    obj.age=age;
+    obj.writeJs=function(){
+        console.log("my name is "+this.name+",i can write js!");
+    }
+    return obj;
+}
+var p1=createJsPerson("andy",30);
+p1.writeJS();
+var p2=createJsPerson("candy",28);
+p2.writeJS();
+```
+
+**`JS中不存在重载`**
+
+> JS是一门轻量级的脚本”编程语言“（HTML+CSS不属于编程语言，属于标记语言）
+>
+> 所有的编程语言都是面向对象开发的->类的继承、封装、多态
+>
+> 继承：子类继承父类中的属性和方法
+>
+> 多态：当前方法的多种形态->后台语言中：多态包含重载和重写
+
+```php
+//后台中的重载
+public void sum(int num1,int num2){
+    
+}
+public void sum(String num1,int num2){
+    
+}
+```
+
+```javascript
+function sum(num1,num2){
+    
+}
+function sum(num1){
+    
+}
+//js中不存在重载，方法名一样的话，后面的会把前面的覆盖掉，最后只保留一个
+```
+
+>JS中有一个操作类似重载的方法但是不是重载：我们可以根据传递参数的不一样，实现不同的功能
+>
+>重写：子类重写父类的方法
+
+```javascript
+function sum(num){
+    if(typeOf num==="undefined"){
+        return 0;
+    }
+    return num();
+}
+sum(100);
+sum();
+```
+
+### 构造函数模式
+
+```javascript
+//构造函数模式的目的就是为了创建一个自定义类，并且创建这个类的实例
+function CreateJsPerson(name,age){
+    //浏览器默认创建的对象就是我们的实例p1->this
+    this.name=name;
+    this.age=age;
+    this.writeJs=function(){
+        console.log("my name is "+this.name+",i can write js");
+    }
+    //浏览器再把创建的实例默认的进行返回
+}
+var p1=new CreateJsPerson("candy",28);
+p1.writeJs();
+
+var res=CreateJsPerson("andy",30);
+console.log(res);
+/*
+这样写不是构造函数执行而是普通的函数执行
+由于没有写return 所以 res=undefined
+并且CreateJsPerson这个方法中的this是window
+*/
+var p2=new CreateJsPerson("candice",29);
+p2.writeJs()；
+```
+
+**1、构造函数模式和工厂模式的区别？**
+
+1）执行的时候
+
+- 普通函数执行->createJsPerson();
+- 构造函数模式->new CreateJsPerson() 通过new执行后，我们的CreateJsPerson就是一个类了；而函数执行的返回值（p1）就是CreateJsPerson这个类的一个实例
+
+2）在函数代码执行的时候
+
+- 相同点：都是形成一个私有的作用域，然后 形参赋值->预解释->代码从上到下执行（类和普通函数一样，它也有普通函数的一面）
+- 不同点：在代码执行之前，构造函数模式不用自己在手动的创建对象了，浏览器会默认的创建一个对象数据类型的值（这个对象其实就是我们当前类的一个实例）；接下来代码从上到下执行，以当前的实例为执行的主体（this代表的就是当前的实例），然后分别把属性名和属性值赋值给当前的实例，最后浏览器会默认的把创建的实例返回
+
+**2、构造函数解析**
+
+1）JS中所有的类都是函数数据类型的，它通过new执行变成了一个类，但是它本身也是一个普通的函数；JS中所有的实例都是对象数据类型
+
+2）在构造函数模式中，类中（函数体中）出现的this.xxx=xxx中的this是当前类的一个实例
+
+3）p1和p2都是CreateJsPerson这个类的实例，所以都拥有writeJs这个方法，但是不同实例之间的方法是不一样的，在类中给实例增加的属性（this.xxx=xxx）属于当前实例的私有属性，实例和实例之间是单独的个体，所以私有的属性之间是不相等的
+
+```javascript
+console.log(p1.writeJs===p2.writeJs);//false
+```
+
+**3、构造函数相关知识点**
+
+```javascript
+function Fn(){
+    this.x=100;
+    this.getX=function(){
+        console.log(this.x);
+    }
+}
+var f1=new Fn;
+f1.getX();//->方法中的this是f1->100
+var ss=f1.getX;
+ss();//方法中的this是window->undefined
+```
+
+- 在构造函数模式中的new Fn执行，如果Fn不需要传递参数的话，后面的小括号可以省略
+- this的问题：在类中出现的this.xxx=xxx中的this都是当前类的实例，而某一个属性值（方法），方法中的this需要看方法执行的时候，前面是否有“.”才能知道this是谁
+
+```javascript
+function Fn(){
+    var num=10;
+    this.x=100;
+    this.getX=function(){
+        console.log(this.x);
+    }
+}
+var f1=new Fn;
+console.log(f1.num);//=>undefined
+```
+
+- 类有普通函数的一面，当函数执行的时候，var num 其实只是当前形成的私有作用域中的私有变量而已，它和我们f1这个实例没有任何的关系，只有this.xxx=xxx才相当于给f1这个实例增加私有的属性和方法，才和我们的f1有关系
+
+```javascript
+function Fn(){
+    this.x=100;
+    this.getX=function(){
+        console.log(this.x);
+    }
+    return {name:"candy"};
+}
+var f1=new Fn;
+console.log(f1);//{name:"candy"}
+```
+
+- 在构造函数模式中，浏览器会默认的把我们的实例返回（返回的是一个对象数据类型的值）；如果我们自己手动写了return返回：
+  - 返回的是一个基本数据类型的值，当前的实例是不变的，例如：return 100；我们的f1还是当前fn类的实例
+  - 返回的是一个引用数据类型的值，当前的实例会被自己返回的值给替换掉，例如：return {name:"candy"},f1就不再是fn的实例了，而是对象{name:"candy"}
+
+```javascript
+function Fn(){
+    this.x=100;
+    this.getX=function(){
+        console.log(this.x);
+    }
+}
+var f1=new Fn;
+console.log(f1 instanceof Fn);//true
+console.log(f1 instanceof Array);//false
+console.log(f1 instanceof Object);//true
+//因为所有的实例都是对象数据类型的，而每一个对象数据类型都是Object这个内置类的一个实例，所以f1也是它的一个实例
+```
+
+- 检测某一个实例是否属于这个类->`instanceof`
+
+```javascript
+function Fn(){
+    this.x=100;
+    this.getX=function(){
+        console.log(this.x);
+    }
+}
+var f1=new Fn;
+var f1=new Fn;
+console.log(f1.getX===f2.getX);//false
+console.log("getX" in f1);//true
+console.log(f1.hasOwnProperty("getX"));//ture
+```
+
+- f1和f2都是Fn这个类的一个实例，都拥有x和getX这两个属性，但是这两个属性是各自的私有属性
+
+- in：检测某一个属性是否属于这个对象（attr in object），不管是私有的属性还是公有的属性，只要存在，用in来检测都是true
+
+- `hasOwnProperty`：用来检测某个属性是否为这个对象的私有属性，这个方法只能检测私有的属性
+
+- 检测某一个属性是否为该对象的“公有属性”->hasPubProperty
+
+  ```javascript
+  function hasPubProperty(obj,attr){
+      return (attr in obj) && !obj.hasOwnProperty(attr);
+  }
+  ```
+
+  
+
+
 
