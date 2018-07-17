@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1"></div>
+<script>
+    //->div、a、document、window
+
+    function Fn() {
+    //->在类的函数体中写的this.xxx=xxx都是给当前类的实例，增加的私有的属性和方法
+        this.x = 100;
+        this.y = 200;
+    }
+    //
+    Fn.prototype.getX = function () {
+        console.log(x);
+    }
+    Fn.prototype.getY = function () {
+        console.log(y);
+    }
+    var f1 = new Fn;
+</script>
+</body>
+</html>
