@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul {
+            width: 200px;
+            margin: 100px auto;
+            overflow: hidden;
+            list-style: none
+        }
+
+        li {
+            height: 30px;
+            border-bottom: 1px dashed #000000
+        }
+    </style>
+</head>
+<body>
+<ul id="ul1">
+    <li>98</li>
+    <li>94</li>
+    <li>99</li>
+    <li>95</li>
+    <li>96</li>
+</ul>
+<script src="js/utils.js"></script>
+<script>
+    var oUL=document.getElementById("ul1");
+    var oLis=document.getElementsByTagName("li");
+
+    //1、先把元素集合类数组转换为数组
+    var ary=utils.listToArray(oLis);
+
+    //2、给数组进行排序
+    ary.sort(function(a,b){
+        return parseFloat(a.innerHTML)-parseFloat(b.innerHTML);
+    })
+    console.log(ary);
+    //按照ary中存储的最新顺序依次把对应的li添加到页面中
+    var frg=document.createDocumentFragment();
+    for(var i=0;i<ary.length;i++){
+        frg.appendChild(ary[i]);
+    }
+    oUL.appendChild(frg)
+    frg=null;
+</script>
+</body>
+</html>

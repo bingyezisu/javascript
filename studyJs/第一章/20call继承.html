@@ -18,6 +18,7 @@
         A.call(this);//->A.call(n) 把A执行让A中的this变为了n
     }
     var n=new B;
+    n.getX();//Uncaught TypeError: n.getX is not a function
     console.log(n.x);
 </script>
 </body>

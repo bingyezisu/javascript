@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //JS中DOM深入知识:
+    //->回流（重排 reflow）：当页面中的HTML结构发生改变（增加，删除元素，位置发生改变...）,浏览器都需要从新的计算一遍最新的DOM结构，从新对当前的页面进行渲染，
+    //->重绘：某一个元素的部分样式发生改变（背景颜色），浏览器只需要重新的渲染当前的元素即可
+
+    //文档碎片
+    var frg=document.createDocumentFragment();//->创建一个文档碎片，相当于临时创建了一个容器
+    for(var i=0;i<ary.length;i++){
+        var cur=ary[i];
+        var oLI=document.createElement("li");
+        oLi.innerHTML="<span>"+(i+4)+"</span>"+cur.title;
+        frg.appendChild(oLi);
+    }
+    oUl.appendChild(frg);
+    frg=null;
+</script>
+</body>
+</html>

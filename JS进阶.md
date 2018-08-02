@@ -469,7 +469,354 @@ console.log(f1.hasOwnProperty("getX"));//ture
   }
   ```
 
-  
 
+### 原型链模式
 
+> `实例识别`：构造函数模式中拥有类和实例的概念，并且实例和实例之间是相互独立开的
+>
+> 基于构造函数模式的原型模式解决了 方法或者属性公有的问题->把实例之间相同的属性和方法提取成公有的属性和方法（想让谁公有就把他放在当前类的原型上xxx.prototype即可）
+
+####原型链模式的三句话
+
+- 每一个函数数据类型（普通函数，类）都有一个天生自带的属性：prototype（原型），并且这个属性是一个对象数据类型的值
+- 并且在prototype上浏览器天生给他加了一个属性constrctor（构造函数），属性值是当前函数（类）本身
+- 每一个对象数据类型（普通对象，实例，prototype...）也天生自带一个属性：(__proto\_\_)，这个属性值是当前实例所属类的原型（prototype）
+
+```javascript
+function Fn(){
+    this.x=100;
+    this.sum=function(){}
+}
+Fn.prototype.getX=function(){
+    console.log(this.x);
+}
+Fn.prototype.sum=function(){
+    
+}
+var f1=new Fn;
+var f2=new Fn;
+console.log(Fn.prototype.constructor===Fn);//true
+```
+
+Object是JS中所有对象数据类型的基类（最顶层的类）
+
+f1 instanceof Object->true 因为f1通过__proto\_\_可以向上级查找，不管有多少级，最后总能找到Object
+
+在Object.prototype上没有__proto\_\_这个属性
+
+####原型链模式
+
+> f1.hasOwnProperty("x");//hasOwnProperty是f1的一个属性
+>
+> 但是我们发现在f1的私有属性上没有这个方法，那如何处理的呢？
+>
+> 通过对象名.属性名的方式获取属性值的时候，首先在对象的私有属性上进行查找，如果私有中存在这个属性，则获取的是私有的属性值；如果私有的没有，则通过\__proto\_\_找到所属类的原型（类的原型上定义的属性和方法都是当前实例的公有的属性和方法），原型上存在的话，获取的是公有的属性值如果原型上也没有，则继续通过原型上的__proto\_\_继续向上查找，一直找到Object.prototype为止
+>
+> ——>这种查找的机制就是我们的`原型链模式`
+>
+> **在IE浏览器中，我们的原型模式也是同样的原理，但是IE浏览器怕你通过__proto\_\_把公有的修改，禁止我们使\_\_proto\_\_
+
+####在原型模式中，this常用的有两种情况
+
+- 在类中this.xxx=xxx;this指的是当前类的实例
+- 某一个方法中他的this，看执行的时候“.”前面是谁，this就是谁
+  - 需要先确定this的指向（this是谁）
+  - 需要把this替换成对应的代码
+  - 按照原型链查找机制，一步步的查找结果
+
+```javascript
+function Fn(){
+    this.x=100;
+    this.y=200;
+    this.getY=function(){
+        console.log(this.y);
+    }
+}
+Fn.prototype={
+    constructor:fn,
+    y:300,
+    getX:function(){
+        console.log(this.x);
+    },
+    getY:function(){
+        console.log(this.y)
+    }
+}
+var f=new Fn();
+f.getX();//console.log(f.x)->100
+f.__proto__.getX();//this是f.__proto__->console.log(f.__proto__.x)->undefined
+Fn.prototype.getX();//undefied
+f.getY();//200
+f.__proto__.getY();//300
+```
+
+```javascript
+//在内置类的原型上扩展我们的方法：
+Array.prototype.myUnique=function myUnique(){
+    //this->ary
+    var obj={};
+    for(var i=0;i<this.length;i++){
+        var cur=this[i];
+        if(obj[cur]==cur){
+            this[i]=this[this.length-1];
+            this.length--;
+            i--;
+            continue;
+        }
+        obj[cur]=cur;
+    }
+    obj=null;
+    return this;//目的是为了实现链式写法
+}
+var ary=[12,23,23,13,12,13,24,12,13];
+console.log(ary.myUnique().sort(function(a,b){return a-b}))；
+//->[12,13,23,24]
+//链式写法：执行完成数组的一个方法可以紧接着执行下一个方法
+//因为sort是Array.prototype上的公有方法，而数组ary是Array这个类的一个实例，所以ary可以使用sort方法->数组才能是用我们Array原型上的属性和方法
+```
+
+####批量设置公有属性
+
+```javascript
+//1、起一个别名
+function Fn(){
+    this.x=100;
+}
+var pro=Fn.prototype;//把原来原型执行的地址赋值给我们的pro，现在他们操作的是同一个内存空间
+pro.getX=function(){};
+pro.getY=function(){};
+pro.getZ=function(){};
+var f1=new Fn;
+```
+
+```javascript
+//2、重构原型对象的方式->自己新开辟一个堆内存，存储我们公有的属性和方法，把浏览器原来给的Fn.prototype开辟的那个替换掉
+function Fn(){
+    this.x=100;
+}
+Fn.prototype={
+    constructor:Fn,
+    a:function(){},
+    b:function(){}
+}
+var f=new Fn;
+f.a();
+f.b();
+//A、只有浏览器天生给的Fn.prototype开辟的堆内存里面才有constructor，而我们自己开辟的这个堆内存没有这个属性，这样constructor指向就不是Fn而是Object了 为了和要来保持一致，我们需要手动的增加constructor的指向
+//B.给内之类增加公有的属性 例：Array.prototype.unique=function(){}
+	//如果我们用上面代码中的方法修改内之类的话，浏览器会屏蔽掉，但是我们可以一个个的修改内置的方法，当我们通过这种方式增加方法，如果方法名和原来内置的重复了，会把内置的修改掉->所以在以后内之类的原型上增加方法，命名都需要加特殊的前缀
+```
+
+```javascript
+//for in循环在遍历的时候，默认的话可以把自己的私有的和他所属类原型上扩展的属性和方法都可以遍历到，但是一般情况下，我们遍历一个对象只需要遍历私有的即可，我们可以使用以下判断进行处理
+var obj={name:'candy',age:28}
+for(var key in obj){
+    if(obj.prototypeIsEnumberable(key)){
+   		console.log(key);
+    }
+    if(obj.hasOwnProperty(key)){
+        console.log(key)
+    }
+}
+//Object.create(proObj)创建一个新的对象，但是还要吧proObj作为这个对象的原型 在IE6~8不兼容（ECMAScript5）
+/***
+var obj={
+    getX:function(){}
+}
+var obj2=Object.create(obj);
+obj2.getX();
+obj.getY=function(){
+    console.log(2);
+}
+obj2.getY();
+***/
+var obj={
+    getX:function(){
+        console.log(1);
+    }
+};
+function object(o){
+    function Fn(){}
+    Fn.prototype=o;
+    return new Fn;
+}
+var newObj=object(obj);
+newObj.getX();
+```
+
+#### 常用的六种继承模式
+
+##### 原型继承 
+
+`原型继承`是我们JS中最常用的一种继承方式
+
+```javascript
+function A(){
+    this.x=100;
+}
+A.prototype.getX=function(){
+    console.log(this.x);
+}
+function B(){
+    this.y=200;
+    this.x=200;
+}
+B.prototype=new A;
+B.prototype.constructor=B;
+var n=new B;
+n.getX();//200;
+```
+
+原型继承的特点：它是把父类中的私有的+公有的都继承到子类原型上（子类公有的）
+
+**核心：原型链继承并不是把父类中的属性和方法克隆一份一模一样的给B，而是让B和A之间增加了原型链的链接，以后B的实例n想要用A中的getX方法，需要一级一级的向上查找**
+
+##### call继承
+
+`call继承`：把父类私有的属性和方法 克隆一份一模一样的作为子类私有的属性
+
+```javascript
+function A(){
+    this.x=100;
+}
+A.prototype.getX=function(){
+    console.log(this.x);
+}
+function B(){
+    A.call(this);//A.call(n) 把A执行让A中的this变为n
+}
+var n=new B;
+console.log(n.x);//100
+ n.getX();//Uncaught TypeError: n.getX is not a function
+```
+
+##### 冒充对象继承
+
+`冒充对象继承`：把父类私有的+公有的 克隆一份一模一样的给子类私有的
+
+```javascript
+function A(){
+    this.x=100;
+}
+A.prototype.getX=function(){
+    console.log(this.x);
+}
+function B(){
+    var temp=new A;
+    for(var key in temp){
+        this[key]=temp[key];
+    }
+    temp=null;
+}
+var n=new B;
+n.getX();
+```
+
+##### 寄生组合式继承
+
+```javascript
+function A(){
+    this.x=100;
+}
+A.prototype.getX=function(){
+    console.log(this.x);
+}
+B.prototype=objectCreate(A.prototype);
+B.prototype.constructor=B;
+var n=new B;
+n.getx();
+function objectCreate(o){
+    function Fn(){
+    }
+    Fn.prototype=o;
+    return new Fn;
+}
+```
+
+##### 混合模式继承
+
+`混合模式继承`：原型继承+call继承
+
+```javascript
+function A(){
+    this.x=100;
+}
+A.prototype.getX=function(){
+    console.log(this.x);
+}
+function B(){
+    A.call(this);//n.x=100
+}
+B.prototype=new A;//B.prototype: x=100 getX...
+B.prototype.constructor=B;
+```
+
+##### 中间类继承法
+
+```javascript
+function avgFn(){
+    Array.prototype.sort.call(arguments,function(a,b){
+        return a-b;
+    })
+    Array.prototype.pop.call(arguments);
+    Array.prototype.shift.call(arguments);
+    return (eval(Array.prototype.join.call(arguments,"+"))
+            /arguments.length).toFixed(2)
+}
+console.log(avgFn(10,20,30,10,30,40,40))
+```
+
+```javascript
+function avgFn(){
+    arguments.__proto__=Array.prototype;
+    arguments.sort(function(a,b){
+        return a-b;
+    })
+    arguments.pop();
+    arguments.shift();
+    return (eval(arguments.join("+"))/arguments.length).toFixed(2);
+}
+console.log(avgFn(10,20,30,10,30,40,40));
+```
+
+##### 思考题
+
+1.在数组的原型上有一个方法叫做slice，我们要求大家自己回去后实现一个方法mySlice，要求和原来的slice功能一模一样
+
+```javascript
+Array.prototype.mySlice=function mySlice(){
+	var ary=[];
+     var num=0,
+        start=parseInt(Number(arguments[0])),
+        end=parseInt(Number(arguments[1]));
+     if(end===undefined||end>this.length){
+            end=this.length;
+       }else if(!start){
+            start=0;
+       }
+      start>=0?null:start+=this.length;
+      end>=0?null:end+=this.length;
+       for(var i=start;i<end;i++){
+            ary[num]=this[i];
+            num++;
+        }
+        return ary;
+}
+var ary=[1,2,3,4,5,6];
+console.log(ary.mySlice(1,"px"))
+console.log(ary.slice(1,"px"));
+```
+
+2、实现一个需求(5).plus(10).reduce(2)    =>5+10-2
+
+```javascript
+Number.prototype.plus=function plus(num){
+	return this.valueOf()+num;
+}
+Number.prototype.reduce=function reduce(num){
+	return this.valueOf()-num;
+}
+var m=(5).plus(10).reduce(2);
+console.log(m);
+```
 

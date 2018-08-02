@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str="20151213";//贰零壹伍壹貮壹叁
+    var ary=["零","壹","貮","叁","肆","伍","陆","柒","捌","玖"];
+    str=str.replace(/\d/g,function(){
+        return ary[arguments[0]]
+    })
+    console.log(str);
+</script>
+</body>
+</html>

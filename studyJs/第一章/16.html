@@ -64,11 +64,7 @@
     //sort执行完成的返回值是一个排序后的“数组”,可以继续执行reverse
     //reverse执行完成的返回值是一个数组，可以执行pop
     //pop执行发成的返回值是被删除的那个数字，不是一个数组了，所以在执行push报错
-    ary.sort(function(a,b){
-       return a-b;
-    }).reverse().pop();
-
-    ary.myUnique().
+    console.log(ary.myUnique().sort(function(a,b){return a-b}))
     //Array.prototype.myUnique();this->Array.prototype
     //思考题
     /*
@@ -93,6 +89,7 @@
  }
  Number.prototype.reduce=function(num){
  }
+ */
 </script>
 </body>
 </html>

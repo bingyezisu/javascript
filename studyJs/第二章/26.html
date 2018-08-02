@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //正则的捕获：正则的exec方法，字符串的match方法，字符串的replace方法
+    //replace:将原有的字符替换成我们新的字符
+    /*var str="zhufengpeixun~zhufengjiaoyu~";
+    str=str.replace(/zhufeng/g,"珠峰");
+    console.log(str);*/
+
+    //1、将小写的数字替换成写的中文数字
+    var str="全日制第七期学费：9800";//玖捌零零
+    var ary=["零","壹","貮","叁","肆","伍","陆","柒","捌","玖"];
+    str=str.replace(/(\d)/g,function(){
+        return ary[arguments[0]];
+    })
+    console.log(str);
+
+    //获取一个字符串中出现次数最多的字符,并且获取出现的次数
+    var str="zhufengpeixunyangfangqihang";
+    //1)获取每一个字符出现的次数
+/*    var obj={};
+    str.replace(/[a-z]/gi,function(){
+        var val=arguments[0];
+        obj[val]>=1?obj[val]+=1:obj[val]=1;
+    });
+    //2)获取最多出现的次数
+    var maxNum=0;
+    for(var key in obj){
+        obj[key]>maxNum?maxNum=obj[key]:null;
+    }
+    //3)把所有符合出现maxNum次数的都获取
+    var ary=[];
+    for(var key in obj){
+        obj[key]===maxNum?ary.push(key):null;
+    }
+    console.log("整个字符串中出现次数最多次的字符是："+ary.toString()+"~出现了"+maxNum+"次~")*/
+
+    //3)
+   /* var str="my name is {0},my age is {1},i come from {2},i love {3}";
+    var ary=["candy","28","china","javascript"];
+    str=str.replace(/{(\d+)}/g,function(){
+        return  ary[arguments[1]];
+    })
+    console.log(str);*/
+
+   //思考题：
+    //1、"2018-8-2 14:11:0"-->"2018年8月2日 14时11分00秒"
+   /* var str="2018-8-2 14:11:0",
+        reg=/^(\d{4})[-/](\d{1,2})[-/](\d{1,2}) +(\d{1,2}):(\d{1,2}):(\d{1,2})$/,
+        ary=[];
+    str.replace(reg,function(){
+        ary=[].slice.call(arguments).slice(1,7);
+    })*/
+
+    //设定好我们目标时间格式，把数组中对应的项替换到指定的区域
+/*    var resStr="{0}年{1}月{2}日 {3}时{4}分{5}秒",
+        reg=/{(\d+)}/g;
+    //var ary=["2018","8","2","14","11","0"];
+    resStr=resStr.replace(reg,function(){
+        var num=arguments[1],val=ary[num];
+        val.length===1?val="0"+val:void 0;
+        return val;
+    })
+    console.log(resStr);*/
+  /*  var ary=["年","月","日","时","分","秒"];
+    var reg=/(\d+)[-:]*!/g;
+/!*    var res=reg.exec(str);
+    console.log(res);
+    res=reg.exec(str);
+    console.log(res);
+    res=reg.exec(str);
+    console.log(res);
+    res=reg.exec(str);
+    console.log(res);
+    res=reg.exec(str);
+    console.log(res);
+    res=reg.exec(str);
+    console.log(res);*!/
+    var i=0;
+    str=str.replace(reg,function(){
+        console.log(i);
+        return arguments[1]+ary[i++];
+    })*/
+    //console.log(str);
+    //2、把一个字符串中所有单词的首字母大写"zhu feng pei xun"-->"Zhu Feng Pei Xun";
+/*    var str="zhu feng pei xun a ddd";
+    var reg=/([a-z])[a-z]*!/g;
+    str=str.replace(reg,function(){
+        return arguments[1].toUpperCase()+arguments[0].substring(1);
+    })
+    console.log(str);*/
+    //4)需求：queryUrlParmater
+    //"http://kbs.sports.qq.com/kbsweb/game.html?mid=100000&cid=1467086&app=1.0";
+    //-->把URL中的参数都获取到，并且保存成如下格式？
+    /*
+    var obj={
+        mid:"100000",
+        cid:"1468086",
+        app:"1.0"
+    }
+    * */
+
+    /*var str="http://kbs.sports.qq.com/kbsweb/game.html?mid=100000&cid=1467086&app=1.0";
+    var reg=/([^?=&]+)=([^?=&]+)/g;
+    var obj={};
+ /!*   var res=reg.exec(str);
+    while(res){
+        obj[res[1]]=res[2];
+        res=reg.exec(str);
+    }*!/
+ str.replace(reg,function(){
+     obj[arguments[1]]=arguments[2];
+ })
+    console.log(obj)*/
+    //在String的原型上实现一个方法：把指定时间格式的字符串换成我们想要的各种形式
+String.prototype.myFormatTime=function(){
+    var reg=/^(\d{4})(?:-|\/|\.|:)(\d{1,2})(?:-|\/|\.|:)(\d{1,2})(?:\s+)(\d{1,2})(?:-|\/|\.|:)(\d{1,2})(?:-|\/|\.|:)(\d{1,2})$/g;
+    var ary=[];
+    this.replace(reg,function(){
+        ary=([].slice.call(arguments)).slice(1,7)
+    });
+    var format=arguments[0]||"{0}年{1}月{2}日 {3}:{4}:{5}";
+    return format.replace(/{(\d+)}/g,function(){
+        var val=ary[arguments[1]];
+        return val.length===1?"0"+val:val;
+    })
+}
+    var str="2018-8-2 14:11:0";
+console.log(str.myFormatTime("{0}年{1}月{2}日"));
+</script>
+</body>
+</html>
