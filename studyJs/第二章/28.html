@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*    var  str="1000000000000";
+        var reg=/^(\d{1,3})((\d{3})+)$/;*/
+    /*var newStr=str.replace(reg,function(){
+        var result1=arguments[1];
+        var result2=arguments[2];
+        return result1+","+result2.replace(/\d{3}(?!$)/g,function(){
+            return arguments[0]+",";
+        })
+    })
+    console.log(newStr);*/
+    /*var  str="1000000000000";
+    //如果(字符串的长度-索引位置本身-1)%3==0,则在这个字符后面加一个逗号
+    var reg=/\d(?!$)/g;//(?!$)表示不给最后的数字加逗号，根本就不去捕获他
+    var newStr=str.replace(reg,function(r,i){
+        if((str.length-i-1)%3===0) {
+            return r+",";
+        }else{
+            return r;
+        }
+    })
+    console.log(newStr)*/
+    /*    var  str="1000000000000"
+        str=str.split("").reverse().join("");
+        str=str.replace(/(\d{3}(?!$))/g,"$1,");
+        str=str.split("").reverse().join("");
+        console.log(str);*/
+
+    //量词
+    /*    var str="-83450.348";
+        var reg=/^(\+|-)?\d+(\.\d+)?$/;
+        //匹配不捕获：问号要放在括号里，并且后面加上冒号
+        var reg=/^(?:\+|-)?\d+(?:\.\d+)?$/;*/
+    //非贪婪匹配
+    //正则的两个特别：懒惰、贪婪
+    //var reg=/\d+/;
+    var str = "abc484995xyz12312312disks7814781ddd";
+    //var result1=reg.exec(str);//返回值是数字，总正则捕获到的内容放在数组的第0项
+    // var result2=str.match(reg);//在正则不加分组的情况下，这两个方法功能一样
+    //当正则加了修正符g之后，每匹配一次，则修改一次reg.lastIndex属性。lastIndex属性是用来记录下一次匹配开始的索引位置的
+    /*    var reg = /(\d+)/g;
+        reg.test(str);
+        RegExp.$1;
+        console.log(RegExp.$1);
+        reg.exec(str);
+        console.log(reg.test(str));//true
+        console.log(reg.test(str));//false
+        console.log(reg.test(str));//true
+        var str2="123aaa";
+        console.log(reg.test(str2));*/
+    var reg = /\d+?/g;
+    var res=str.match(reg);
+    console.log(res);
+</script>
+</body>
+</html>
