@@ -451,9 +451,17 @@ stringObject.substr(start,length)
 //如果省略length那么将返回从指定位置截取到结尾的字符串
 ```
 
-
-
 **substring()**：提取字符串中的两个指定的索引号之间的字符串
+
+```javascript
+stringObject.substring(star,stop)
+```
+
+**toLowerCase()**：把字符串转换为小写
+
+**toUpperCase()** :把字符串转换为大写
+
+
 
 
 

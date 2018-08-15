@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*写css的时候第一步初始化默认样式，避免浏览器之间的差异->不仅如果，而且写的默认样式对于JS以后获取到的结果统一*/
+        *{
+            margin: 0;
+            padding:0;
+        }
+        #box{
+            padding:30px;
+            border:10px solid #ff0000;
+            width:200px;
+            height:200px;
+            margin:50px 100px;
+            overflow:auto;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div id="box" style="width:200px;">
+    人与人交往在于言而有信，国与国相处讲究诚信为本。”中共十八大以来，习近平在国内外多个重要场合强调诚信的重要性。今天的《习近平时间》，就让我们一起来重温习近平总书记关于诚信建设的重要论述。
+</div>
+<script>
+    var box=document.getElementById("box");
+    //1.元素.style.属性名
+    //->需要我们把元素的样式都写在行内样式上才可以（写在样式表中是不管用的）
+    //console.log(box.style.height);//->""
+    //console.log(box.style.width);//->"200px"
+    //->在真实项目中，这种方法不常用，因为我不能为了获取值把所有的样式都写在行内（无法实现CSS和HTML的分离）
+
+    //2、使用window.getComputedStyle这个方法获取所有经过浏览器计算过的样式
+    //->所有经过浏览器计算过的样式：只要当前的元素标签可以在页面中呈现出来，那么它的所有的样式都是警告过浏览器计算过的（渲染过的）->哪怕有些样式你没有写，我们也可以获取的
+    //->window.getComputedStyle(当前要操作的元素,当前元素的伪类[一般我们不用伪类写null])
+    //->获取的结果是CSSStyleDeclaration
+    //console.log(window.getComputedStyle);//ƒ getComputedStyle() { [native code] }
+    //console.log(window.getComputedStyle(box,null));
+
+    //3.方法虽然好用，但是在IE6~8下是不兼容的：因为window下没有getComputedStyle没有这个属性->在IE6~8下执行这个方法会报错
+    //console.log(window.getComputedStyle);//undefined
+    //在IE6~8下我们可以使用currentStyle来获取所有经过浏览器计算过的样式
+    //console.dir(box.currentStyle.height);
+    //->getCss:获取当前元素所有经过浏览器计算过的样式中的[attr]对应的值
+    //curEle:[object]当前要操作的元素对象
+    //attr:[string]我们要获取的样式属性的名称
+
+    //1.使用try、catch来处理兼容（只有在不得已的情况下才能使用它）
+    //->前提:必须保证try中的代码在不兼容浏览器中执行的时候报错，这样的话我们才可以用catch捕获到异常的信息，进行其它的处理
+    //->不管当前时什么浏览器，都需要先把try中的代码执行一遍，如果当前时IE7,window.getComputedStyle本身不是兼容的，但是我们也要先把它执行一遍，报错了，再把curEle.currentStyle执行一遍（消耗性能 ）
+/*    function getCss(curEle,attr){
+        var val=null;
+        try{
+            val=window.getComputedStyle(curEle,null)[attr];
+        }catch(e){
+            val=curEle.currentStyle[attr];
+        }
+        return val;
+    }*/
+
+    //2.判断当前浏览器中是否存在这个属性或者方法，存在就兼容，不存在就不兼容
+    function getCss(curEle,attr){
+        var val=null;
+        if("getComputedStyle" in window){//如果返回的是true，说明window下面有getComputedStyle这个属性，代表兼容
+            val=window.getComputedStyle(curEle,null)[attr];
+        }else{
+            val=curEle.currentStyle[attr];
+        }
+        return val;
+    }
+    /*function getCss(curEle,attr){
+        var val=null;
+        if(window.getComputedStyle){//->首先获取属性值，兼容返回的是一个函数，转换为布尔是true，不兼容返回undefined，转换为布尔是false
+            val=window.getComputedStyle(curEle,null)[attr];
+        }else{
+            val=curEle.currentStyle[attr];
+        }
+        return val;
+    }*/
+   /* function getCss(curEle,attr){
+        var val=null;
+        if(typeof window.getComputedStyle==="function"){//->首先获取属性值，兼容返回的是一个函数，转换为布尔是true，不兼容返回undefined，转换为布尔是false
+            val=window.getComputedStyle(curEle,null)[attr];
+        }else{
+            val=curEle.currentStyle[attr];
+        }
+        return val;
+    }*/
+
+   //3.通过检测浏览器版本和类型来处理兼容
+    //window.navigator.userAgent
+    //->扩展题：自己回去百度也好还是自己写也好，写一个方法，可以检测当前时什么浏览器，也可以获取到浏览器版本号
+    //->获取当前浏览器是IE6~8
+
+   /* function getCss(curEle,attr){
+        var val=null;
+        if(/MSIE (6|7|8)/.test(navigator.userAgent)){
+            val=curEle.currentStyle[attr];
+        }else{
+            val=window.getComputedStyle(curEle,null)[attr];
+        }
+        return val;
+    }*/
+    console.log(getCss(box,"marginTop"));
+    //console.log(getCss(box,"border"));
+   // console.log(getCss(box,"fontFamily"));
+    //->标准浏览器和IE浏览器获取的结果是不一样的->对于部分样式属性，不同浏览器获取的结果不一样，主要是由于getComputedStyle和currentStyle在某些方面不一样
+</script>
+</body>
+</html>
