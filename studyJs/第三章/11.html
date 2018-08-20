@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body,html {
+            height: 100%;
+        }
+        ul {
+            list-style: none;
+            height: 100%;
+        }
+        ul li {
+            height: 100%;
+        }
+        ol {
+            list-style: none;
+            position: fixed;
+            top: 80px;
+            left: 50px;
+        }
+        ol li {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 50px;
+            margin-top: -1px;
+            cursor: pointer;
+        }
+</style>
+</head>
+<body>
+    <ul>
+        <li>鞋子区域</li>
+        <li>袜子区域</li>
+        <li>裤子区域</li>
+        <li>裙子区域</li>
+        <li>帽子区域</li>
+    </ul>
+    <ol>
+        <li>鞋子</li>
+        <li>袜子</li>
+        <li>裤子</li>
+        <li>裙子</li>
+        <li>帽子</li>
+    </ol>
+
+<script>
+    var ul = document.getElementsByTagName("ul")[0];
+    var ol =  document.getElementsByTagName("ol")[0];
+    var ulArr = ul.children;
+    var olArr = ol.children;
+    var target = 0;
+    var leader = 0;
+    var timer = null;
+    var color = ["orange","yellow","blue","green","pink"];
+    for(var i = 0;i < color.length;i++){
+        //变色
+        ulArr[i].style.backgroundColor = color[i];
+        olArr[i].style.backgroundColor = color[i];
+        //先绑定索引
+        olArr[i].index = i;
+        //点击事件
+        olArr[i].onclick = function(){
+            //获取目标位置
+            target = ulArr[this.index].offsetTop;
+            //先清除定时器
+            clearInterval(timer);
+            //移动
+            timer = setInterval(function(){
+                //定义步长  移动动画为缓慢移动
+                var step = (target - leader)/10;
+                //判断移动步长是否为正值
+                step = step>0?Math.ceil(step):Math.floor(step);
+                leader = leader + step;
+                //移动到目标位置
+                window.scrollTo(0,target);
+                //清除定时器
+                if(Math.abs(target - leader) <= Math.abs(step)){
+                    //先移动到目的地
+                    window.scrollTo(0,target);
+                    clearInterval(timer);
+                }
+            },25);
+        }
+    }
+    //随时获取滚动条的值
+    window.onscroll = function(){
+        leader = scroll().top;
+    }
+ 
+    var ul = document.getElementsByTagName("ul")[0];
+    var ol = document.getElementsByTagName("ol")[0];
+    var ulLiArr = ul.children;
+    var olLiArr = ol.children;
+    var target = 0;
+    var leader = 0;
+    var timer = null;
+    //指定ul和ol中的li的背景色，对应的li背景色相同
+    //设置一个数组，里面装颜色，然指定的颜色给数组中的指定元素
+    var arrColor = ["orange","yellow","blue","green","pink"];
+    //利用for循环给两个数组的元素上色
+    for(var i=0;i<arrColor.length;i++){
+        //上色
+        ulLiArr[i].style.backgroundColor = arrColor[i];
+        olLiArr[i].style.backgroundColor = arrColor[i];
+        //属性绑定索引值
+        olLiArr[i].index = i;
+        //2.老三步。(并绑定事件)循环绑定，为每一个li绑定点击事件
+        olLiArr[i].onclick = function () {
+            //获取索引值。
+            target = ulLiArr[this.index].offsetTop;
+            //要用定时器，先清除定时器
+            clearInterval(timer);
+            //利用缓动动画原理实现屏幕滑动
+            timer = setInterval(function () {
+                //获取步长
+                var step = (target-leader)/10;
+                //判断步长是否为负值，如果是，向下取整，否则，向上取整
+                step = step>0?Math.ceil(step):Math.floor(step);
+                //屏幕滑动
+                leader = leader + step;
+                window.scrollTo(0,leader);
+                //清除定时器
+                if(Math.abs(target-leader)<=Math.abs(step)){
+                    window.scrollTo(0,target);
+                    clearInterval(timer);
+                }
+            },25);
+        }
+    }
+ 
+    //用scroll事件模拟盒子距离最顶端的距离。
+    window.onscroll = function () {
+        //每次屏幕滑动，把屏幕卷去的头部赋值给leader,模拟获取显示区域距离顶部的距离
+        leader = scroll().top;
+    }
+ 
+    function scroll() {  // 开始封装自己的scrollTop
+      return {
+          "top": window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop,
+          "left":  window.pageXOffset || document.body.scrollLeft || document.documentElement.scrollLeft
+      }
+    }
+</script>
+
+</body>
+</html>

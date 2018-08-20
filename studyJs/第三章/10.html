@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        a{
+            text-decoration:none;
+            color:#000;
+        }
+        a:hover,a:active,a:visited,a:target{
+            text-decoration:none;
+            color:#000
+        }
+        #box1{
+            width:100%;
+            height:1502px;
+            background:url(img/01.jpg) center top no-repeat;
+        }
+        #box2{
+            width:100%;
+            height:645px;
+            background:url(img/02.jpg) center top no-repeat;
+        }
+        #box3{
+            width:100%;
+            height:492px;
+            background:url(img/03.jpg) center top no-repeat;
+        }
+        #box4{
+            width:100%;
+            height:490px;
+            background:url(img/04.jpg) center top no-repeat;
+        }
+        #box5{
+            width:100%;
+            height:490px;
+            background:url(img/05.jpg) center top no-repeat;
+        }
+        #box6{
+            width:100%;
+            height:659px;
+            background:url(img/06.jpg) center top no-repeat;
+        }
+        #box7{
+            width:100%;
+            height:489px;
+            background:url(img/07.jpg) center top no-repeat;
+        }
+        #box8{
+            width:100%;
+            height:492px;
+            background:url(img/08.jpg) center top no-repeat;
+        }
+        #box9{
+            width:100%;
+            height:489px;
+            background:url(img/09.jpg) center top no-repeat;
+        }
+        #box10{
+            width:100%;
+            height:493px;
+            background:url(img/10.jpg) center top no-repeat;
+        }
+        #box11{
+            width:100%;
+            height:1718px;
+            background:url(img/11.jpg) center top no-repeat;
+        }
+        #list{
+            display:none;
+            width:50px;
+            overflow:hidden;
+            position:fixed;
+            bottom:50px;
+            left:50%;
+            margin-left:615px;
+            list-style: none;
+        }
+        #list li{
+            text-align: center;
+            background:#fff;
+            margin-bottom:1px;
+            width:50px;
+            height:50px;
+            line-height:18px;
+            display: table;
+        }
+        #list li a{
+            display:table-cell;
+            padding:0 5px;
+            vertical-align: middle;
+            text-align:center;
+        }
+        #list li.active a,#list li a:hover{
+        	background:red;
+        	color:#fff;
+        	
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box1"></div>
+<div class="box" id="box2"></div>
+<div class="box" id="box3"></div>
+<div class="box" id="box4"></div>
+<div class="box" id="box5"></div>
+<div class="box" id="box6"></div>
+<div class="box" id="box7"></div>
+<div class="box" id="box8"></div>
+<div class="box" id="box9"></div>
+<div class="box" id="box10"></div>
+<div class="box" id="box11"></div>
+<ul id="list">
+    <li><a href="javascript:;">探索好物</a></li>
+    <li><a href="javascript:;">厨房小电</a></li>
+    <li><a href="javascript:;">生活电器</a></li>
+    <li><a href="javascript:;">个护健康</a></li>
+    <li><a href="javascript:;">平板电视</a></li>
+    <li><a href="javascript:;">冰箱洗衣机</a></li>
+    <li><a href="javascript:;">空调</a></li>
+    <li><a href="javascript:;">厨卫大电</a></li>
+    <li><a href="javascript:;">家影配件</a></li>
+    <li><a href="javascript:;">家电资讯</a></li>
+    <li><a href="javascript:;">△</a></li>
+</ul>
+<script>
+    //1、针对于回到顶部功能的扩展
+    //->https://www.jd.com/ 左侧出现的楼层导航
+    //刚开始没有楼层导航，只有当一楼出现在视野中的时候，楼层导航才显示
+    //->随着页面继续滚动，每一个楼层到达某个区域的时候，我们让楼层导航中对应项跟着选中
+    //->当我们点击楼层导航中的某一项的时候，可以实现一个简单的动画，实现定位到具体的楼层
+    var oUl=document.getElementById("list");
+    var aDiv=document.getElementsByTagName('div');
+    var aList=oUl.getElementsByTagName('li');
+    var clientHeight=document.documentElement.clientHeight||document.body.clientHeight
+    var aTarget=[];
+    for(var i=1;i<aDiv.length;i++){
+    	aTarget[i-1]=offset(aDiv[i]).top-clientHeight/4;
+    }
+    //console.log(aTarget);
+    window.onscroll=targetFun;
+    function targetFun(){
+    	var curTop=document.documentElement.scrollTop||document.body.scrollTop;
+    	for(var i=0;i<aList.length;i++){
+    		oUl.style.display=curTop>aTarget[0]?"block":"none";
+    		if(curTop>aTarget[i]){
+    			for(var j=0;j<aList.length;j++){
+    				aList[j].className="";
+    			}
+    			aList[i].className="active";
+    		}
+    	}
+    }
+    for(var n=0;n<aList.length;n++){
+    	aList[n].index=n;
+    	aList[n].onclick=function(){
+    		for(var j=0;j<aList.length;j++){
+    			aList[j].className="";
+    		}
+    		window.onscroll=null;
+    		this.className="active";
+    		var duration=500,interval=10,target=aTarget[this.index];
+    		var step=((document.documentElement.scrollTop||document.body.scrollTop-offset(aDiv[this.index+1]).top)/duration)*interval
+        	//var step=(target/duration)*interval;
+        	var _this=this;
+        	this.timer=window.setInterval(function(){
+        	    var curTop=document.documentElement.scrollTop||document.body.scrollTop;
+        	    if(Math.abs(curTop-offset(aDiv[_this.index+1]).top)<=Math.abs(step)){
+        	        window.clearInterval(_this.timer);
+        	        window.onscroll=targetFun;//当动画结束后还需要把对应的方法重新绑定给window.onscroll
+        	        return;
+        	    }
+        	    curTop-=step;
+        	    document.documentElement.scrollTop=curTop;
+        	    document.body.scrollTop=curTop;
+        	},interval)
+    	}
+    }
+    function offset(curEle){
+        var totalLeft=null,totalTop=null,par=curEle.offsetParent;
+        totalLeft+=curEle.offsetLeft;
+        totalTop+=curEle.offsetTop;
+        while(par){
+            if(navigator.userAgent.indexOf("MSIE 8.0")===-1) {
+                totalLeft += par.clientLeft;
+                totalTop += par.clientTop;
+            }
+            totalLeft+=par.offsetLeft;
+            totalTop+=par.offsetTop;
+
+            par=par.offsetParent;
+        }
+        return {left:totalLeft,top:totalTop}
+    }
+</script>
+</body>
+</html>
