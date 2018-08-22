@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--做移动端响应式布局页面，我们必须要加META:viewport-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>多张图片的延迟加载</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "微软雅黑";
+            font-size: 14px;
+        }
+        ul, li {
+            list-style: none
+        }
+        img{
+            display:block;
+            border:none;
+        }
+        /*最外层的容器是不设定宽高的*/
+        .news{
+            padding:10px;
+        }
+        .news li{
+            padding:0 10px;
+            height:60px;
+            border-bottom:1px dashed #cccccc;
+        }
+        .news li>div:nth-child(1){
+            position:absolute;
+            top:10px;
+            left:0px;
+            width:75px;
+            height:60px;
+            background:url(img/s.gif) center no-repeat;
+            background-size:cover;
+        }
+        .news li>div:nth-child(1) img{
+            width:100%;
+            height:100%;
+        }
+        .news li>div:nth-child(2){
+            margin-left:80px;
+            height:60px;
+        }
+        .news li>div:nth-child(2) h2{
+            hegiht:20px;
+            line-height:20px;
+            /*实现文字裁切*/
+            overflow:hidden;
+            white-space:nowrap;
+            text-overflow:ellipsis;
+        }
+        .news li>div:nth-child(2) p{
+            line-height:20px;
+            color:#616161;
+            font-size:12px;
+        }
+    </style>
+</head>
+<body>
+<ul class="news" id="news">
+    <li>
+        <div>
+            <img src="img/1.png" alt="">
+        </div>
+        <div>
+            <h2>标题标题标题标题标题标题标题标题标题标题</h2>
+            <p>段落描述段落描述段落描述段落描述段落描述段落描述段落描述。</p>
+        </div>
+    </li>
+</ul>
+</body>
+</html>

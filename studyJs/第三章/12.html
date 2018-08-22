@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            font-family: "微软雅黑",Helvetica,sans-serif;
+            font-size:14px;
+        }
+        #box{
+            margin:50px auto;
+            padding:0 10px;
+            width:1000px;
+            height:35px;
+            line-height:35px;
+            border:1px dashed green;
+            background:lightgreen;
+        }
+        #wrap{
+            white-space:nowrap;/*强制文字不换行*/
+            height:35px;
+            overflow:hidden;
+        }
+        #wrap span{
+            color:#fa0;
+            font-weight:bold;
+            font-size:16px;
+        }
+        #wrap div{
+            display:inline-block;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="wrap">
+        <div id="conBegin">
+            <span>通知</span>国家卫生计生委人才交流服务中心是经中央机构编制委员会办公室批准设立，承担全国卫生人力资源开发、管理与服务工作的国家卫生计生委直属事业单位。目前已初步建立起卫生人才评价、人才社会化服务、人才培训、国际化交流与合作、人事人才政策研究、人才宣传等卫生人力资源开发与服务链。
+        </div>
+        <div id="conEnd">
+            <span>通知</span>国家卫生计生委人才交流服务中心是经中央机构编制委员会办公室批准设立，承担全国卫生人力资源开发、管理与服务工作的国家卫生计生委直属事业单位。目前已初步建立起卫生人才评价、人才社会化服务、人才培训、国际化交流与合作、人事人才政策研究、人才宣传等卫生人力资源开发与服务链。
+        </div>
+    </div>
+</div>
+<script>
+    ~function(){
+        var box=document.getElementById("box");
+        var wrap=document.getElementById("wrap");
+        var conBegin=document.getElementById("conBegin");
+        var conBegin_width=getCss(conBegin,"width");
+        var timer=window.setInterval(move,10);
+        box.onmouseover=function(){
+            window.clearInterval(timer);
+        }
+        box.onmouseout=function(){
+            timer=window.setInterval(move,10);
+        }
+        function move(){
+            wrap.scrollLeft++;
+            if(wrap.scrollLeft>=conBegin_width){
+                wrap.scrollLeft=0;
+            }
+
+        }
+        function getCss(curEle,attr){
+            var val=null,reg=null;
+            if("getComputedStyle" in window){
+                val=window.getComputedStyle(curEle,null)[attr];
+            }else{
+                if(attr==="opacity"){
+                    val=curEle.currentStyle["fliter"];
+                    reg=/^alpha\(opacity=(\d+(\.\d+)?)\)$/i;
+                    val=reg.test(val)?reg.exec(val)[1]/100:1;
+                }else{
+                    val=curEle.currentStyle[attr];
+                }
+            }
+            reg=/^-?\d+(\.\d+)?(px|pt|rem|em)?$/i;
+            return reg.test(val) ? parseFloat(val) : val;
+        }
+    }()
+
+//2.跑马灯扩展
+
+</script>
+</body>
+</html>

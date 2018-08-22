@@ -53,6 +53,7 @@ var utils={
         reg=/^-?\d+(\.\d+)?(px|pt|rem|em)?$/i;
         return reg.test(val) ? parseFloat(val) : val;
     },
+    //=>offset:获取指定元素到body的偏移量（左偏移和上偏移）
     offset:function offset(curEle){
         var totalLeft=null,totalTop=null,par=curEle.offsetParent;
          totalLeft+=curEle.offsetLeft;
