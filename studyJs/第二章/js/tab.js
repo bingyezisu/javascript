@@ -6,11 +6,11 @@ var tBody=oTab.tBodies[0];
 var oRows=tBody.rows;
 
 var data=null;
-//->1、首先获取后台（data.txt）中的数据->"JSON格式的字符串"->Ajax(async javascript and xml)
+//->1、首先获取后台（newsList.txt）中的数据->"JSON格式的字符串"->Ajax(async javascript and xml)
 //1)首先创建一个Ajax对象
 var xhr=new XMLHttpRequest;
 //2)打开我们需要请求数据的那个文件地址
-xhr.open("get","json/data.txt",false);
+xhr.open("get","json/newsList.txt",false);
 //3)监听请求的状态
 xhr.onreadystatechange=function(){
     if(xhr.readyState===4 && /^2\d{2}$/.test(xhr.status)){

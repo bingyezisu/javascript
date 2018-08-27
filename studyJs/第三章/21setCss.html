@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            position:absolute;
+            top:0;
+            left:0;
+            width:100px;
+            height:100px;
+            background: lightblue;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script src="JS/utils2.js"></script>
+<script>
+    var box=document.getElementById("box");
+    //var curLeft=utils.getCss(box,"left");
+    //console.log(curLeft);
+    //->在JS中给元素设置样式属性值，我们只能通过curEle.style[attr]=value这种方式给当前元素设置行内样式
+    /*box.style.left=100+"px";
+    box.style.width=200+"px";*/
+
+    //->setCss:给当前元素的某一个样式属性设置值（增加在行内样式上的）
+//    function setCss(curEle,attr,value){
+//        //->在JS中设置float样式值的话也需要处理兼容
+//        if(attr==="float"){
+//            curEle["style"]["cssFloat"]=value;
+//            curEle["style"]["styleFloat"]=value;
+//            return;
+//        }
+//        //->如果打算设置的是元素的透明度，我们需要设置两套样式来兼容所有浏览器
+//        if(attr==="opacity"){
+//            curEle["style"]["opacity"]=value;
+//            curEle["style"]["filter"]="alpha(opacity="+value*100+")";
+//            return;
+//        }
+//        //->对于某些样式属性，如果传递进来的值没有加单位，我们需要把单位默认的补充上，这样的话，这个方法就会人性化一些
+//        var reg=/^(width|height|top|bottom|left|right|((margin|padding)(Top|Bottom|left|right)?))$/;
+//        if(reg.test(attr)){
+//            if(!isNaN(value)){//->在判断传递进来的value值是否是一个有效的数字，如果是有效数字的话，证明当前传递进来的值没有家单位，我们给补充单位
+//               value+="px";
+//            }
+//        }
+//        curEle["style"][attr]=value;
+//    }
+/*    utils.setCss(box,"left","100px");
+    */
+    utils.css(box,{
+       width:200,
+       backgroundColor:"red",
+        opacity:0.5,
+        borderTop:"10px solid #000",
+        padding:10
+    })
+    console.log(utils.css(box, "width"));
+    //utils.setCss(box,"width",400);
+    //jquery中提供了这样一个方法：css，这个方法既可以实现获取，也可以实现单独的设置，也可以实现批量的设置
+</script>
+</body>
+</html>

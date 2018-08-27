@@ -25,9 +25,10 @@
             padding:10px;
         }
         .news li{
-            padding:0 10px;
+            position:relative;
+            padding:10px 0;
             height:60px;
-            border-bottom:1px dashed #cccccc;
+            border-bottom:1px dashed #ccc;
         }
         .news li>div:nth-child(1){
             position:absolute;
@@ -36,11 +37,13 @@
             width:75px;
             height:60px;
             background:url(img/s.gif) center no-repeat;
-            background-size:cover;
+            background-size:100% 100%;
         }
         .news li>div:nth-child(1) img{
+            display:none;
             width:100%;
             height:100%;
+            opacity:0;
         }
         .news li>div:nth-child(2){
             margin-left:80px;
@@ -49,7 +52,7 @@
         .news li>div:nth-child(2) h2{
             hegiht:20px;
             line-height:20px;
-            /*实现文字裁切*/
+            /*实现文字超出一行自动裁切*/
             overflow:hidden;
             white-space:nowrap;
             text-overflow:ellipsis;
@@ -63,15 +66,98 @@
 </head>
 <body>
 <ul class="news" id="news">
-    <li>
+<!--    <li>
         <div>
-            <img src="img/1.png" alt="">
+            &lt;!&ndash;<img src="" alt="">&ndash;&gt;
         </div>
         <div>
             <h2>标题标题标题标题标题标题标题标题标题标题</h2>
             <p>段落描述段落描述段落描述段落描述段落描述段落描述段落描述。</p>
         </div>
-    </li>
+    </li>-->
 </ul>
+<script src="JS/utils.js"></script>
+<script>
+    var news=document.getElementById("news");
+    var imgList=news.getElementsByTagName("img");
+    var jsonDate=null;
+    //1.获取需要绑定的数据（AJAX）->json/newsList.txt中的JSON格式的字符串
+    ~function(){
+        var xhr=new XMLHttpRequest;
+        //URL地址后面加的随机数是在清除每一次请求数据时候（GET请求）产生的缓存
+        xhr.open("get","json/newsList.txt?_="+Math.random(),false);
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState===4 && /^2\d{2}$/.test(xhr.status)){
+                var val=xhr.responseText;
+                jsonDate=utils.jsonParse(val);
+            }
+        };
+        xhr.send(null)
+    }();
+    //2、数据绑定->把jsonData中存储的数据绑定在页面中（字符串拼接）
+    ~function(){
+        var str="";
+        if(jsonDate){
+            for(var i=0,len=jsonDate.length;i<len;i++){
+                var curData=jsonDate[i];
+                str+='<li>';
+                str+='<div><img src="" trueImg="'+curData["img"]+'"/></div>';
+                str+='<div>';
+                str+='<h2>'+curData["title"]+'</h2>';
+                str+='<p>'+curData["des"]+'</p>';
+                str+='</div>';
+                str+='</li>';
+            }
+        }
+        news.innerHTML=str;
+    }();
+    //3、图片延迟加载
+    //->我先编写一个方法，实现单张图片的延迟加载
+    function lazyImg(curImg){
+        var oImg=new Image;
+        oImg.src=curImg.getAttribute("trueImg");
+        oImg.onload=function(){
+            curImg.src=this.src;
+            curImg.style.display="block";
+            fadeIn(curImg);
+            oImg=null;
+        }
+        curImg.isLoad=true;
+    };
+    function fadeIn(curImg){
+        var duration=500,interval=10,target=1;
+        var step=(target/duration)*interval;
+        var timer=window.setInterval(function(){
+            var curOp=utils.getCss(curImg,"opacity");
+            if(curOp>=1){
+                curImg.style.opacity=1;
+                window.clearInterval(timer);
+                return;
+            }
+            curOp+=step;
+            curImg.style.opacity=curOp;
+        },interval)
+    }
+    //循环处理每张图片
+    function handleAllImg(){
+        for(var i=0,len=imgList.length;i<len;i++){
+            var curImg=imgList[i];
+            //->当前的图片处理过的话，就不需要再重新的进行处理了
+            if(curImg.isLoad){
+                continue;
+            }
+            //->只有A<B的时候在进行处理:当前图片是隐藏的，我们计算的A的值其实是计算它父亲（容器）的值
+            var curImgPar=curImg.parentNode;
+            var A=utils.offset(curImg).top+curImgPar.offsetHeight;
+            var B=utils.win("clientHeight")+utils.win("scrollTop");
+            if(A<B){
+                lazyImg(curImg);
+            }
+        }
+    }
+    //4、开始的时候（过500ms加载第一屏的图片），滚动条滚动的时候加载其他图片
+    window.setTimeout(handleAllImg,500);
+    window.onscoll=handleAllImg;
+</script>
 </body>
 </html>
