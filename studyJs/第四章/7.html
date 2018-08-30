@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>反弹动画优化</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            position:absolute;
+            top:0;
+            left: 0;
+            padding:0;
+            width:100px;
+            height:100px;
+            background:lightblue;
+        }
+        .btn{
+            position:absolute;
+            top:200px;
+            left:100px;
+            height:50px;
+        }
+        .btn input{
+            display: inline-block;
+            margin-left:50px;
+            outline:none;
+            width:100px;
+            height:50px;
+            border:1px solid green;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<div class="btn">
+</div>
+<script src="../js/utils.js"></script>
+<script>
+    function linear(t,b,c,d){
+        return c*t/d+b;
+    }
+    var oBox=document.getElementById("box");
+    var beginLeft=utils.css(oBox,"left"),beginTop=utils.css(oBox,"top");
+    var targetLeft=1000,targetTop=500;
+    var changeLeft=targetLeft-beginLeft,changeTop=targetTop-beginTop;
+    var duration=1000,time=0;
+    oBox.timer=window.setInterval(function(){
+        time+=10;
+        if(time>=duration){
+            utils.css(oBox,{
+                left:targetLeft,
+                top:targetTop
+            });
+            window.clearInterval(oBox.timer);
+            return;
+        }
+        var curLeft=linear(time,beginLeft,changeLeft,duration);
+        var curTop=linear(time,beginLeft,changeTop,duration);
+        utils.css(oBox,{
+            left:curLeft,
+            top:curTop
+        })
+    },10)
+</script>
+</body>
+</html>

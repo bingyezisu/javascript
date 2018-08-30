@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //->回调函数：把一个函数A当作一个值传递给另外一个函数B，这样在B方法执行的时候，可以在任何位置执行一到多次A方法
+    /*function A(){
+        console.log("A");
+    }
+    function B(callback){
+        console.log("B");
+        callback();
+    }
+    B(A);*/
+    function fn(callBack){
+        console.log(1);
+        if(typeof callBack==="function"){
+            callBack.call(obj,100,200);
+        }
+    }
+    var obj={fn:fn};
+    obj.fn(function(num1,num2){
+        console.log(this,num1,num2);
+    });
+</script>
+</body>
+</html>
