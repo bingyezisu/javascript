@@ -38,14 +38,22 @@
         .banner .inner{
             position: absolute;
             top:0;
-            left:0px;
-            width:2920px;
+            left:0;
+            width:730px;
             height:336px;
         }
-        .banner .inner img{
+        .banner .inner div{
             float:left;
             width:730px;
             height:336px;
+            background:url("img/s.gif") center no-repeat;
+        }
+        .banner .inner div img{
+            display:none;
+            width:100%;
+            height:100%;
+            opacity:0.1;
+            filter:alpha(opacity=10);
         }
         .banner .bannerTip{
             position:absolute;
@@ -106,6 +114,7 @@
         <a class="bannerRight" href="javascript:;"></a>
     </div>
     <script src="../js/utils.js"></script>
+    <script src="js/tween.js"></script>
     <script src="js/banner.js"></script>
 </body>
 </html>

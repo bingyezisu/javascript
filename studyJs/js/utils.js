@@ -279,7 +279,6 @@ var utils=(function(){
             //->批量设置样式属性值
             setGroupCss.apply(curEle,ary);
         }
-
     }
 
     //->把外界需要使用的方法暴露给utils
