@@ -39,7 +39,7 @@
         bannerTip.innerHTML=str;
     }();
     //3.实现图片的延迟加载
-    window.setInterval(lazyImg,1000)
+    window.setTimeout(lazyImg,1000)
     function lazyImg(){
         for(var i=0,len=imgList.length;i<len;i++){
             ~function(i){

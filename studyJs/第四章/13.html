@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1" sex="girl">
+    <div>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div></div>
+    <div></div>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script src="js/jquery_1.11.3.min.js"></script>
+<script>
+    //->jQuery选择器
+    //通过传递对应规则的内容（ID、标签名，样式类名...）,获取到页面中指定元素/元素结合
+
+    //->jQuery选择器获取到的结果是一个jQuery对象，可以使用jQuery中提供的那些属性和方法，但是不能直接的使用浏览器内置的属性和方法
+    var $oDiv=$("#div1");//=>$oDiv=$("div1") ->$===jQuery
+    // console.log($oDiv.innerWidth());
+
+
+    //->JS获取到的结果是属于元素对象/元素集合/节点集合...他们可以使用浏览器为其提供的那些天生自带的属性和方法
+    var oDiv=document.getElementById("div1");
+
+    //2、关于原生JS对象和jQuery对象之间的转换
+    //->原生转变为jQuery:$(原生JS对象)
+    //console.log($(oDiv).attr("sex"));
+    //->jQuery转变为原生：直接通过索引获取对应的元素对象即可
+    //console.log($oDiv[0].getAttribute("sex"));
+    console.log($oDiv.get(0).getAttribute("sex"));
+    //$oDiv.get(0) <==> $oDiv[0] 都是通过索引来获取指定位置的元素对象（JS原生对象）
+
+    //3.更多的jquery选择器
+    //$("div:eq(0)") 匹配一个给定索引值的元素
+    //$("div:gt(0)") 匹配所有大于给定索引值的元素
+    //$("div:lt(0)")匹配所有小于给定索引值的元素
+</script>
+</body>
+</html>

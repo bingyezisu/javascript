@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <ul id="ul1">
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script src="js/jquery_1.11.3.min.js"></script>
+<script>
+    var $box=$("#box");
+    //1、css
+    //->css:获取或者设置（批量设置）当前元素的样式值
+    console.log($box.css("width"));
+    $box.css({
+        margin:50,
+        padding:30,
+        width:200,
+        height:200,
+        border:"10px solid #000"
+    })
+
+    //offset:不管父级参照物是谁，获取当前元素距离BODY的偏移距离（top/left）
+    //position:获取当前元素距离父级参照物的偏移（top/left）
+    //->scrollTop/scrollLeft:获取或者设置元素的卷去高度/宽度
+    //->width/height:获取或者设置元素的width/height
+    //->innnerWith/innerHeight:获取或者设置元素可视区域的宽高（获取的时候等价于clientWidth/clientHeight），设置的时候，保留padding的值，把width值进行改变（width的值最小是0）
+    //->outerWidth/outerHeight:获取或者设置元素可视区的宽高（包含边框），设置具体值的时候和上面的效果是一样的->如果传递进来的参数是true，默认把margin的值加进来了
+
+    //2、jQuery非常强大的地方在于他的链式写法（执行完成一个方法后返回的结果依然是一个jQuery对象，这样就可以继续调用下一个方法了）
+
+    //3、文档处理
+    //->append:向指定元素的末尾位置添加一个新的元素 容器.append(元素)
+    //->appendTo:元素.appendTo(容器)
+    //var oDiv=document.createElement("div");
+    //oDiv.id="div5";
+    //$box.append(oDiv);
+   // $(oDiv).appendTo($box);
+
+    //prepend/prependTo:向指定元素的开头位置追加一个新的元素
+    //after/before:在当前元素的后面/前面追加新的元素
+    //insertAfter/insertBefore:把选择器获取到的元素追加到指定元素的前面或后面
+
+    //->replaceAll(selector):用匹配的结果替换所有selector匹配的元素
+    /*var oDiv=document.createElement("div");
+    oDiv.id="div5";
+    $(oDiv).replaceAll("ul");//->页面中所有的ul都用oDiv替换了*/
+
+    //remove:把匹配的结果在页面中移除掉
+    //$box.remove();
+    //$("ul").remove("#ul2");
+
+    //->filter、children、find：常用的筛选方法
+    //filter:同级过滤
+    //children:子级过滤
+    //find:后代过滤
+
+    //->map:遍历jQuery集合中的每一项，并且可以支持返回值把每一项进行修改，类似书做的map这个方法
+
+</script>
+</body>
+</html>
