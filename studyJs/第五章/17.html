@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            margin:20px auto;
+            width:200px;
+            height:200px;
+            background:#ffaa00;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script src="js/event.js"></script>
+<script>
+    var box=document.getElementById("box");
+    function fn1(){console.log(this===box)}
+    function fn2(){console.log(2)}
+    function fn3(){console.log(3)}
+    function fn4(){console.log(4)}
+    function fn5(){console.log(5)}
+    function fn6(){console.log(6)}
+    function fn7(){console.log(7)}
+    function fn8(){console.log(8)}
+    function fn9(){console.log(9)}
+    function fn10(){console.log(10)}
+    function fn11(){console.log(11)}
+    var n=0;
+    function fn12(){
+        n++;
+        console.log(12);
+        if(n>=3){
+            off(box,"click",fn1);
+            off(box,"click",fn2);
+            off(box,"click",fn3);
+            off(box,"click",fn4);
+            off(box,"click",fn5);
+        }
+    }
+    on(box,"click",fn1);
+    on(box,"click",fn1);
+    on(box,"click",fn2);
+    on(box,"click",fn3);
+    on(box,"click",fn4);
+    on(box,"click",fn5);
+    on(box,"click",fn6);
+    on(box,"click",fn7);
+    on(box,"click",fn8);
+    on(box,"click",fn9);
+    on(box,"click",fn10);
+    on(box,"click",fn11);
+    on(box,"click",fn12);
+</script>
+</body>
+</html>

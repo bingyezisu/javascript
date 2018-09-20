@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多级菜单</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            font-family: "微软雅黑", Helvetica, sans-serif;
+            font-size:14px;
+        }
+        ul,li{
+            list-style:none;
+        }
+        .box{
+            margin:10px;
+            padding:10px;
+            width:300px;
+            border:1px dashed #11c900;
+            background:#11c900;
+            background:-webkit-linear-gradient(top left,#11c900,#ffaa00,#ff0000,#adff2f);
+            background:-moz-linear-gradient(top left,#11c900,#ffaa00,#ff0000,#adff2f);
+            background:-ms-linear-gradient(top left,#11c900,#ffaa00,#ff0000,#adff2f);
+            background:linear-gradient(top left,#11c900,#ffaa00,#ff0000,#adff2f);
+        }
+        .box li{
+            position: relative;;
+            line-height:30px;
+        }
+        .box span{
+            display:block;
+            padding-left:20px;
+        }
+        .box em{
+            position:absolute;
+            top:8px;
+            left:0;
+            width:14px;
+            height:14px;
+            background:url(img/timg.png) no-repeat -27px -21px;
+            cursor:pointer;
+        }
+        .box em.open{
+            background-position:-49px -21px;
+        }
+        .box .two{
+            margin-left:20px;
+        }
+        .box .three{
+            margin-left:40px;
+        }
+        .box .four{
+            margin-left:60px;
+        }
+        .box .two,.box .three,.box .four{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <ul>
+        <li>
+            <em></em><span>第一级第一个</span>
+            <ul class="two">
+                <li><span>第二级第一个</span></li>
+                <li>
+                    <em></em><span>第二级第二个</span>
+                    <ul class="three">
+                        <li><span>第三级第一个</span></li>
+                        <li><span>第三级第二个</span></li>
+                        <li>
+                            <em></em><span>第三级第三个</span>
+                            <ul class="four">
+                                <li><span>第四级第一个</span></li>
+                                <li><span>第四级第二个</span></li>
+                                <li><span>第四级第三个</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <em></em><span>第二级第三个</span>
+                    <ul class="three">
+                        <li><span>第三级第一个</span></li>
+                        <li><span>第三级第二个</span></li>
+                        <li><span>第三级第三个</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <em></em><span>第一级第二个</span>
+            <ul class="two">
+                <li><span>第二级第一个</span></li>
+                <li>
+                    <em></em><span>第二级第二个</span>
+                    <ul class="three">
+                        <li><span>第三级第一个</span></li>
+                        <li><span>第三级第二个</span></li>
+                        <li>
+                            <em></em><span>第三级第三个</span>
+                            <ul class="four">
+                                <li><span>第四级第一个</span></li>
+                                <li><span>第四级第二个</span></li>
+                                <li><span>第四级第三个</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <em></em><span>第二级第三个</span>
+                    <ul class="three">
+                        <li><span>第三级第一个</span></li>
+                        <li><span>第三级第二个</span></li>
+                        <li><span>第三级第三个</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script src="js/jquery_1.11.3.min.js"></script>
+<script>
+    var $box=$("#box");
+    $box.find("span").each(function(){
+        //$(this)->每一次循环的时候，当前循环的这个元素
+        var $pre=$(this).prev();
+        if($pre[0] && $pre[0].tagName.toLowerCase()=="em"){
+            $(this).css("cursor","pointer");
+        }
+    });
+    //jQuery中除了bind、unbind、on、off、click、mouseover...这些绑定事件的方式外，还提供了一种delegate（1.7版本以前用的是live）
+    function fn(){
+        var $par=$(this).parent();
+        var $ul=$($par.children("ul")[0]);
+        var $em=$($par.children("em")[0]);
+        if($ul.length>0){
+            //->进来的第一件事情获取当前是展开还是隐藏
+            var isBlock=$ul.css("display")==="block"?true:false;
+            //->当前的如果是收缩的话，我们需要把子子孙孙中的ul/em都隐藏和移除open样式
+            $ul.slideToggle();
+            $em.toggleClass("open");
+            if(isBlock){
+                $par.find("ul").css("display","none");
+                $par.find("em").removeClass("open");
+            }
+        }
+    }
+    $box.delegate("em","click",fn);//->给$box绑定点击事件，如果当前的事件源是em的话，我们执行fn
+    $box.delegate("span","click",fn);
+</script>
+</body>
+</html>

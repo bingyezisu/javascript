@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/banner.css">
+    <link rel="stylesheet" href="css/bannerJQ.css">
 </head>
 <body>
 <!--
@@ -22,7 +22,19 @@
     <a href="javascript:;" class="bannerLeft"></a>
     <a href="javascript:;" class="bannerRight"></a>
 </div>
+<div class="banner" id="banner2" style="margin-top:20px;">
+    <div class="bannerInner">
+    </div>
+    <ul class="bannerTip">
+    </ul>
+    <a href="javascript:;" class="bannerLeft"></a>
+    <a href="javascript:;" class="bannerRight"></a>
+</div>
 <script src="js/jquery_1.11.3.min.js"></script>
-<script src="js/bannerJQ.js"></script>
+<script src="js/bannerJQ1.js"></script>
+<script>
+    $("#banner1").banner("json/banner.txt",1000);
+    $("#banner2").banner("json/banner2.txt",1000);
+</script>
 </body>
 </html>
