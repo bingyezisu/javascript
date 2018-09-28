@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width:100px;
+            height:100px;
+            position:absolute;
+            background:red;
+            cursor:move;
+            -webkit-user-select:none;
+        }
+        #div1 img{width:100px;height:100px;}
+        #div2{
+            top:120px;
+            left:100px;
+            background:yellow;
+        }
+        #div3{
+            top:60px;
+            left:170px;
+            background:green;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"><img src="img/450.jpg" alt=""></div>
+<div id="div2"></div>
+<div id="div3"></div>
+<script src="js/event.js"></script>
+<script>
+    var oDiv1=document.getElementById("div1");
+    function processThis(obj,fn){
+        return function(e){fn.call(obj,e)}
+    }
+    var zIndex=1;
+    function down(e){
+        this.x=this.offsetLeft;
+        this.y=this.offsetTop;
+        this.mx=e.pageX;
+        this.my=e.pageY;
+        if(this.setCapture){
+            this.setCapture();
+            on(this,"mousemove",move);
+            on(this,"mouseup",up);
+        }else{
+            this.MOVE=processThis(this,move);
+            this.UP=processThis(this,up);
+            on(document,"mousemove",this.MOVE);
+            on(document,"mouseup", this.UP);
+        }
+       e.preventDefault();
+       this.style.zIndex=++zIndex;
+    }
+    function move(e){
+        this.style.left=this.x+(e.pageX-this.mx)+"px";
+        this.style.top=this.y+(e.pageY-this.my)+"px";
+    }
+    function up(e){
+        if(this.releaseCapture){
+            this.releaseCapture();
+            off(this,"mousemove",move);
+            off(this,"mouseup",up)
+        }else{
+            off(document,"mousemove",this.MOVE);
+            off(document,"mouseup",this.UP);
+        }
+    }
+    var eles=document.getElementsByTagName("div");
+    for(var i=0;i<eles.length;i++){
+        var cur=eles[i];
+        on(cur,"mousedown",down);
+    }
+</script>
+</body>
+</html>

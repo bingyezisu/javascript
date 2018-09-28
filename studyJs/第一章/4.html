@@ -14,7 +14,7 @@
     console.log("name" in obj);//->ture
     console.log("eat" in obj);//->false*/
 
-    //1、预解释的时候不管你的条件是否成立，都要把带var的进行提前声明
+    //note、预解释的时候不管你的条件是否成立，都要把带var的进行提前声明
 /*    if(!("num" in window)){
         var num=12;
     }
@@ -54,7 +54,7 @@
     //声明（不重复进行）+定义 fn=xxxfff222
     //->fn=xxxfff222
 /*  fn();//2
-  function fn(){console.log(1)};
+  function fn(){console.log(note)};
   fn();//2
   var fn=10;//=>fn=10;
   fn();//->10() Error:fn is not a function

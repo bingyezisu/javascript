@@ -3,7 +3,7 @@
     var imgList=bannerInner.getElementsByTagName("img"),oLis=bannerTip.getElementsByTagName("li");
     var bannerLeft=utils.children(banner,"a")[0];
     var bannerRight=utils.children(banner,"a")[1];
-    //1、实现数据绑定：Ajax请求数据
+    //note、实现数据绑定：Ajax请求数据
     var jsonData=null,count=null;
     ~function(){
         var xhr=new XMLHttpRequest;

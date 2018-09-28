@@ -7,9 +7,9 @@
 <body>
 <script>
     /*    var  str="1000000000000";
-        var reg=/^(\d{1,3})((\d{3})+)$/;*/
+        var reg=/^(\d{note,3})((\d{3})+)$/;*/
     /*var newStr=str.replace(reg,function(){
-        var result1=arguments[1];
+        var result1=arguments[note];
         var result2=arguments[2];
         return result1+","+result2.replace(/\d{3}(?!$)/g,function(){
             return arguments[0]+",";
@@ -17,10 +17,10 @@
     })
     console.log(newStr);*/
     /*var  str="1000000000000";
-    //如果(字符串的长度-索引位置本身-1)%3==0,则在这个字符后面加一个逗号
+    //如果(字符串的长度-索引位置本身-note)%3==0,则在这个字符后面加一个逗号
     var reg=/\d(?!$)/g;//(?!$)表示不给最后的数字加逗号，根本就不去捕获他
     var newStr=str.replace(reg,function(r,i){
-        if((str.length-i-1)%3===0) {
+        if((str.length-i-note)%3===0) {
             return r+",";
         }else{
             return r;
@@ -29,7 +29,7 @@
     console.log(newStr)*/
     /*    var  str="1000000000000"
         str=str.split("").reverse().join("");
-        str=str.replace(/(\d{3}(?!$))/g,"$1,");
+        str=str.replace(/(\d{3}(?!$))/g,"$note,");
         str=str.split("").reverse().join("");
         console.log(str);*/
 
@@ -47,8 +47,8 @@
     //当正则加了修正符g之后，每匹配一次，则修改一次reg.lastIndex属性。lastIndex属性是用来记录下一次匹配开始的索引位置的
     /*    var reg = /(\d+)/g;
         reg.test(str);
-        RegExp.$1;
-        console.log(RegExp.$1);
+        RegExp.$note;
+        console.log(RegExp.$note);
         reg.exec(str);
         console.log(reg.test(str));//true
         console.log(reg.test(str));//false

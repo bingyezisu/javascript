@@ -6,7 +6,7 @@
 </head>
 <body>
 <script>
-    //1、起一个别名
+    //note、起一个别名
 /*    function Fn(){
         this.x=100;
     }
@@ -37,7 +37,7 @@
     var f=new Fn;
     f.a();
     f.b();
-    //1、只有浏览器天生给Fn.prototype开辟的堆内存里面才有constructor，而我们自己开辟的这个堆内存没有这个属性,这样constructor指向就不是Fn而是Object了
+    //note、只有浏览器天生给Fn.prototype开辟的堆内存里面才有constructor，而我们自己开辟的这个堆内存没有这个属性,这样constructor指向就不是Fn而是Object了
     //console.log(f.constructor);//->没做任何处理之前 Object
     //为了和原来的保持一致，我们需要手动的增加constructor的指向
 

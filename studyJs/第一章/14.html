@@ -16,7 +16,7 @@
     //    f1.getX();//->方法中的this是f1->100
     //    var ss=f1.getX;
     //    ss();//方法中的this是window ->undefined*/
-    //1、在构造函数模式中new Fn执行，如果Fn不需要传递参数的话，后面的小括号可以省略
+    //note、在构造函数模式中new Fn执行，如果Fn不需要传递参数的话，后面的小括号可以省略
     //2、this的问题:在类中出现的this.xxx=xxx中的this都是当前类的实例，而某一个属性值（方法），方法中的this需要看方法执行的时候，前面是否有“.”才能知道this是谁
     //    function Fn(){
     //        var num=10;

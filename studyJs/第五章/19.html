@@ -76,8 +76,8 @@
     function up(e){
         if(this.releaseCapture){
             this.releaseCapture();
-            candyEvent.off(box,"mousemove",move);
-            candyEvent.off(box,"mouseup",up);
+            candyEvent.off(this,"mousemove",move);
+            candyEvent.off(this,"mouseup",up);
         }else{
             candyEvent.off(document,"mousemove",this.MOVE);
             candyEvent.off(document,"mouseup",this.UP);

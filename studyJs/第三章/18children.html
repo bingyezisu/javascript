@@ -21,7 +21,7 @@
     var oDiv=document.getElementById("div1");
    console.log(utils.children(oDiv, "p").length);
     /*console.log(oDiv.children);*/
-    //->实现原理：首先获取所有的子节点（childNodes），在所有的子节点中把元素节点过滤出来（nodeType===1）
+    //->实现原理：首先获取所有的子节点（childNodes），在所有的子节点中把元素节点过滤出来（nodeType===note）
     //->如果多传递一个标签名的话，我们还应在获取的子元素结合中把对应标签名的进行二次筛选
 /*    function children(curEle,tagName){
         var ary=[];
@@ -30,7 +30,7 @@
             var nodeList=curEle.childNodes;
             for(var i=0,len=nodeList.length;i<len;i++){
                 var curNode=nodeList[i];
-                if(curNode.nodeType===1){
+                if(curNode.nodeType===note){
                     ary[ary.length]=curNode;
                 }
             }
@@ -44,7 +44,7 @@
                 var curEleNode=ary[k];
                 if(curEleNode.nodeName.toLowerCase()!==tagName.toLowerCase()){
                     //->不是我想要的标签
-                    ary.splice(k,1);
+                    ary.splice(k,note);
                     k--;
                 }
             }
@@ -59,7 +59,7 @@
         var nodeList=curEle.childNodes;
         for(var i=0,len=nodeList.length;i<len;i++){
             var curNode=nodeList[i];
-            if(curNode.nodeType===1){
+            if(curNode.nodeType===note){
                 if(typeof tagName==="string"){
                     if(curNode.nodeName.toLowerCase()=== tagName.toLowerCase()){
                         ary[ary.length]=curNode;

@@ -25,7 +25,7 @@
 
     //->DOM事件绑定：只能给一个元素的某一个行为绑定一次方法，第二次绑定的会把前面的覆盖掉
 /*    box.onclick=function(){
-        console.log(1);
+        console.log(note);
     };
     box.onclick=function(){
         console.log(2);
@@ -33,7 +33,7 @@
 
     //->DOM2:可以给某一个元素的同一个行为绑定多个不同的方法
   /*  box.addEventListener("click",function(){
-        console.log(1)
+        console.log(note)
     },false);
     box.addEventListener("click",function(){
         console.log(2)
@@ -95,7 +95,7 @@
 
     box.detachEvent("onclick",fn12);*/
     //->和标准浏览器的事件池机制对比：
-    //1、顺序问题：执行的时候顺序是混乱的，标准浏览器是按照绑定顺序依次执行的
+    //note、顺序问题：执行的时候顺序是混乱的，标准浏览器是按照绑定顺序依次执行的
     //2、重复问题:IE6~8可以给同一个元素的同一个行为绑定多个相同的方法
     //3、this问题：IE6~8中当方法执行的时候，方法中的this不是当前的元素box而是window
 

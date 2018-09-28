@@ -104,7 +104,7 @@
                 return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
             }
         },
-        //圆形曲线的缓动(sqrt(1-t^2))
+        //圆形曲线的缓动(sqrt(note-t^2))
         Circ: {
             easeIn: function(t,b,c,d){
                 return -c * (Math.sqrt(1 - (t/=d)*t) - 1) + b;

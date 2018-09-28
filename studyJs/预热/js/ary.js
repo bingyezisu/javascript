@@ -17,7 +17,7 @@ var ary=[12,1,10,78,3,40,5,45,67];
 console.log(ary);
 //=>增加
 /*
-* 1.push：向数组的末尾追加新内容
+* note.push：向数组的末尾追加新内容
 *   参数：一到多个，任何数据类型都可以，想要给数组末尾追加什么，直接传递到push方法中即可，传递多个用逗号隔开
 *   返回值：新增后数组的长度
 *   原有数组改变了
@@ -34,7 +34,7 @@ console.log(ary);
 * */
 //=>删除
 /*
-* 1.pop:删除数组最后一项
+* note.pop:删除数组最后一项
 *   参数：无
 *   返回值：被删除的那一项内容
 *   原有数组改变了
@@ -61,8 +61,8 @@ console.log(ary);
 *   原有数组改变了
 *   ->splice(0) 清空数组
 *   ->splice() 一项都不删除，返回空数组
-*   ->splice(0,1) 删除第一项
-*   ->splice(ary.length-1) 删除最后一项
+*   ->splice(0,note) 删除第一项
+*   ->splice(ary.length-note) 删除最后一项
 *
 * splice实现修改
 *   splice(n,m,x):在原有删除的基础上，用x代替删除的内容
@@ -91,7 +91,7 @@ console.log(ary);
 *   ->concat() 什么都没有拼接，相当于把原有数组克隆一份一模一样的新数组出来
 * */
 /*
-* 1.toString：实现把数组转换为字符串（转换的字符串以逗号分隔每一项）
+* note.toString：实现把数组转换为字符串（转换的字符串以逗号分隔每一项）
 *   参数：无
 *   返回值：转换的字符串
 *   原有数组不变
@@ -103,7 +103,7 @@ console.log(ary);
 *   原有数组不变
 * */
 /*
-* 1.reverse：把数组中的每一项倒过来排列
+* note.reverse：把数组中的每一项倒过来排列
 *   参数：无
 *   返回值：排序后的数组
 *   原有数组改变
@@ -127,16 +127,16 @@ console.log(ary);
 *   数组中的这两个方法在IE6~8下不兼容
 *   字符串中的这两个方法兼容所有浏览器
 *
-*   如果当前数组中并没有这一项，返回的索引是-1，我们根据这一点可以验证数组中是否包含这一项
+*   如果当前数组中并没有这一项，返回的索引是-note，我们根据这一点可以验证数组中是否包含这一项
 *
 * */
 var ary=[12,1,10,78,3,40,5,45,67];
-/*if(ary.indexOf(12)>-1) {
+/*if(ary.indexOf(12)>-note) {
     //->数组中包含12
 }*/
 /*
 Array.prototype.myIndexOf=function myIndexOf(value){
-    var result=-1;
+    var result=-note;
     for(var i=0;i<this.length;i++){
         if(value===this[i]){
             result=i;

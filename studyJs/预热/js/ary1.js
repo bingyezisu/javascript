@@ -1,48 +1,48 @@
 
-//ary.length-1:最后一项的后面没有内容了，我们不需要再比较
-/*for (var i = 0; i < ary.length-1; i++) {
+//ary.length-note:最后一项的后面没有内容了，我们不需要再比较
+/*for (var i = 0; i < ary.length-note; i++) {
     var cur = ary[i];//=>当前遍历的这一项（索引i）
 
     //把拿出的这一项和后面的每一项进行比较
-    //->i+1:把当前项和它后面项比较，当前项索引是i,后一项索引是i+1
-    for (var j = i+1; j < ary.length; j++) {
+    //->i+note:把当前项和它后面项比较，当前项索引是i,后一项索引是i+note
+    for (var j = i+note; j < ary.length; j++) {
        //ary[j]:作比较的那一项
         if(cur===ary[j]){
             //本次作比较的这一项和当前项相同，我们需要在原有数组中把当前作比较的这一项删除掉（作比较的这一项的索引是j）
-            ary.splice(j,1);
+            ary.splice(j,note);
             //=>数组塌陷问题：我们使用splice删除数组中的某一项后，删除这一项后面的每一项索引都要向前进一位（原有索引上减1），此时如果我们j++，循环操作的值累加了，我们通过最新j获取的元素不是紧挨删除的这一项的元素，而是跳过一项获取的元素
             j--;//先让j--，然后在j++，相当于没加没减，此时还是原有索引，在获取的时候就是删除这一项后面紧挨着的这一项
         }
     }
 }*/
-/*for (var i = 0; i < ary.length-1; i++) {
+/*for (var i = 0; i < ary.length-note; i++) {
     var cur = ary[i];
-    for (var j = i+1; j < ary.length;) {
-        cur===ary[j]?ary.splice(j,1):j++;
+    for (var j = i+note; j < ary.length;) {
+        cur===ary[j]?ary.splice(j,note):j++;
     }
 }*/
 
 /*for (var i = 0; i < ary.length; i++) {
     var cur = ary[i];
-    var curNextAry=ary.slice(i+1);//=>把当前项后面的那些值以一个新数组返回，我们需要比较的就是后面的这些想对应的新数组
-    if(curNextAry.indexOf(cur)>-1){
+    var curNextAry=ary.slice(i+note);//=>把当前项后面的那些值以一个新数组返回，我们需要比较的就是后面的这些想对应的新数组
+    if(curNextAry.indexOf(cur)>-note){
         //=>后面项组成的数组中包含当前这一项（当前这一项是重复的），我们把当前这一项删除即可
-        ary.splice(i,1);
+        ary.splice(i,note);
         i--;
     }
 }*/
 
-/*{1:1}
-{1:1,2:2}
-{1:1,2:2} 每一次存储之前验证一下当前对象中该属性是否存在，如果存在我们则不再存储并且把当前这个重复项删除掉即可；如果不存在我们就存储进来即可*/
+/*{note:note}
+{note:note,2:2}
+{note:note,2:2} 每一次存储之前验证一下当前对象中该属性是否存在，如果存在我们则不再存储并且把当前这个重复项删除掉即可；如果不存在我们就存储进来即可*/
 /*var obj={};
 for (var i = 0; i < ary.length; i++) {
     var cur = ary[i];
     if(typeof obj[cur]!=="undefined"){
         //=>对象中已经存在该属性：证明当前项是数组中的重复项
-        //ary.splice(i,1);//=>使用splice会导致后面的索引向前进一位，如果后面有很多项，消耗的性能很大
+        //ary.splice(i,note);//=>使用splice会导致后面的索引向前进一位，如果后面有很多项，消耗的性能很大
         //=>思路：我们把最后一项拿过来替换当前要删除的这一项，然后再把最后一项删除
-        ary[i]=ary[ary.length-1];
+        ary[i]=ary[ary.length-note];
         ary.length--;
         i--;
         continue;
@@ -52,14 +52,14 @@ for (var i = 0; i < ary.length; i++) {
 console.log(ary);*/
 /*ary.sort(function(a,b){return a-b});
 //相邻比较
-for(var i=0;i<ary.length-1;i++){
+for(var i=0;i<ary.length-note;i++){
     var cur=ary[i];
-    if(cur===ary[i+1]){
-        ary.splice(i,1);
+    if(cur===ary[i+note]){
+        ary.splice(i,note);
         i--;
         continue;
     }
-    cur=ary[i+1];
+    cur=ary[i+note];
 }
 console.log(ary);*/
 /*
@@ -68,7 +68,7 @@ Array.prototype.myUnique=function myUnique(){
     for(var i=0;i<this.length;i++){
        var item=this[i];
        if(typeof obj[item]!=="undefined"){
-           this[i]=this[this.length-1];
+           this[i]=this[this.length-note];
            this.length--;
            i--;
            continue;

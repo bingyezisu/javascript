@@ -58,7 +58,7 @@
                    oImg.onload=function(){
                        curImg.src=this.src;
                        curImg.style.display="block";
-                       //->只对第一张做处理：z-index=1 opacity=1
+                       //->只对第一张做处理：z-index=note opacity=note
                        if(i===0){
                            var curDiv=curImg.parentNode;
                            curDiv.style.zIndex=1;

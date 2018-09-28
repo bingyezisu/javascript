@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+当down行为发生的时候，用"setDragStart"字符串来表示。用fire来发布这个事件
+就是用一个字符串来，表示事件的发生
+订阅事件（绑定事件，添加一个事件监听者）
+发布事件（就是在这个事件发生的时候，通知订阅者来执行）
+A行为        中间由模式来关联               B行为
+<script>
+    function boiling(){
+        console.log("水烧开了!");
+        fire();
+    }
+    ////----A--------
+
+    //---------以下的就是B
+    function drink(){
+        console.log("喝水");
+    }
+    function waterFlower(){
+        console.log("烧水");
+    }
+    function washFace(){
+        console.log("洗脸");
+    }
+
+    //事件是驱动型的 还是异步，回调
+
+    //烧水之前先要计划一下
+    //水烧开的时候我被通知了---报警器
+    //然后我就可以做我原来的计划
+
+    //给水壶安装报警器
+    var oEvent={};
+    function on(type,fn){
+        if(!oEvent[type]){
+            oEvent[type]=[];
+        }
+        var a=oEvent[type];
+        a.push(fn);
+    }
+    function fire(){
+        var a=oEvent["selfBoiling"];
+        if(a){
+            for(var i=0;i<a.length;i++){
+                a[i]();
+            }
+        }
+    }
+    on("selfBoiling",drink);
+    on("selfBoiling",washFace);
+    on("selfBoiling",waterFlower);
+    ///以上是约定：就是在烧水之前，就明确了水开了之后干什么了
+    boiling();
+</script>
+</body>
+</html>

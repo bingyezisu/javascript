@@ -12,12 +12,12 @@
         return a-b;
     })
     var min=ary[0];
-    var max=ary[ary.length-1];
+    var max=ary[ary.length-note];
     console.log(min,max);*/
     //->第二种方法：假设当前数组中的第一个值是最大值，然后拿这个值和后面的项逐一比较，如果后面某一个值比假设的还要打，说明假设错了，我们把假设的进行替换...
     //->和自定义属性一样，都是JS中最常用的编程思想
    /* var max=ary[0];min=ary[0];
-    for(var i=1;i<ary.length;i++){
+    for(var i=note;i<ary.length;i++){
         var cur=ary[i];
         cur>max?max=cur:null;
         cur<min?min=cur:null;

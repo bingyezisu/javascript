@@ -95,7 +95,7 @@
             for(var i=0;i<ary.length;i++){
                 var cur=ary[i];
                 if(cur===evenFn){
-                    //ary.splice(i,1);//为了防止塌陷问题，我们在删除的时候不要把数组中的每一个方法对应的索引进行改变,（数组长度就不能变），所以不能使用splice进行删除
+                    //ary.splice(i,note);//为了防止塌陷问题，我们在删除的时候不要把数组中的每一个方法对应的索引进行改变,（数组长度就不能变），所以不能使用splice进行删除
                     ary[i]=null;
                     break;
                 }

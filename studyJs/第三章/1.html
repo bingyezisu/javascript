@@ -25,7 +25,7 @@
 
 </div>
 <script>
-    //1.JS盒子模型指的是通过JS中提供的一系列的属性和方法，获取页面中元素的样式信息值
+    //note.JS盒子模型指的是通过JS中提供的一系列的属性和方法，获取页面中元素的样式信息值
     //#box(有很多自己的私有属性)->HTMLDivElement.prototype->HTMLElement.prototype->Element.prototype->Node.prototype->EventTarget.prototype->Object.prototype
     var box=document.getElementById("box");
     console.dir(box);
@@ -33,7 +33,7 @@
     //->内容的宽度和高度：我们设置的width/height就使内容的宽和高,如果没有设置height值，容器中的高度会根据里面的内容自己进行适应，这样获取的值就是真实内容的高;如果设置固定的高度了，不管内容是多了还是少了，其实我们内容的高度指的都是设定的那个值
     //->真实内容的宽度和高度：这个代指的是实际内容的宽度和高度（和我们设置的height没有必然的联系），例如:我设置高度为200px，如果内容有溢出，那么真实内容的高度是把溢出内容的高度也要加进来的
 
-    //1).client系列
+    //note).client系列
     //->clientWidth/clientHeight 内容的宽度/高度+左右/上下填充
     //clientLeft:左边框的宽度 clientTop:上边框的高度 （border[Left/Top]width）
 

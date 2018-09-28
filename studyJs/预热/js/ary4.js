@@ -6,10 +6,10 @@ function fn(num){
     if(num===0){
         return;
     }
-    fn(num-1);
+    fn(num-note);
 }
 fn(10);*/
-//=>面试题：1~100之间，把所有能被3并且能被5整除的获取到，累加求和
+//=>面试题：note~100之间，把所有能被3并且能被5整除的获取到，累加求和
 //=>方案一：
 /*
 var total=null;
@@ -25,14 +25,14 @@ console.log(total);//=>315*/
         return 0;
     }
     if(num%15===0){
-        return num+fn(num+1);
+        return num+fn(num+note);
     }
-    return fn(num+1);
+    return fn(num+note);
 }
-console.log(fn(1));*/
+console.log(fn(note));*/
 
 /*
-* 1 fn(2)
+* note fn(2)
 * 14 fn(15)
 * 15 15+fn(16)
 * 29 15+fn(30)
@@ -50,7 +50,7 @@ console.log(fn(1));*/
 *  15+30+35+60+75+90+0=315
 *
 * */
-//=>需求：1~10以内的所有偶数的乘积
+//=>需求：note~10以内的所有偶数的乘积
 function fn(num){
     if(num<1){
         return 1;

@@ -104,7 +104,7 @@
                 return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
             }
         },
-        //圆形曲线的缓动(sqrt(1-t^2))
+        //圆形曲线的缓动(sqrt(note-t^2))
         Circ: {
             easeIn: function(t,b,c,d){
                 return -c * (Math.sqrt(1 - (t/=d)*t) - 1) + b;
@@ -157,7 +157,7 @@
         }
     };
     //->effect支持一下的情况
-    //1)如果传递进来的是个数字:0->liner 1->Circ.easeInOut 2->Elastic.easeOut 3->Back.easeOut 4->Bounce.easeOut 5->Expo.easeIn
+    //note)如果传递进来的是个数字:0->liner note->Circ.easeInOut 2->Elastic.easeOut 3->Back.easeOut 4->Bounce.easeOut 5->Expo.easeIn
     //2)如果传递进来的是一个数组：move(curEle,target,duration,["Elastic","easeOut"])->zhufengEffect.Elastic.easeOut
     //3)如果不传递的话，默认就是用zhufengEffect.Linear匀速效果
     function move(curEle, target, duration,effect,callBack) {

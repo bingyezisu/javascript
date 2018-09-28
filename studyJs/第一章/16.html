@@ -10,7 +10,7 @@
     //在类中this.xxx=xxx；this->当前类的实例
 
     // 某一个方法中他的this,看执行的时候“.”前面是谁this就是谁
-    //1)需要先确定this的指向(this是谁)
+    //note)需要先确定this的指向(this是谁)
     //2)把this替换成对应的代码
     //3)按照原型链查找的机制，一步步的查找结果
     function Fn() {
@@ -68,7 +68,7 @@
     //Array.prototype.myUnique();this->Array.prototype
     //思考题
     /*
-    1.在数组的原型上有一个方法叫做slice，我们要求大家自己回去后实现一个方法mySlice，要求和原来的slice功能一模一样
+    note.在数组的原型上有一个方法叫做slice，我们要求大家自己回去后实现一个方法mySlice，要求和原来的slice功能一模一样
  Array.prototype.mySlice=function(){
     <js code>
  }
@@ -81,7 +81,7 @@
  n和m的值超过数组的长度了
  n和m不是有效数字
  ...
- 不能使用数组内置的方法，比如添加不能是有push 而是有ary[ary.length-1]=x;
+ 不能使用数组内置的方法，比如添加不能是有push 而是有ary[ary.length-note]=x;
 
  2.实现一个需求
  (5).plus(10).reduce(2) 5+10-2

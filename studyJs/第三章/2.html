@@ -26,7 +26,7 @@
 </div>
 <script>
     var box=document.getElementById("box");
-    //1.元素.style.属性名
+    //note.元素.style.属性名
     //->需要我们把元素的样式都写在行内样式上才可以（写在样式表中是不管用的）
     //console.log(box.style.height);//->""
     //console.log(box.style.width);//->"200px"
@@ -47,7 +47,7 @@
     //curEle:[object]当前要操作的元素对象
     //attr:[string]我们要获取的样式属性的名称
 
-    //1.使用try、catch来处理兼容（只有在不得已的情况下才能使用它）
+    //note.使用try、catch来处理兼容（只有在不得已的情况下才能使用它）
     //->前提:必须保证try中的代码在不兼容浏览器中执行的时候报错，这样的话我们才可以用catch捕获到异常的信息，进行其它的处理
     //->不管当前时什么浏览器，都需要先把try中的代码执行一遍，如果当前时IE7,window.getComputedStyle本身不是兼容的，但是我们也要先把它执行一遍，报错了，再把curEle.currentStyle执行一遍（消耗性能 ）
 /*    function getCss(curEle,attr){

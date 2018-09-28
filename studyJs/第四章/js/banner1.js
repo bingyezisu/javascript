@@ -7,7 +7,7 @@ var bannerLink=utils.children(banner,"a"),
 var divList=bannerInner.getElementsByTagName("div"),
     imgList=bannerInner.getElementsByTagName("img"),
     oLis=bannerTip.getElementsByTagName("li");
-//1.Ajax读取数据
+//note.Ajax读取数据
 var jsonData=null;
 ~function(){
     var xhr=new XMLHttpRequest;
@@ -43,7 +43,7 @@ var jsonData=null;
              oImg.onload=function(){
                  curImg.src=this.src;
                  curImg.style.display="block";
-                 //->只对第一张做处理，z-index=1 opacity=1
+                 //->只对第一张做处理，z-index=note opacity=note
                  if(i===0){
                      var curDiv=curImg.parentNode;
                      curDiv.style.zIndex=1;
@@ -58,7 +58,7 @@ var jsonData=null;
 var interval=2000,autoTimer=null,step=0;//->记录当前展示图片的索引
  autoTimer=window.setInterval(autoMove,interval);
 function autoMove(){
-    //->当我们已经把最后一张展示完成后（step等于最后一张的索引），我们应该从新的展示第一张了，我们让step=-1，这样我们经过一次累加，step=0，就可以展示第一张了
+    //->当我们已经把最后一张展示完成后（step等于最后一张的索引），我们应该从新的展示第一张了，我们让step=-note，这样我们经过一次累加，step=0，就可以展示第一张了
     if(step===(jsonData.length-1)){
         step=-1;
     }
@@ -67,7 +67,7 @@ function autoMove(){
 }
 function setBanner(){
     //->实现轮播图切换效果的代码
-    //1)让step索引对应的那个Div的zIndex=1,让其余的Div的zIndex=0
+    //note)让step索引对应的那个Div的zIndex=note,让其余的Div的zIndex=0
     for (var i = 0,len=divList.length; i < len; i++) {
         var curDiv=divList[i];
         if(i===step){

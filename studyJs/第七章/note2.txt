@@ -1,0 +1,102 @@
+->NODE是基于事件驱动的/异步编程（我们在NODE环境下编写的JS程序一般都是异步编程程序）
+
+3.如何让JS代码在NODE中执行？
+->利用webStrom嵌入NODE的机制，直接把编写的JS通过右键“Run xxx.js”在NODE环境中执行（不建议大家经常这样使用，因为有些时候会有缓存）
+
+->在命令窗口中执行
+    在当前要执行的JS文件目录下，shift+右键=> 在此处打开命令窗口 =>node xxx.js 相当于把JS代码在NODE环境执行
+    在NODE中执行JS代码和浏览器中执行一样，如果JS代码发生了修改，想要看到最新的效果需要重新的执行对应的JS文件
+
+->在命令窗口中执行 node ，然后开始编写对应的JS代码测试即可 （RPEL命令操作），和在浏览器的控制台写JS代码一样
+
+4.NODE模块
+->内置模块(NODE环境天生提供的)：http(createServer)、fs(writeFileSync、readFileSync...)、url...
+
+->自定义模块:我们自己定义的模块
+    在NODE环境中，我们在当前的项目下创建一个JS文件，就相当于创建了一个模块，例如新建一个a.js,相当于创建了a模块
+    如果需要提供一些方法给其他的模块使用，则需要通过module.exports把方法导出,例如：在A模块中写了 module.exports={fn:fn}/module.exports.fn=fn
+
+    如果想在B模块中使用，我们需要先导入 var=require("./a"),这样的话我们就可以调取A模块中导出的方法了 a.fn()
+
+->第三方模块:别人写好的模块我们拿来使用 在NODE中我们如果需要使用别人的模块，需要使用npm这个命令进行管理
+  安装： npm install 第三方模块名称 -g(安装到NODE的全局环境中)
+  卸载：npm uninstall 第三方模块名称 -g
+
+  安装成功后在JS中通过 var less=require("less");把刚才安装的第三方模块导入JS中，这样的话我们就可以使用这个模块中提供的方法了 less.render...
+
+5.服务创建成功后，如何的向服务器端发送请求?
+->在浏览器中输入 http://localhost:端口号/
+->在浏览器中输入 http://本机的IP地址:端口号/
+
+Sync:同步
+aSync:异步
+
+1.MIME类型
+->每一种资源文件都有自己的标识类型，例如：HTML文件的MIME类型是"text/html",css文件的MIME类型是"text/css" TXT->"text/plain"
+->浏览器会按照代码的MIME类型进行渲染
+
+HTTP报文
+->客户端传递给服务器的内容和服务器传递给客户端的内容 都属于HTTP的报文
+
+->起始行：请求起始行 响应起始行
+->首部：请求首部 响应首部 通用首部（请求和响应都有的）自定义首部
+->主体:请求主体 响应主体
+
+
+[Request headers] （view source）
+
+GET /index.html HTTP/1.1   ->请求起始行 HTTP METHOD（请求方式）、请求地址、使用HTTP传输协议的版本号
+
+请求首部：客户端会把一些信息放在请求首部中传递给服务器端，服务器端就可以在请求首部获取到相关的内容 （客户端设置 服务器端获取）
+Host: localhost
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Encoding: gzip, deflate, sdch, br
+Accept-Language: zh-CN,zh;q=0.8
+
+[Response Header]
+->响应起始行：HTTP版本号、响应的状态码、状态码的说明
+HTTP/1.1 200 OK
+->响应首部：服务器端传递给客户端的一些信息可以放在响应首部中，客户端可以在响应首部中获取到服务器的相关信息 （服务器设置 客户端获取）
+content-type: text/html;charset=utf-8; 响应内容的格式和编码
+Date: Thu, 27 Sep 2018 06:42:05 GMT    服务器当前本次响应的时间（服务器时间格林尼治时间）
+Connection: keep-alive
+Transfer-Encoding: chunked
+
+[Response]响应主体 服务器传递给客户端的数据内容都在响应主体中，客户端可以在响应的主体中获取到这些内容（服务器端设置 客户端获取）
+
+[Request Payload]请求主体 客户端传递给服务器端的数据内容可以放在请求主体中传递给服务器，服务器可以在请求主体中获取到传递进来的内容
+
+
+客户端传递给服务器端数据：
+->请求URL后面问号传参的方式传递给服务器 /getList=?name=candy&age=28
+->设置请求的首部（设置请求头信息）
+->设置请求主体，把传递给服务器的内容放在请求主体中传递给服务器
+
+服务器端传递给客户端数据：
+->设置响应头信息
+->设置响应主体内容
+
+
+  a b c
+  a->sum 任意数求和
+  b 传递一个数进来 返回的是传递进来的这个数和100的乘积
+  c->我们需要先调取A中的sum求出1~4的和，然后在调取B模块中的方法乘以100，最后在C中输出
+    if(pathname==="/index.html"){
+        var con=fs.readFileSync("./index.html","utf-8");
+        res.end(con);
+        return;
+    }
+    if(pathname==="/css/index.css"){
+        con=fs.readFileSync("./css/index.css","utf-8");
+        res.end(con);
+        return;
+    }
+    if(pathname==="/js/index.js"){
+        con=fs.readFileSync("./js/index.js","utf-8");
+        res.end(con);
+        return;
+    }

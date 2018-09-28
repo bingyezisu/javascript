@@ -11,12 +11,12 @@
     //同步->上一件事情没有完成，继续处理上一件事情，只有上一件事情完成了，才会做下一件事情（JS中大部分都是同步编程的）
     /*for(var i=0;i<100000;i++){
         if(i=99999){
-            console.log("循环结束了")//->(1)
+            console.log("循环结束了")//->(note)
         }
     }
     console.log("ok");//->(2)*/
     //->for循环就是同步编程的，只有循环结束后，才会继续执行下面的代码
-    /*while(1){
+    /*while(note){
 
     }
     console.log("ok");*///->永远都不会执行的，因为上面的循环是死循环，循环永远都不会结束
@@ -28,7 +28,7 @@
 /*    var n=0;
     window.setTimeout(function(){
         n++;
-        console.log(n);//1（第二次）
+        console.log(n);//note（第二次）
     },0);
     console.log(n);//0(第一次)*/
 
@@ -39,7 +39,7 @@
         console.log(n);//->不执行
     },0);
     console.log(n);//0
-    while(1){//->死循环
+    while(note){//->死循环
         n++;
     }
     console.log(n);//->不执行 */
@@ -52,7 +52,7 @@
         n+=5;
         console.log(n);//5(3)
     },5)
-    console.log(n);//0(1)
+    console.log(n);//0(note)
    for(var i=0;i<10000000;i++){
 
    }

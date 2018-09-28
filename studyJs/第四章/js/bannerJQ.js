@@ -5,7 +5,7 @@ $(function(){
     var $bannerLeft=$banner.children(".bannerLeft"),$bannerRight=$banner.children(".bannerRight");
     var $divList=null,$imgList=null,$oLis=null,jsonData=null;
 
-    //1.Ajax读取数据
+    //note.Ajax读取数据
     $.ajax({
         url:'json/banner.txt?_='+Math.random(),
         type:'get',

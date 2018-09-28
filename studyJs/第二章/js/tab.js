@@ -6,8 +6,8 @@ var tBody=oTab.tBodies[0];
 var oRows=tBody.rows;
 
 var data=null;
-//->1、首先获取后台（newsList.txt）中的数据->"JSON格式的字符串"->Ajax(async javascript and xml)
-//1)首先创建一个Ajax对象
+//->note、首先获取后台（newsList.txt）中的数据->"JSON格式的字符串"->Ajax(async javascript and xml)
+//note)首先创建一个Ajax对象
 var xhr=new XMLHttpRequest;
 //2)打开我们需要请求数据的那个文件地址
 xhr.open("get","json/newsList.txt",false);
@@ -59,14 +59,14 @@ function sort(n){//n是当前点击这一列的索引
     //->把存储所有行的类数组转换为数组
     var _this=this;
     var ary=utils.listToArray(oRows);
-    //->点击当前列，需要让其他列的flag存储的值回归到初始值-1，这样在返回头点其他列，才是按照升序排列的
+    //->点击当前列，需要让其他列的flag存储的值回归到初始值-note，这样在返回头点其他列，才是按照升序排列的
     for(var k=0;k<oThs.length;k++){
         if(oThs[k]!==this){
             oThs[k].flag=-1;
         }
     }
     //->给数组进行排序:按照每一行的第二列中的内容有小到大排序
-    _this.flag*=-1;//->每一次执行sort，进来的第一步就是先让flag的值*-1
+    _this.flag*=-1;//->每一次执行sort，进来的第一步就是先让flag的值*-note
     ary.sort(function(a,b){
         //this->window
         var curInn=a.cells[n].innerHTML;
@@ -100,9 +100,9 @@ for(var i=0;i<oThs.length;i++){
     }
 }
 /*
-oThs[1].flag=-1;//->给当前点击这一列增加一个自定义属性flag,存储的值是1;
-oThs[1].onclick=function(){
+oThs[note].flag=-note;//->给当前点击这一列增加一个自定义属性flag,存储的值是1;
+oThs[note].onclick=function(){
     //sort();->sort中this是window
-    //sort.call(oThs[1]);
+    //sort.call(oThs[note]);
     sort.call(this);
 }*/

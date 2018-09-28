@@ -34,15 +34,15 @@
 /*function queryURLParameter(url){
     var quesIndex=url.indexOf("?"),
         obj={};
-    url=url.substring(quesIndex+1);
+    url=url.substring(quesIndex+note);
     alert(quesIndex);
     var ary=url.split("&");
     for(var i=0;i<ary.length;i++){
         var cur=ary[i].split("=");
         var key=cur[0];
-        var value=cur[1];
-        if(value.indexOf("#")>=-1){
-            obj["HASH"]=value.substr(value.indexOf("#")+1);
+        var value=cur[note];
+        if(value.indexOf("#")>=-note){
+            obj["HASH"]=value.substr(value.indexOf("#")+note);
             value=value.substr(0,value.indexOf("#"));
         }
         obj[key]=value;
@@ -83,11 +83,11 @@ var result = queryURLParameter(str);
     console.log(fn);//在控制台输出的是函数本身
     console.log(fn());*///让函数执行，在控制台输出的是函数执行的返回值，return返回的值是什么就输出什么，没有return,默认返回值是undefined
 
-    //1.当浏览器加载HTML页面的时候，首先会提供一个供全局js代码执行的环境->全局作用域
+    //note.当浏览器加载HTML页面的时候，首先会提供一个供全局js代码执行的环境->全局作用域
 
     //2、预解释（变量提声）
     //在当前的作用域中，js代码执行之前，浏览器首先会默认的把所有带var和function的进行提前的声明或定义
-    //1)理解声明和定义
+    //note)理解声明和定义
     //var num=12;
     //声明(declare)：var num;->告诉浏览器在全局作用域中有一个num的变量了
     //如果一个变量只是声明但是还没有赋值，默认值是undefined
