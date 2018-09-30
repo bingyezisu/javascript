@@ -16,10 +16,10 @@ var server=http.createServer(function(request,response){
         pathname=urlObj.pathname,
         query=urlObj.query;
 
-    if(pathname==="/1.html"){
+    if(pathname==="/index.html"){
         //->根据请求的URL地址（具体的是根据地址中的pathname）获取到对应资源文件中的源代码
         //->fs.readFileSync([path+name],[encode]):同步读取指定文件中的内容（同步读取:文件中的内容读取不完不执行下面的操作，只有都读取出来才会执行后续的操作）
-        var con=fs.readFileSync("./1.html","utf-8");
+        var con=fs.readFileSync("./index.html","utf-8");
         //response.write:向客户端返回内容
         //response.end:告诉服务器响应结束了（一定要加）
         response.write(con);

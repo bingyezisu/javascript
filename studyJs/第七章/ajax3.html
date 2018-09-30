@@ -57,11 +57,39 @@
     };
     xhr.send(null);*/
 
-    var xhr=new XMLHttpRequest;
+    /*var xhr=new XMLHttpRequest;
     xhr.open("get","./note.txt",false);
     xhr.onreadystatechange=function(){
         console.log(xhr.readyState);//4
     };
+    xhr.send(null);*/
+
+    /*var xhr=new XMLHttpRequest;
+    xhr.open("get","./note.txt",true);
+    xhr.send(null);
+    xhr.onreadystatechange=function(){
+        console.log(xhr.readyState);//2 3 4
+    };*/
+    /*var xhr=new XMLHttpRequest;
+    xhr.open("get","./note.txt",false);
+    xhr.send(null);
+    xhr.onreadystatechange=function(){
+        console.log(xhr.readyState);//不会输出任何值
+    }*/
+
+    //->获取服务器时间
+    var xhr=new XMLHttpRequest;
+    xhr.open("head","./note.txt");
+    //->xhr.setRequestHeader 设置请求头信息，在OPEN之后设置
+    xhr.setRequestHeader("zhufeng","2018");
+    xhr.timeout="1000";//设置ajax超时时间
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState===2){
+            //xhr.getResponseHeader 获取服务器的响应头信息
+            var time=xhr.getResponseHeader("Date");
+            console.log(new Date(time));
+        }
+    }
     xhr.send(null);
 
 </script>
