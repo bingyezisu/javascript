@@ -1,0 +1,41 @@
+*{
+    margin:0;
+    padding:0;
+}
+input{
+    outline:none;
+}
+ul,li{
+    list-style:none;
+}
+html,body{
+    width:100%;
+    color:#000;
+    font-size:14px;
+    font-family: "微软雅黑", Helvetica, sans-serif;
+    overflow-x:hidden;
+}
+
+/*-----index-------*/
+.box{
+    margin:20px auto;
+    padding:20px;
+    width:800px;
+    border:2px solid #11c900;
+}
+.box h2{
+    height:35px;
+    line-height:35px;
+    color:#fff;
+    font-size:16px;
+    background:#11c900;
+}
+.box h2 span{
+    float:left;
+    width:200px;
+    height:100%;
+    text-align: center;
+}
+.con li{
+
+}
