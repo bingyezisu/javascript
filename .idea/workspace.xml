@@ -2,19 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="329e2c8c-2f2d-41ab-b20b-4728cd65019b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/studyJs/第七章/backups/ajax.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/studyJs/第七章/实战/add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/studyJs/第七章/实战/css/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/studyJs/第七章/实战/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/studyJs/第七章/实战/js/ajax.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/studyJs/第七章/实战/json/custom.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/studyJs/第七章/实战/server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studyJs/第七章/2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studyJs/第七章/3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studyJs/第七章/data.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studyJs/第七章/jquery_1.11.3.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studyJs/第七章/jsonp.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js基础img/同步和异步.png" beforeDir="false" afterPath="$PROJECT_DIR$/js基础img/同步和异步.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/studyJs/第七章/ajax3.html" beforeDir="false" afterPath="$PROJECT_DIR$/studyJs/第七章/ajax3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/studyJs/第七章/js/ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/studyJs/第七章/js/ajax.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/studyJs/第七章/note2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/studyJs/第七章/note2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/studyJs/第七章/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/studyJs/第七章/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studyJs/第七章/1.html" beforeDir="false" afterPath="$PROJECT_DIR$/studyJs/第七章/1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studyJs/第七章/实战/json/custom.json" beforeDir="false" afterPath="$PROJECT_DIR$/studyJs/第七章/实战/json/custom.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,7 +24,7 @@
     <session id="-618350456">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="19" />
+          <entry key="project.closed" value="20" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.27" value="3" />
           <entry key="project.open.time.28" value="2" />
@@ -39,11 +34,11 @@
           <entry key="project.open.time.33" value="2" />
           <entry key="project.open.time.34" value="2" />
           <entry key="project.open.time.35" value="1" />
-          <entry key="project.open.time.36" value="1" />
+          <entry key="project.open.time.36" value="2" />
           <entry key="project.open.time.49" value="2" />
           <entry key="project.open.time.52" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="22" />
+          <entry key="project.opened" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -51,28 +46,28 @@
           <entry key="1" value="2" />
           <entry key="ajax" value="1" />
           <entry key="css" value="13" />
-          <entry key="html" value="86" />
+          <entry key="html" value="95" />
           <entry key="jpg" value="2" />
-          <entry key="js" value="76" />
-          <entry key="json" value="4" />
+          <entry key="js" value="82" />
+          <entry key="json" value="6" />
           <entry key="less" value="2" />
           <entry key="note" value="2" />
           <entry key="note2" value="1" />
           <entry key="png" value="1" />
           <entry key="rnc" value="1" />
           <entry key="ts" value="2" />
-          <entry key="txt" value="6" />
+          <entry key="txt" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="13" />
-          <entry key="HTML" value="86" />
+          <entry key="HTML" value="95" />
           <entry key="Image" value="3" />
-          <entry key="JSON" value="4" />
-          <entry key="JavaScript" value="76" />
+          <entry key="JSON" value="6" />
+          <entry key="JavaScript" value="82" />
           <entry key="Less" value="1" />
-          <entry key="PLAIN_TEXT" value="12" />
+          <entry key="PLAIN_TEXT" value="19" />
           <entry key="RNG Compact" value="1" />
           <entry key="Scratch" value="1" />
           <entry key="TypeScript" value="2" />
@@ -83,23 +78,23 @@
           <entry key="1" value="2" />
           <entry key="ajax" value="1002" />
           <entry key="css" value="2770" />
-          <entry key="html" value="47306" />
-          <entry key="js" value="31918" />
+          <entry key="html" value="48061" />
+          <entry key="js" value="32211" />
           <entry key="json" value="160" />
           <entry key="less" value="258" />
           <entry key="note" value="2394" />
           <entry key="note2" value="2845" />
-          <entry key="txt" value="1670" />
+          <entry key="txt" value="2655" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="2770" />
-          <entry key="HTML" value="47309" />
+          <entry key="HTML" value="48064" />
           <entry key="JSON" value="160" />
-          <entry key="JavaScript" value="31915" />
+          <entry key="JavaScript" value="32208" />
           <entry key="Less" value="258" />
-          <entry key="PLAIN_TEXT" value="7913" />
+          <entry key="PLAIN_TEXT" value="8898" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -109,49 +104,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/studyJs/第七章/note2.txt">
+        <entry file="file://$PROJECT_DIR$/studyJs/第七章/2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="129" column="13" selection-start-line="129" selection-start-column="6" selection-end-line="129" selection-end-column="13" />
+            <state relative-caret-position="225">
+              <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/studyJs/第七章/3.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/studyJs/第七章/实战/index.html">
+        <entry file="file://$PROJECT_DIR$/studyJs/第七章/data.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="55" column="81" selection-start-line="55" selection-start-column="81" selection-end-line="55" selection-end-column="81" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/studyJs/第七章/实战/server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1350">
-              <caret line="144" column="18" selection-start-line="144" selection-start-column="18" selection-end-line="144" selection-end-column="18" />
-              <folding>
-                <element signature="e#4439#4699#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/studyJs/第七章/实战/json/custom.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret column="227" selection-start-column="227" selection-end-column="227" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/studyJs/第七章/实战/js/ajax.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="573">
-              <caret line="85" column="4" lean-forward="true" selection-start-line="85" selection-start-column="4" selection-end-line="85" selection-end-column="4" />
+            <state>
+              <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -161,9 +135,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="package.json" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
         <option value="HTML File" />
       </list>
     </option>
@@ -182,14 +156,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/studyJs/第五章/11.html" />
-        <option value="$PROJECT_DIR$/studyJs/第五章/12.html" />
-        <option value="$PROJECT_DIR$/studyJs/第五章/13.html" />
-        <option value="$PROJECT_DIR$/studyJs/第五章/14.html" />
-        <option value="$PROJECT_DIR$/studyJs/第五章/17.html" />
-        <option value="$PROJECT_DIR$/studyJs/第五章/16.html" />
-        <option value="$PROJECT_DIR$/studyJs/第五章/18.html" />
-        <option value="$PROJECT_DIR$/studyJs/第五章/js/event.js" />
         <option value="$PROJECT_DIR$/studyJs/第五章/15.html" />
         <option value="$PROJECT_DIR$/studyJs/第五章/js/candyEvent.js" />
         <option value="$PROJECT_DIR$/studyJs/第六章/1.html" />
@@ -209,7 +175,6 @@
         <option value="$PROJECT_DIR$/studyJs/第七章/c.js" />
         <option value="$PROJECT_DIR$/studyJs/第七章/require.js" />
         <option value="$PROJECT_DIR$/studyJs/第七章/serverURl.js" />
-        <option value="$PROJECT_DIR$/studyJs/第七章/1.html" />
         <option value="$PROJECT_DIR$/studyJs/第七章/server.js" />
         <option value="$PROJECT_DIR$/studyJs/第七章/css/index.css" />
         <option value="$PROJECT_DIR$/studyJs/第七章/index.html" />
@@ -233,6 +198,15 @@
         <option value="$PROJECT_DIR$/studyJs/第七章/实战/js/ajax.js" />
         <option value="$PROJECT_DIR$/studyJs/第七章/实战/server.js" />
         <option value="$PROJECT_DIR$/studyJs/第七章/实战/index.html" />
+        <option value="$PROJECT_DIR$/studyJs/第七章/实战/data.txt" />
+        <option value="$PROJECT_DIR$/studyJs/第七章/1.html" />
+        <option value="$PROJECT_DIR$/studyJs/第七章/jsonp.txt" />
+        <option value="$PROJECT_DIR$/studyJs/第七章/2.html" />
+        <option value="$PROJECT_DIR$/studyJs/第七章/实战2/js/1.html" />
+        <option value="$PROJECT_DIR$/studyJs/第七章/实战2/server.js" />
+        <option value="$PROJECT_DIR$/studyJs/第七章/实战2/1.html" />
+        <option value="$PROJECT_DIR$/studyJs/第七章/3.html" />
+        <option value="$PROJECT_DIR$/studyJs/第七章/data.txt" />
       </list>
     </option>
   </component>
@@ -242,11 +216,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="141" />
-    <option name="y" value="484" />
-    <option name="width" value="1071" />
-    <option name="height" value="710" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="488" />
+    <option name="y" value="312" />
+    <option name="width" value="1157" />
+    <option name="height" value="637" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -273,36 +247,13 @@
               <item name="javascript" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="studyJs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="js" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="javascript" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="studyJs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="第七章" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="javascript" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="studyJs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="第七章" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="实战" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="javascript" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="studyJs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="第七章" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="实战" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="js" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="javascript" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="studyJs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="第七章" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="实战" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="json" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="第六章" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -365,16 +316,18 @@
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\wangxuechun\Desktop\javascript\studyJs\第七章" />
+      <recent name="C:\Users\wangxuechun\Desktop\javascript\studyJs\第七章\实战" />
+      <recent name="C:\Users\wangxuechun\Desktop\javascript\studyJs\第七章\backups" />
+      <recent name="C:\Users\wangxuechun\Desktop\javascript\studyJs\第四章\css" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\wangxuechun\Desktop\javascript\studyJs\第七章\js" />
+      <recent name="C:\Users\wangxuechun\Desktop\javascript\studyJs\第七章\实战2" />
       <recent name="C:\Users\wangxuechun\Desktop\javascript\studyJs\第七章\实战\js" />
       <recent name="C:\Users\wangxuechun\Desktop\javascript\studyJs\第七章\backups" />
       <recent name="C:\Users\wangxuechun\Desktop\javascript\studyJs\第七章" />
-      <recent name="C:\Users\wangxuechun\Desktop\javascript\studyJs\第六章\js" />
-      <recent name="C:\Users\wangxuechun\Desktop\javascript\studyJs\第六章\img" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\wangxuechun\Desktop\javascript\studyJs\第七章\backups" />
-      <recent name="C:\Users\wangxuechun\Desktop\javascript\studyJs\第四章\css" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -438,19 +391,20 @@
       <workItem from="1538027339048" duration="9891000" />
       <workItem from="1538101962954" duration="18590000" />
       <workItem from="1538192900183" duration="5932000" />
-      <workItem from="1538276872310" duration="23639000" />
+      <workItem from="1538276872310" duration="23867000" />
+      <workItem from="1538961457547" duration="12418000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="257434000" />
+    <option name="totallyTimeSpent" value="270080000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="141" y="484" width="1071" height="710" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1752178" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49801588" visible="true" weight="0.10642782" />
+      <window_info id="Structure" order="1" sideWeight="0.5019841" side_tool="true" weight="0.1752178" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3275563" />
@@ -494,94 +448,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/studyJs/第五章/20.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="50" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studyJs/第七章/1" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.less">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studyJs/第七章/1.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studyJs/第七章/1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studyJs/第七章/a.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="6" selection-start-line="10" selection-end-line="10" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studyJs/第七章/b.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studyJs/第七章/c.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studyJs/第七章/1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studyJs/第七章/1.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret column="150" selection-start-column="150" selection-end-column="150" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studyJs/第七章/serverURl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="14" column="42" lean-forward="true" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studyJs/第七章/backups/serverIndex备份.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studyJs/第七章/backups/serverIndex备份2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="16" column="39" lean-forward="true" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studyJs/第七章/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/studyJs/第七章/css/index.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
@@ -600,13 +466,6 @@
     <entry file="file://$PROJECT_DIR$/studyJs/第七章/ajax" />
     <entry file="file://$PROJECT_DIR$/studyJs/第七章/note" />
     <entry file="file://$PROJECT_DIR$/studyJs/第七章/1.txt" />
-    <entry file="file://$PROJECT_DIR$/studyJs/第七章/note.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-100">
-          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/studyJs/第七章/ajax2.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="445">
@@ -621,25 +480,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/studyJs/第七章/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="27" column="37" lean-forward="true" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/studyJs/第七章/实战/json/package.json" />
     <entry file="file://$PROJECT_DIR$/studyJs/第七章/js/ajax.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-276">
           <caret line="65" selection-start-line="65" selection-end-line="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studyJs/第七章/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -691,21 +536,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/studyJs/预热/js/arguments.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/studyJs/预热/js/ary.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1050">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-1050" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/studyJs/预热/js/newsList.js">
@@ -720,9 +555,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
           <caret line="37" column="20" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="20" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -736,51 +568,159 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/studyJs/第七章/note2.txt">
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/实战/json/custom.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="129" column="13" selection-start-line="129" selection-start-column="6" selection-end-line="129" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studyJs/第七章/实战/add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="106" column="7" lean-forward="true" selection-start-line="106" selection-start-column="7" selection-end-line="106" selection-end-column="7" />
-          <folding>
-            <element signature="e#1354#1886#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studyJs/第七章/实战/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
-          <caret line="144" column="18" selection-start-line="144" selection-start-column="18" selection-end-line="144" selection-end-column="18" />
-          <folding>
-            <element signature="e#4439#4699#0" />
-          </folding>
+        <state relative-caret-position="25">
+          <caret column="133" lean-forward="true" selection-start-column="133" selection-end-column="133" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/studyJs/第七章/实战/js/ajax.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="573">
-          <caret line="85" column="4" lean-forward="true" selection-start-line="85" selection-start-column="4" selection-end-line="85" selection-end-column="4" />
+        <state relative-caret-position="720">
+          <caret line="101" lean-forward="true" selection-start-line="100" selection-start-column="5" selection-end-line="101" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/studyJs/第七章/实战/json/custom.json">
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/实战/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="769">
+          <caret line="106" column="7" lean-forward="true" selection-start-line="106" selection-start-column="7" selection-end-line="106" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/note.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-277">
+          <caret line="53" column="25" lean-forward="true" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/实战/data.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/实战2/js/1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/实战/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="140" column="5" lean-forward="true" selection-end-line="190" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/ajax.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-477">
+          <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/note2.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-600">
+          <caret line="137" column="17" lean-forward="true" selection-start-line="137" selection-start-column="17" selection-end-line="137" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/jsonp.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="29" column="61" selection-start-line="29" selection-start-column="61" selection-end-line="29" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-50">
+          <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret column="227" selection-start-column="227" selection-end-column="227" />
+          <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/studyJs/第七章/实战/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="55" column="81" selection-start-line="55" selection-start-column="81" selection-end-line="55" selection-end-column="81" />
+        <state relative-caret-position="1100">
+          <caret line="44" column="39" lean-forward="true" selection-start-line="44" selection-start-column="39" selection-end-line="44" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/实战2/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="45" column="3" lean-forward="true" selection-start-line="45" selection-start-column="3" selection-end-line="45" selection-end-column="3" />
+          <folding>
+            <element signature="e#359#1017#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/实战2/custom.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret column="128" selection-start-column="128" selection-end-column="128" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/实战2/1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/jsonp/custom.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/jsonp/1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/jquery_1.11.3.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studyJs/第七章/data.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
         </state>
       </provider>
     </entry>
