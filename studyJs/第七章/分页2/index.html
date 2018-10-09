@@ -40,9 +40,43 @@
             page=document.getElementById("page"),
             pageNum=document.getElementById("pageNum"),
             numInp=document.getElementById("numInp");
+        var ifFlag=true;
 
         //->设定当前页和总页数以及本次请求回来的数据
         var n=1,total=0,data=null;
+        //page分页
+        /*
+        * n=1 total=11  1 2 3 4 ... 8 9 10 11
+        * n=5
+        *
+        * */
+        function pageChange(){
+            var maxTotal=10,
+                str="",
+                strLeft="<li class='bg'>"+n+"</li>",
+                strMid="<li class='more'>...</li>",
+                strRight="";
+                ifFlag=false;
+            if(total>maxTotal && n<(total-3)){
+                for(var i=n+1;i<=(n+3);i++){
+                    strLeft+="<li>"+i+"</li>";
+                }
+                for(i=(total-3);i<=total;i++){
+                    strRight+="<li>"+i+"</li>";
+                }
+                str=strLeft+strMid+strRight;
+
+            }else if(total<=maxTotal){
+                for(i=1;i<=total;i++){
+                    if(i===n){
+                        str+="<li class='bg'>"+i+"</li>";
+                        continue;
+                    }
+                    str+="<li>"+i+"</li>";
+                }
+            }
+            pageNum.innerHTML=str;
+        }
         //->bindHTML:实现页面的数据绑定及其他区域的数据绑定
         function bindHTML(){
             //content bind
@@ -59,15 +93,9 @@
             content.innerHTML=str;
 
             //pageNum bind
-            str="";
-            for(i=1;i<=total;i++){
-                if(i===n){
-                    str+="<li class='bg'>"+i+"</li>";
-                    continue;
-                }
-                str+="<li>"+i+"</li>";
+            if(ifFlag){
+                pageChange();
             }
-            pageNum.innerHTML=str;
 
             //->numInp bind
             numInp.value=n;
@@ -76,13 +104,14 @@
         //->bindEvent:事件委托实现分页区域的按钮操作 &&给文本框的ENTER绑定事件
         function bindEvent(){
             page.onclick=function(e){
+                ifFlag=false;
                 e=e||window.event;
                 var tar=e.target||e.srcElement,
                     tarTag=tar.tagName.toUpperCase(),
                     tarInn=tar.innerHTML;
-                console.log(tarTag);
                 //->FIRST、PREV、NEXT、LAST
                 if(tarTag==="SPAN"){
+                    ifFlag=true;
                     if(tarInn==="FIRST"){
                         if(n===1){return;}
                         n=1;
@@ -113,6 +142,7 @@
                         return;
                     }
                     n=parseFloat(tarInn);
+
                 }
 
                 //->INPUT
