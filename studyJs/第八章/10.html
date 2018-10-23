@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS异步编程思想</title>
+</head>
+<body>
+<script type="text/javascript">
+    //JS中的两种编程思想：同步、异步
+    //JS是单线程的
+    //异步->规划要做一件事情，但是不是当前立马执行这件事情，需要等一定的时间，这样的话，我们不会等着他执行，而是继续执行下面的操作用，“只有当下面的事情都处理完成后，才会返回头处理之前的事情；如果下面的事情并没有处理完成，不管之前的事情有没有到时间，都踏踏实实的给我等着”
+    //在JS中异步编程只有四种情况：定时器都是异步编程，所有事件绑定都是异步编程，Ajax读取数据的时候，我们一般都设置为异步编程，回调函数也是异步编程
+/*    var n=0;
+    window.setTimeout(function(){
+        n++;
+        console.log(n);//->1 (2)
+    },1000);
+    console.log(n);//->0 (1)*/
+
+    // var n=0;
+    // window.setTimeout(function(){
+    //     n++;
+    //     console.log(n);
+    // },10);
+    // console.log(n);//0
+    // while(1){//->死循环
+    //     n++;
+    // }
+    // console.log(n);//->不执行
+    var n=0;
+    window.setTimeout(function(){
+        n+=2;
+        console.log(n);//7 (4)
+    },20);
+    window.setTimeout(function(){
+        n+=5;
+        console.log(n);//5 (3)
+    },5);
+    console.log(n);//0(1)
+    for(var i=0;i<10000000;i++){}
+    console.log(n);//0(2)
+</script>
+</body>
+</html>
