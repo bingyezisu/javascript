@@ -1,0 +1,108 @@
+// .public{
+//     width:100px;
+//     height:100px;
+// }
+// /*征用：把原有的样式克隆一份一模一样的拿过来使用，如果PUBLIC加上括号，PUBLIC本身不编译*/
+// .box{
+//     .public;
+// }
+// /* 共用：和原来的选择器共用一套样式，但是需要保证原来的选择器不加括号 */
+// .box2{
+//     &:extend(.public);
+// }
+// .box3:extend(.public){
+
+// }
+/* @v:1;
+.box{
+    @v:10;
+    &:hover{
+        z-index:@v;
+    }
+} */
+/* .public{
+    width:100px;
+    height:100px;
+    .link{
+        width:200px;
+        height:200px;
+    }
+    &:hover{
+        background:#eee;
+    }
+}
+.box{
+    .public !important;//把public及子孙元素都继承过来了
+} */
+/* .public(@x,@y){
+    @result:@x+@y;
+}
+.box{
+    .public(10,29);
+    z-index:@result;
+} */
+/* .public(@x) when(@x<10) and(@x>0){
+    background:red;
+}
+.public(@x) when(@x<=0){
+    background:green;
+}
+.public(@x) when(@x>=10){
+    background:blue;
+}
+.box{
+    .public(11);
+} */
+/* .public(@n,@i:1) when(@i<=@n){
+    .box-@{i}{
+        & when (@i=1){
+            width:100px;
+        }
+        & when (@i=3){
+            width:100px;
+        }
+        & when (@i=2){
+            width:200px;
+        }
+        & when (@i=4){
+            width:200px;
+        }
+    }
+    .public(@n,@i+1);
+}
+.public(@n:4); */
+// @width:200px;
+// @height:200px;
+// @color:#fff;
+// @url:"../img";
+// .box{
+//     width:unit(unit(@width)-50);
+//     height:@height;
+//     border:1px solid @color;
+//     background-color:@color;
+//     /* 
+//     data-uri:把我们需要使用的素材图片转换为BASE64编码,项目中尤其是移动端项目中，节省了图片的加载时间，是图片优化的一个手段;LESS对于大图片是不能转码，我们可以使用BASE64工具转码（tool.css-js.com）;项目中慎用BASE64，当你在移动端项目中，有一些大图实在没办法处理的情况下再使用BASE64
+//     */
+//     background:data-uri('@{url}/s.gif');
+// }
+/* @color:#000,#fff,#ccc,#eee;
+.box{
+    z-index:length(@color);
+    background:extract(@color,length(2));
+} */
+// ceil,floor,percentage,round,sqrt,abs,pi,pow,sin,asin,cos,acos,tan,atan,mod(取余数),min,max
+
+.box{
+    background:argb(rgba(0,0,0,.1));
+}
+
+/* 
+saturate(@value,20%) 增加饱和度
+desaturate() 降低饱和度
+lighten 增加亮度
+darken 降低亮度
+fadein 增加透明度
+fadeout 降低透明度
+fade 设置透明度
+greyscale 完全移除饱和度 灰度
+*/

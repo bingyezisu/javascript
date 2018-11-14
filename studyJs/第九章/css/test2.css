@@ -1,0 +1,66 @@
+/* @v:1;
+.box{
+    @v:10;
+    &:hover{
+        z-index:@v;
+    }
+} */
+/* .public{
+    width:100px;
+    height:100px;
+    .link{
+        width:200px;
+        height:200px;
+    }
+    &:hover{
+        background:#eee;
+    }
+}
+.box{
+    .public !important;//把public及子孙元素都继承过来了
+} */
+/* .public(@x,@y){
+    @result:@x+@y;
+}
+.box{
+    .public(10,29);
+    z-index:@result;
+} */
+/* .public(@x) when(@x<10) and(@x>0){
+    background:red;
+}
+.public(@x) when(@x<=0){
+    background:green;
+}
+.public(@x) when(@x>=10){
+    background:blue;
+}
+.box{
+    .public(11);
+} */
+/* .public(@n,@i:1) when(@i<=@n){
+    .box-@{i}{
+        & when (@i=1){
+            width:100px;
+        }
+        & when (@i=3){
+            width:100px;
+        }
+        & when (@i=2){
+            width:200px;
+        }
+        & when (@i=4){
+            width:200px;
+        }
+    }
+    .public(@n,@i+1);
+}
+.public(@n:4); */
+/* @color:#000,#fff,#ccc,#eee;
+.box{
+    z-index:length(@color);
+    background:extract(@color,length(2));
+} */
+.box {
+  background: #1a000000;
+}

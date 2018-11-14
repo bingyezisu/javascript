@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /*  input{
+        outline: none;
+    }
+    #userEmailTwo:valid{
+        border:1px solid green;
+    }
+    #userEmailTwo:invalid{
+        border:1px solid red;
+    } */
+    *{
+        margin:0;
+        padding:0;
+    }
+    html,body{
+        width:100%;
+        font-size: 14px;
+        color:#000;
+        font-family:'Courier New', Courier, monospace;
+
+    }
+    input{
+        display: inline-block;
+        outline: none;
+    }
+    .box{
+        position:relative;
+        width:200px;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- <input type="radio" name="sex" id="sexMan" value="man" checked/><label for="sexMan">男</label>
+    <input type="radio" name="sex" id="sexWoman" value="woman" /><label for="sexWoman">女</label>
+    <input type="submit" value="提交" id="submit"> -->
+    <!-- <input type="checkbox" name="hobby" id="swim" value="游泳"><label for="swim">游泳</label>
+    <input type="checkbox" name="hobby" id="sing" value="唱歌"><label for="sing">唱歌</label>
+    <input type="checkbox" name="hobby" id="climb" value="爬山"><label for="climb">爬山</label>
+    <input type="checkbox" name="hobby" id="photo" value="摄影"><label for="photo">摄影</label>
+    <input type="checkbox" name="hobby" id="code" value="敲代码"><label for="code">敲代码</label>
+    <input type="submit" id="submit"/> -->
+    <!-- <input type="file" name="" id=""> -->
+    <!-- <input type="number" id="number" style="width:50px;text-align:center" value="25" disabled/>
+    <input type="range" min="18" max="65" step="1" value="25" id="range"> -->
+    <!-- <input type="date" name="" id=""> -->
+    <!-- <input type="text" name="" id="userEmailFir"><br/><br/>
+    <input type="email" name="" id="userEmailTwo"> -->
+    <!--    <div class="box">
+        <input type="email" id="userEmail" placeholder="请输入您常用的邮箱！">
+        <span class="tip" id="tipEmail">请输入您常用的邮箱！</span>
+    </div>
+    <input type="email" name="" placeholder="请输入你的邮箱"> -->
+    <input type="search" name="" id="searchInp" list="searchList" />
+    <datalist id="searchList">
+        <option>Explicabo quas repellat excepturi voluptates est!</option>
+        <option>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem et fugit quo, debitis alias sed fuga
+            repellat aut cum impedit sunt facere fugiat necessitatibus quibusdam, odit non veritatis officiis
+            voluptatem.</option>
+        <option>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sapiente ab, veritatis aliquid
+            alias aspernatur rem tenetur, doloribus, ipsum quisquam reprehenderit temporibus! Cupiditate sint eum
+            sequi, explicabo at molestiae deleniti?</option>
+    </datalist>
+
+    <script>
+        /*       ~function(pro){
+            function myTrim(){
+               return this.replace(/^ +| $/g,"");
+            }
+            pro.myTrim=myTrim;
+        }(String.prototype);
+        var userEmailFir=document.getElementById("userEmailFir"),
+            userEmailTwo=document.getElementById("userEmailTwo");
+        userEmailFir.onblur=function(){
+            var val=this.value.myTrim();
+            var reg=/^\w+((-\w+) | (\.\w+))*@[A_Za-z0-9]+((\.|-) [A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+            if(!reg.test(val)){
+                console.log("邮箱格式不正确")
+            }
+        }
+        userEmailTwo.onblur=function(){
+            var val=this.value.myTrim();
+            if(!this.checkValidity()){
+                console.log("邮箱格式不正确")
+            }
+        }
+ */
+
+        /* var range=document.getElementById("range"),
+            number=document.getElementById("number");
+        range.oninput=function(){
+            number.value=this.value;
+        } */
+        /* var submit=document.getElementById("submit"),
+            hobbyList=document.getElementsByName("hobby");
+       
+        submit.onclick=function(){
+            for(var i=0;i<hobbyList.length;i++){
+                var curHobby=hobbyList[i];
+                if(curHobby.checked){
+                    console.log(curHobby.value);
+                }
+            }
+        } */
+        /*         var submit=document.getElementById("submit"),
+                    sexMan=document.getElementById("sexMan"),
+                    sexWoman=document.getElementById("sexWoman");
+                submit.onclick=function(){
+                    var sexType=0;
+                    !sexMan.checked?sexType=1:null;
+                    console.log(sexType);
+                };
+                sexMan.onchange=sexWoman.onchange=function(){
+                    console.log(this.value);
+                } */
+        /* 
+        PC端表单元素常用的事件都有哪些：click、change、focus、blur、keydown、keyup...
+        移动端表单元素的事件：在移动端没有keydown、keyup事件（当然有的手机是识别的）因为移动端使用的键盘是虚拟的键盘；移动端多了一个事件类型:input事件
+        
+        传统的INPUT表单的类型：text、password、submit、reset、button、radio、checkbox、file、hidden...
+        HTML5中给INPUt增加了一些类型：search、url、email、tel、number、range、color、data、time、dataTime....
+        作用：
+        ->提供了更加强大的功能，方便我们开发
+        ->在移动端使用对应的input类型，当用户输入的时候可以调取出对应的虚拟键盘，方便用户的快速输入（这个是html5表单新类型最核心的作用）
+        ->相对于传统的表单类型提供了新的验证方式：
+            JS中新提供的是 input.checkValidity()
+            CSS中新提供的是 input:valid/input:invalid
+        HTML5除了给INPUT新增加类型外，还新增加了一个常用的属性：placeholder,用来给文本框设置默认提示信息，但是在IE浏览器中支持的不是特别好
+
+            HTML5还提供了其他的表单元素：dataList.progress...
+
+         */
+    </script>
+</body>
+
+</html>

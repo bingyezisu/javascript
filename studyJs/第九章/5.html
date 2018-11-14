@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  *{margin:0;padding:0}
+  a,a:hover{text-decoration:none;}
+  ul,li{list-style:none;}
+  img{border:0}
+  .box{
+    margin:0 10px;
+    height:110px;
+    background:url("img/组 9.png") no-repeat;
+    background-size:cover;
+    border:5px solid #fa0;
+  }
+  @media all and (-webkit-device-pixel-ratio:2.0){
+    .box{
+      background:url("img/组 9@2x.png") no-repeat;
+      background-size:cover;
+      border:5px solid red;
+    }
+  }
+  @media all and (-webkit-device-pixel-ratio:3){
+    .box{
+      background:url("img/组 9@3x.png") no-repeat;
+      background-size:cover;
+      border:5px solid #000;
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+</body>
+</html>
