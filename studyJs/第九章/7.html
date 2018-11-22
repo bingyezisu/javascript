@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scal =1.0,maximum-scale=1.0,user-scalable=0"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 
+    我们有些时候需要检测一下当前的浏览器是PC端的还是移动端的
+    ->如果当前的浏览器是PC端，但是我们访问的页面是移动端的页面，我们让其跳转到PC端页面
+    ->如果当前的浏览器是移动端的，但是我们访问的页面是PC端的页面，我们让其跳转到移动端的页面
+    跳转：window.location.href="xxx"
+   -->
+   <script type="text/javascript">
+    // 判断是否为移动端运行环境 
+    if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))) {
+        if(window.location.href.indexOf("?mobile") < 0) {
+            try {
+                if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                    // 判断访问环境是 Android|webOS|iPhone|iPod|BlackBerry 则加载以下样式 
+                    setActiveStyleSheet("style_mobile_a.css");
+                } else if(/iPad/i.test(navigator.userAgent)) {
+                    // 判断访问环境是 iPad 则加载以下样式 
+                    setActiveStyleSheet("style_mobile_iPad.css");
+                } else {
+                    // 判断访问环境是 其他移动设备 则加载以下样式 
+                    setActiveStyleSheet("style_mobile_other.css");
+                }
+            } catch(e) {}
+        }
+    } else {
+        // 如果以上都不是，则加载以下样式 
+        setActiveStyleSheet("style_mobile_no.css");
+    }
+
+    // 判断完毕后加载样式 
+    function setActiveStyleSheet(filename) {
+        document.write("<link href=" + filename + " rel=stylesheet>");
+    }
+</script>
+  <link rel="stylesheet" charset="utf-8" href="css/reset.css">
+  <style>
+  /* REM：当前页面中元素的REM单位的样式值都是针对于HTML元素的fontsize的值进行动态计算的*/
+  html,body{
+      width:100%;
+      height:100%;
+      overflow:hidden;
+  }
+  .box{
+      position: absolute;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      margin:auto;
+      
+      width:2rem;
+      height:2rem;
+      background:green;
+  }
+  </style>
+</head>
+<body>
+    <section id="main">
+            <div class="box"></div>
+    </section>
+    
+    <script charset="utf-8" type="text/javascript">
+    //->根据当前屏幕宽度和设计稿宽度的比例，动态计算一下当前宽度下的font-size值应该是多少，如果fontSize的值改变了，之前设定的所有REM单位的值自动会跟着放大或者缩小
+    ~function(){
+        var desW=640,
+            winW=document.documentElement.clientWidth,
+            ratio=winW/desW;
+            //->如果当前屏幕的宽度已经大于设计稿了，为了保证图片的良好展示，我们一般都不让其再继续变大了，以设计稿的宽度为最后宽度，剩余的部分六百显示
+        var oMain=document.getElementById("main");
+        if(winW>desW){
+            oMain.style.width=desW+"px";
+            oMain.style.margin="0 auto";
+            return;
+        }
+        document.documentElement.style.fontSize=ratio*100+"px";
+    }();
+    </script>
+</body>
+</html>

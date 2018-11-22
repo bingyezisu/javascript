@@ -76,3 +76,39 @@ viewport:视口
     }
 
 
+    2)REM响应式布局
+        ->我们做的H5页面只在移动端访问（REM不兼容低版本的浏览器）
+        第一步:从UI设计师拿到设计稿（PSD格式的设计稿）640*1136
+        第二步:在样式中给HTML设定一个fontSize的值，我们一般都设置一个方便后面计算的值,例如:10px 100px...这里我们之所以用100px，主要是浏览器最小的字体大小都是12px，用10px比例计算的结果和真实UI设计稿会存在那么一点点的偏差
+            html{
+                font-size:50px;/*1REM=100px*/
+            }
+        第三步：写页面，写样式
+        完全按照设计稿的尺寸来写样式，此时不用管任何的事情，设计稿给你的宽度，高度，字体大小，margin、padding的值是多少，我们就写多少
+        ->但是我们在写样式值的时候，需要把等到的像素值除以100，计算出对应的REM的值，我们设定的也都是REM的值（值的注意的是，真实项目中外层盒子的宽度我们一般还是不写固定值，沿用流式布局法的思想，我们用百分比的方式布局）
+        第四步：根据当前屏幕的宽度和设计稿的宽度来计算我们HTML的fontSize的值
+            <script charset="utf-8" type="text/javascript">
+                //->根据当前屏幕宽度和设计稿宽度的比例，动态计算一下当前宽度下的font-size值应该是多少，如果fontSize的值改变了，之前设定的所有REM单位的值自动会跟着放大或者缩小
+                ~function(){
+                    var desW=640,
+                        winW=document.documentElement.clientWidth,
+                        ratio=winW/desW;
+                    var oMain=document.getElementById("main");
+                    if(winW>desW){
+                        oMain.style.width=desW+"px";
+                        oMain.style.margin="0 auto";
+                        return;
+                        }
+                    document.documentElement.style.fontSize=ratio*100+"px";
+                }();
+            </script>
+
+
+使用GitHub发布项目
+->GitHub:
+    https://github.com/ 一个网站,网站搭建了一个供用户管理代码的平台（而且是基于GIT操作进行管理的一个平台）
+    GitHub在全世界都是比较权威的，我们前端开发工程师所需要的框架，类库，插件的源代码基本上都是GitHub上有托管
+    建议：初期回去后先把自己所了解的关于框架、类库、插件的源代码在GitHub上找到，然后Fork到自己的仓库一份，以后有时间尽量去研究一下源代码：后期当自己有一定能力的时候，写一些插件或者类库，上传到GitHub上供别人研究使用，培养自己的粉丝...
+
+    GitHub还有一个作用：可以在这个平台上发布前端的项目文件（GitHub本身就是一个资源文件托管的平台，我们把项目资源文件上传到这个平台下，平台帮我们发布，以后只需要输入对应的网址就可以把这个平台中托管文件的源代码返回到用户的客户端进行渲染）
+->使用GitHub

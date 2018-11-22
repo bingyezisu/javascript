@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scal =1.0,maximum-scale=1.0,user-scalable=0"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" charset="utf-8" href="css/reset.css">
+  <link rel="stylesheet" href="swiper/swiper.min.css">
+  <style>
+      /* 假设：设计稿是640 轮播图区域是640*300 */
+      html{
+          font-size:100px;
+      }
+      html,body{
+          width:100%;
+          overflow-x:hidden;
+          background:#fa0;
+      }
+      .swiper-container{
+          margin:0 auto;
+          height:3rem;
+          overflow:hidden;
+      }
+      .swiper-slide{
+          height:3rem;
+      }
+      .swiper-slide img{
+          width:100%;
+          height:100%;
+      }
+  </style>
+</head>
+<body>
+<section id="main">
+        <section class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://gfs12.gomein.net.cn/T1rpYsBQLT1RCvBVdK.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://gfs13.gomein.net.cn/T1pyhjBTVv1RCvBVdK.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://gfs13.gomein.net.cn/T1QcVbBQhT1RCvBVdK.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://gfs12.gomein.net.cn/T1lJCQBvDv1RCvBVdK.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                       <img src="https://gfs12.gomein.net.cn/T1.ZZbBCKv1RCvBVdK.jpg" alt="">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </section>
+</section>
+<script charset="utf-8" src="swiper/swiper.min.js"></script>
+<script charset="utf-8" type="text/javascript">
+    //->根据当前屏幕宽度和设计稿宽度的比例，动态计算一下当前宽度下的font-size值应该是多少，如果fontSize的值改变了，之前设定的所有REM单位的值自动会跟着放大或者缩小
+    ~function(){
+        var desW=640,
+            winW=document.documentElement.clientWidth,
+            ratio=winW/desW;
+            //->如果当前屏幕的宽度已经大于设计稿了，为了保证图片的良好展示，我们一般都不让其再继续变大了，以设计稿的宽度为最后宽度，剩余的部分六百显示
+        var oMain=document.getElementById("main");
+        if(winW>desW){
+            oMain.style.width=desW+"px";
+            oMain.style.margin="0 auto";
+            return;
+        }
+        document.documentElement.style.fontSize=ratio*100+"px";
+    }();
+    // ->初始化Swiper实现区域的滑动
+    //new Swiper([container selector],[])
+    var swiper1=new Swiper(".swiper-container",{
+        loop:true,//无缝衔接滚动
+        autoplay:true,
+        pagination:{
+            el:".swiper-pagination",
+            type:"progressbar",
+        }
+    })
+    </script>
+</body>
+</html>
