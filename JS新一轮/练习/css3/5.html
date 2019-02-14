@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	/*动画的开始状态：浏览中元素的默认显示效果*/
+		.box1{
+			width:200px;
+			height:200px;
+			background:red;
+			/*设置哪些属性要参与到过渡动画效果中：all*/
+			/* transition-property:all;
+			transition-duration:1s;
+			transition-delay:1s;
+			transition-timing-function: linear; */
+			transition:all 1s linear;
+
+		}
+	/*动画的结束状态*/
+		.box1:hover{
+			width:400px;
+			height:400px;
+			background:green;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+</body>
+</html>

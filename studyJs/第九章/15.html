@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link charset="UTF-8" type="text/css" rel="stylesheet" href="css/reset.css"/>
+    <style charset="utf-8" type="text/css">
+        HTML,body{
+            width:100%;
+            height:100%;
+            color:#000;
+            font-size:14px;
+            overflow:hidden;
+        }
+        html{
+            font-size:100px;/*DESW=320px;*/
+        }
+        .header{
+            height:.5rem;
+            line-height:.5rem;
+            background:-webkit-linear-gradient(top left,#85bae4,#b1d510,#e0f2be);
+            overflow:hidden;
+        }
+        .header h1{
+            margin:0;
+            padding:0;
+            font:.2rem/.5rem "微软雅黑";
+        }
+        .header span{
+            float:left;
+            width:25%;
+            text-align:center;
+        }
+        .content{
+            position:relative;
+            overflow:hidden;
+        }
+        .content ul{
+            padding:0;
+            margin:0;
+        }
+        .content li{
+            height:.4rem;
+            line-height:.4rem;
+        }
+        .content li:nth-child(even){
+            background:#eee;
+        }
+        .content li span{
+            float:left;
+            width:25%;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <h1>
+        <span>编号</span>
+        <span>姓名</span>
+        <span>性别</span>
+        <span>分数</span>
+    </h1>
+</header>
+<section class="content">
+    <ul>
+    </ul>
+</section>
+<!-- ！EJS:模板引擎数据绑定 -->
+<script charset="utf-8" type="text/javascript" src="js/ejs.min.js"></script>
+<!-- 制作EJS渲染的模板：在原有的HTML结构基础上把我们的数据嵌套进来，ESJ语法规定了我们需要编写的JS代码写在<%%>即可，需要在模板中输出一些内容，把需要输出的内容写在<%=%> -->
+<script charset="utf-8" type="text/template" id="conTemplate">
+    <%$.each(matchData,function(index,item){%>
+    <li>
+        <span><%=item.id%></span>
+        <span><%=item.name%></span>
+        <span><%=item.sex==1?"女":"男"%></span>
+        <span><%=item.score%></span>
+    </li>
+    <%})%>
+</script>
+<script src="js/iscroll.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript">
+    //REM
+    document.documentElement.style.fontSize=document.documentElement.clientWidth/320*100+"px";
+    
+
+    //->字符串拼接绑定数据有自己的弊端：开发效率低，JS代码结构乱，不便于后期维护
+     /*  function bindHTML(data){
+        var str=""
+        $.each(data,function(index,item){
+            str+="<li>";
+            str+="<span>"+item.id+"</span>";
+            str+="<span>"+item.name+"</span>";
+            str+="<span>"+(item.sex==1?"女":"男")+"</span>";
+            str+="<span>"+item.score+"</span>";
+            str+="</li>";
+        });
+        $(".content>ul").html(str);
+    } */
+    var $content=$(".content");
+    //->计算CONTENT区域的高度（实现竖向局部滚动，我们首先需要把最外层容器的高度设定好）
+    $content.css("height",document.documentElement.clientHeight-$(".header")[0].offsetHeight);
+    //->使用模板引擎渲染页面中的数据：EJS
+    function bindHTML(data){
+        //->1)把我们在HTML 结果SCRIPT中制作的模板获取到
+        var template=$("#conTemplate").html();
+        //->2)使用EJS 中的RENDER向指定模板中提供需要的数据,EJS会把模板和字符串按照既定的规则进行解析渲染，最后得到的是数据和HTML结构拼接在一起的字符串
+        var result=ejs.render(template,{matchData:data});
+        //->3)把拼接好的数据放到页面指定容器中
+        $(".content>ul").html(result);
+    
+        //->在数据绑定完成后实现局部滚动
+        /* 
+        var 实例=new IScroll(需要局部滚动的区域,{参数配置})
+        初始化成功后，只对当前容器中的第一个子元素实现了滚动操作 document.querySelector("content").querySelector("*");
+        [SETTINGS]
+        scrollbars:true 显示滚动条，默认是不显示（开启后，ISCROLL会默认向CONTENT区域增加一个iScrollVerticalScrollbarDIV，这个DIV控制的是滚动条，他的样式是position:absolute;所以如果想滚动条只要容器中，需要给容器增加position:relative）
+        mouseWheel:true 设置支持鼠标滚轮滚动
+        bounce:false 禁止运动到边界后反弹
+        click:true ISCROLL 为了防止滚动时的误操作，默认是把click禁止的，如果需要点击，则开启click即可
+        [方法]
+        myScroll.refresh:当滚动区域的内容改变的时候，我们让当前的实例刷新一下，这样的话滚动区域的相关值都会跟着重新计算
+        myScroll.scrollToElement([ele],[time]):用多长时间滚动到具体某一个位置
+        myScroll.scrollTo(x,y,[time])
+        */
+       
+        var myScroll=new IScroll(".content",{
+            scrollbars:true,
+            mouseWheel:true,
+            bounce:false,
+            fadeScrollbars:true,
+            click:true,
+        });
+        myScroll.refresh()
+    }
+    
+    $.ajax({
+        url:"json/student.json",
+        type:"get",
+        dataType:"json",
+        cache:false,
+        success:bindHTML
+    })
+</script>
+</body>
+</html>

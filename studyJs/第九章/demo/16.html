@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link charset="utf-8" type="text/css" rel="stylesheet" href="css/reset.css">
+    <link charset="utf-8" type="text/css" rel="stylesheet/less" href="css/index.less">
+    <script charset="utf-8" type="text/javascript" src="js/less.min.js"></script>
+</head>
+<body>
+<section class="main" id="main">
+    <!-- HEADER -->
+    <header class="header">
+        <div class="con">
+            <h1 class="logo">腾讯体育</h1>
+            <span class="type">NBA</span>
+            <span class="menu"></span>
+            <span class="login">登录</span>
+        </div>
+        <nav class="nav">
+            <a href="#">NBA</a>
+            <a href="#">CBA</a>
+            <a href="#">英超</a>
+            <a href="#">欧冠</a>
+            <a href="#">亚冠</a>
+            <a href="#">西甲</a>
+            <a href="#">意甲</a>
+            <a href="#">德甲</a>
+            <a href="#">法甲</a>
+            <a href="#">中超</a>
+            <a href="#">NFL</a>
+            <a href="#">综合</a>
+            <a href="#">欧洲</a>
+            <a href="#">社区</a>
+            <a href="#">下载</a>
+        </nav>
+    </header>
+    <!-- VIDEO -->
+    <!-- 只有preload="none"的时候，我们的poster才会起作用 -->
+    <section class="videoArea">
+        <video controls preload="none" poster="img/0.jpg" src="http://220.181.91.161/sports.tc.qq.com/AHnpwydY1EkfcojONTPtfbNArIL6Gq1_GGt8aoQoPDSk/q0029il1msi.mp4?vkey=CE8C326F4C1E04425CD51054F2681B2E751A02B10BD641DEF6384D13C13779B6A5D4E7D36C485EEE6C4FF1C8D87C63C74216F19947BDF9CD6D785FA5EE5C9C8626A65862D080F38201FEBED30FAC52A442798CC2007D8A738126007FD17F38EA0D987D852119ED79CFB3E9C13311034AE95A3E020F314397&amp;br=141&amp;platform=2&amp;fmt=auto&amp;level=0&amp;sdtfrom=v3010&amp;guid=2143fcf9965e0fdc26600606a4904576"></video>
+    </section>
+    <!-- MATCH INFO -->
+    <section class="matchInfo">
+ <!--        <div class="top">
+            <div class="home">
+                <img src="http://img1.gtimg.com/sports/pics/hv1/85/31/2297/149370415.png" alt="">
+                <span>96</span>
+            </div>
+            <div class="time">06月09日 09:00</div>
+            <div class="away">
+                <span>96</span>
+                <img src="http://img1.gtimg.com/sports/pics/hv1/85/31/2297/149370415.png" alt="">
+            </div>
+        </div>
+        <div class="middle">
+            <span></span>
+        </div>
+        <div class="bottom">
+            <span class="home">3537820</span>
+            <span class="type">NBA季后赛</span>
+            <span class="away">4414861</span>
+        </div> -->
+    </section>
+    <!-- MATCH LIST -->
+    <section class="matchList">
+        <ul class="clear">
+            <li class="bg">
+                <div><img src="http://inews.gtimg.com/newsapp_ls/0/6581517169_640330/0" alt=""><span>02:03</span></div>
+                <p>4连败！火箭20分负独行侠 哈登三双</p>
+            </li>
+        </ul>  
+    </section>
+</section>
+<script charset="utf-8" type="text/javascript" src="js/zepto.min.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/iscroll.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/ejs.min.js"></script>
+<script charset="utf-8" type="text/template" id="matchInfoTemplate">
+    <div class="top">
+        <div class="home">
+            <img src="<%=matchInfo.leftBadge%>" alt="">
+            <span><%=matchInfo.leftGoal%></span>
+        </div>
+        <div class="time"><%=matchInfo.startTime.formatTime("{1}月{2}日 {3}:{4}")%></div>
+        <div class="away">
+            <span><%=matchInfo.rightGoal%></span>
+            <img src="<%=matchInfo.rightBadge%>" alt="">
+        </div>
+    </div>
+    <div class="middle">
+        <span></span>
+    </div>
+    <div class="bottom">
+        <span class="home" type="1"><%=matchInfo.leftSupport%></span>
+        <span class="type"><%=matchInfo.matchDesc%></span>
+        <span class="away" type="2"><%=matchInfo.rightSupport%></span>
+    </div>
+</script>
+
+<script charset="utf-8" type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
+<!-- http://imgcache.qq.com/tencentvideo_v1/tvp/js/tvp.player_v2_zepto.js -->

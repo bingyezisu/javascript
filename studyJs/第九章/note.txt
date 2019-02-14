@@ -149,3 +149,8 @@ PC：click mouseover mouseout mouseenter mouseleave mousemove mousedown mouseup 
         JQ由于是在PC端使用的，所以代码中包含了大量的对于IE低版本浏览器的兼容处理，而Zepto应用于移动端开发，所以在JQ基础上没有低版本的IE进行支持
         JQ中提供了很多的选择器类型及DOM操作方法，但是ZEPTO中只是实现了部分常用的选择器和方法
         ==>ZEPTO的源代码大小比JQ小很多
+
+        ZEPTO专门为移动端开发而诞生，所以相对于JQ来说更适合移动端
+        ZEPTO的animate动画方法支持了CSS3动画的操作
+        ZEPTO专门的准备了移动端常用的时间操作：tap、singleTap、doubleTap、longTap、swipe、swipeUp、swipeDown、swipeLeft、swipeRight...
+        https://github.com/madrobby/zepto

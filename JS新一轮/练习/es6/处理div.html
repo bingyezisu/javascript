@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    div{width:100px;height:100px;background:#ccc;float:left;margin:10px;}
+    </style>
+    <script>
+    window.onload=function(){
+        let aDiv=document.getElementsByTagName("div");
+        Array.from(aDiv).forEach(div=>{
+            div.style.background="#fa0";
+        })
+    }
+    </script>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

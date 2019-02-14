@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		ul,li{list-style:none;}
+		a,a:hover{text-decoration:none;}
+		img{border:0;}
+		body{width:100%;height:100%;overflow:hidden;position:absolute;font:14px/21px "微软雅黑";}
+		.bg,.bg_cover{position:absolute;width:100%;height:100%;overflow:hidden;top:0;left:0;}
+		.bg{background:url(img/img1.jpg) 50% no-repeat;background-size:cover;filter:blur(65px);}
+		.player_logo{width:78px;height:21px;overflow:hidden;position:absolute;top:20px;left:20px;z-index:3;}
+		.player_logo img{display:block;opacity:0.5}
+		.player_logo a:hover img{opacity:1}
+		.bg_cover{background:rgba(0,0,0,.35)}
+		.main{width:80%;height:100%;overflow:hidden;margin:0 auto;position:relative;}
+		.songlist_side,.songinfo_side{position:absolute;top:10%;bottom:15%;}
+		.songlist_side{width:60%;left:0;}
+		.songinfo_side{width:35%;background:#ccc;right:0;}
+		.songlist_side .songlist_toolbar{position:relative;margin-bottom:20px;}
+		.songlist_side .songlist_toolbar a{min-width:122px;height:38px;line-height:38px;border:1px solid #bdbdbe;border-radius:2px;margin-right:6px;display:inline-block;margin-right:6px;padding:0 23px;box-sizing:border-box;text-align:center;color:#fff;white-space:nowrap}
+		.songlist_side .songlist_toolbar a i{display:inline-block;width:16px;height:16px;background:url(img/icon_sprite.png) no-repeat;vertical-align:-4px;margin-right:6px;opacity:.6}
+		.songlist_toolbar a:nth-of-type(1) i{background-position:-60px -20px;}
+		.songlist_toolbar a:nth-of-type(2) i{background-position:-20px -20px;}
+		.songlist_toolbar a:nth-of-type(3) i{background-position:-40px -240px;}
+		.songlist_toolbar a:nth-of-type(4) i{background-position:-100px -20px;}
+		.songlist_toolbar a:nth-of-type(5) i{background-position:-40px -300px;}
+		.songlist_side .songlist_toolbar a:hover{border-color:#fff;}
+		.songlist_side .songlist_toolbar a:hover i{opacity:1;}
+		.songlist_con{color:#ddd;}
+		.songlist_con dt,.songlist_con dd,.songlist_con dt div,.songlist_con dd div{height:50px;line-height:50px;overflow:hidden;position:relative;}
+		.songlist_con dd{border-top:1px solid rgba(255,255,255,.15);cursor:pointer;}
+		.songlist_con .song_edit{width:14px;height:14px;border:1px solid #ccc;box-sizing:border-box;position:absolute;top:50%;margin-top:-7px;}
+		.songlist_con .song_num{width:36px;position:absolute;left:16px;text-align:right;}
+		.songlist_con .song_name{width:60%;float:left;margin-left:62px;}
+		.songlist_con .song_arts{width:26%;padding-left:20px;box-sizing:border-box;float:left;}
+		.songlist_con .song_time{width:50px;overflow:hidden;position:absolute;top:0;right:0;}
+	</style>
+</head>
+<body>
+	<div class="bg"></div>
+	<div class="bg_cover"></div>
+	<audio id="h5audio_media" height="0" width="0" autoplay="autoplay" src="audio/知否.m4a"></audio>
+	<h1 class="player_logo"><a href="" target="_blank"><img src="img/player_logo.png" alt=""></a></h1>
+	<div class="main">
+		<div class="songlist_side">
+			<div class="songlist_toolbar">
+				<a href=""><i></i>收藏</a>
+				<a href=""><i></i>添加到</a>
+				<a href=""><i></i>下载</a>
+				<a href=""><i></i>删除</a>
+				<a href=""><i></i>清空列表</a>
+			</div>
+			<dl class="songlist_con">
+				<dt class="song_header">
+					<div class="song_edit"><input type="checkbox" name="" id=""></div>
+					<div class="song_num"></div>
+					<div class="song_name">歌曲</div>
+					<div class="song_arts">歌手</div>
+					<div class="song_time">时长</div>
+				</dt>
+			</dl>
+		</div>
+		<div class="songinfo_side"></div>
+		<div class="song_control">
+		</div>
+	</div>
+<script src="http://js.gomein.net.cn/js/g/jquery/jquery-1.7.1.js"></script>
+<script>
+$(function(){
+	var songJson=[
+		{"name":"知否知否","src":"audio/知否.m4a","arts":"胡夏/郁可唯","bgImg":"img/img1.jpg","time":"04:36"},
+		{"name":"如果这就是爱情","src":"audio/如果这就是爱情.m4a","arts":"张靓颖","bgImg":"img/img2.jpg","time":"04:42"},
+		{"name":"西安人的歌","src":"audio/西安人的歌.m4a","arts":"范炜/程渤智","bgImg":"img/img3.jpg","time":"03:54"},
+		{"name":"消愁","src":"audio/消愁.m4a","arts":"毛不易","bgImg":"img/img4.jpg","time":"02:59"},
+		{"name":"三十岁的女人","src":"audio/三十岁的女人.m4a","arts":"赵雷","bgImg":"img/img5.jpg","time":"05:28"}
+		];
+	var $bg=$(".bg"),
+		$songlist_con=$(".songlist_con"),
+		audio=$("#h5audio_media")[0];
+
+	setHtml(songJson,$songlist_con);
+
+	var $song_item=$(".song_item");
+
+	$song_item.each(function(e){
+		var _this=$(this);
+		_this.click(function(){
+			setSong(_this);
+		})
+	})
+	//自动生成歌曲列表
+	function setHtml(json,obj){
+		var _html="";
+		for(var i=0;i<json.length;i++){
+			_html+='<dd class="song_item" data-bg='+json[i].bgImg+' data-src='+json[i].src+'>'+
+					'<div class="song_edit"><input type="checkbox" name="" id=""></div>'+
+					'<div class="song_num">'+(i+1)+'</div>'+
+					'<div class="song_name">'+json[i].name+'</div>'+
+					'<div class="song_arts">'+json[i].arts+'</div>'+
+					'<div class="song_time">'+json[i].time+'</div>'+
+			    '</dd>';
+		}
+		obj.append(_html);
+	}
+	//切换歌曲
+	function setSong(obj){
+		audio.pause();
+		var bgImg=obj.attr("data-bg");
+		var songSrc=obj.attr("data-src");
+		$bg.css("backgroundImage","url("+bgImg+")");
+		audio.src=songSrc;
+		audio.play();
+	}
+})
+</script>
+</body>
+</html>
+
+

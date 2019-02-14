@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		.box{
+			width:400px;
+			height:400px;
+			margin:50px auto;
+			padding:10px;
+			background:#ccc url(../audio/img/img1.jpg);
+			border:10px dashed yellowgreen;
+
+			/*背景裁切*/
+			background-clip:border-box;
+
+			/*将背景图片显示到内容区域*/
+			background-clip:content-box;
+
+			/*将背景图片显示到内边距区域*/
+			background-clip:padding-box;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

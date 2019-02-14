@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border:1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<canvas width="600" height="400"></canvas>
+	<script type="text/javascript">
+		var canvas=document.querySelector("canvas");
+		var ctx=canvas.getContext("2d");
+		//正方形
+		ctx.moveTo(10,100);
+		ctx.lineTo(110,100);
+		ctx.lineTo(110,200);
+		ctx.lineTo(10,200);
+		ctx.closePath();
+		ctx.stroke();
+
+		//直角三角形
+		ctx.beginPath();
+		ctx.moveTo(210,100);
+		ctx.lineTo(210,200);
+		ctx.lineTo(310,200);
+		ctx.closePath();
+		ctx.strokeStyle="red";
+		ctx.stroke();
+
+		//梯形
+		ctx.beginPath();
+		ctx.moveTo(450,100);
+		ctx.lineTo(550,100);
+		ctx.lineTo(580,200);
+		ctx.lineTo(420,200);
+		ctx.closePath();
+		ctx.strokeStyle="blue";
+		ctx.stroke();
+	</script>
+</body>
+</html>

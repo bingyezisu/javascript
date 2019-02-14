@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		ul,li{list-style:none;}
+		body{background:#000;}
+		.cBox{width:300px;height:300px;margin:400px auto;transform-style:preserve-3d;position:relative;}
+		.cBox ul{width:300px;height:300px;position:absolute;top:0;left:0;overflow:hidden;}
+		.cBox ul li{width:98px;height:98px;overflow:hidden;float:left;font:bold 40px/100px arial;text-align:center;border-radius:10px;margin:1px;}
+		.cBox ul:nth-of-type(1) li{background:yellow;}
+		.cBox ul:nth-of-type(2) li{background:white;}
+		.cBox ul:nth-of-type(3) li{background:orange;}
+		.cBox ul:nth-of-type(4) li{background:red;}
+		.cBox ul:nth-of-type(5) li{background:green;}
+		.cBox ul:nth-of-type(6) li{background:blue;}
+		.cBox ul:nth-of-type(1){transform:translateZ(-150px);}
+		.cBox ul:nth-of-type(2){transform:translateZ(150px);opacity:.5}
+		.cBox ul:nth-of-type(3){transform:rotateY(90deg) translateZ(150px);}
+		.cBox ul:nth-of-type(4){transform:rotateY(-90deg) translateZ(150px);}
+		.cBox ul:nth-of-type(5){transform:rotateX(90deg) translateZ(150px);}
+		.cBox ul:nth-of-type(6){transform:rotateX(-90deg) translateZ(150px);}
+	</style>
+</head>
+<body>
+	<div class="cBox">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+		</ul>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+		</ul>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+		</ul>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+		</ul>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+		</ul>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+		</ul>
+	</div>
+</body>
+</html>

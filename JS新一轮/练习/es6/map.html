@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr=[62,44,82,37,26];
+        /* let sum=0;
+      let arr2=arr.filter(item=>item%2);
+        alert(arr2);
+       arr.forEach(item=>{
+           sum+=item;
+       });
+        alert(sum); */
+       let avg=arr.reduce((tmp,item,index)=>{
+            if(index<arr.length-1){
+                return tmp+item;
+            }else{
+                return (tmp+item)/arr.length;
+            }
+            
+        })
+        console.log(avg);
+    </script>
+</body>
+</html>
