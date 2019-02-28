@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<div>0001</div>
+	<div>0002</div>
+	<div>0003</div>
+	<div>0004</div>
+	<div>0005</div>
+</head>
+<body>
+	<script>
+		function jQuery(){
+			var _init=jQuery.prototype.init;
+			return new _init();
+		}
+		jQuery.prototype={
+			constructor:jQuery,
+			length:100,
+			init:function(){
+				console.log(this.length);
+			}
+		}
+		var $init=jQuery.prototype.init;
+    	$init.prototype=jQuery.prototype;
+    	jQuery();
+	</script>
+</body>
+</html>
